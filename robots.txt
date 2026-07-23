@@ -1,0 +1,4 @@
+# Site is intentionally unlisted until launch.
+# Direct URL access still works; crawlers should stay out.
+User-agent: *
+Disallow: /

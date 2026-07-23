@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Metadata &amp; Attribution — Meteor</title>
+  <meta name="description" content="How Meteor uses third-party metadata and artwork, and required attribution notices.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/metadata/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/metadata/">
+  <meta property="og:title" content="Metadata &amp; Attribution — Meteor">
+  <meta property="og:description" content="Third-party metadata providers and attribution for Meteor.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Metadata &amp; Attribution</h1>
+      <p class="updated">Provider blocks below are configured centrally in <code>assets/site.config.js</code>. Only mark a provider as active when it matches the shipped app.</p>
+
+      <aside class="draft-banner" role="note">
+        <strong>Draft.</strong>
+        This document is an initial project draft and must be reviewed against the
+        final application behavior before publication.
+      </aside>
+
+      <h2>How metadata works</h2>
+      <p>
+        Meteor may use third-party services to identify movies and retrieve descriptive
+        metadata and artwork. Metadata can be incomplete, outdated or incorrect.
+        Provider availability and terms can change.
+      </p>
+      <p>
+        Third-party names, artwork and data remain subject to their respective owners and
+        licences. Users should report incorrect matches through the
+        <a href="/contact/">support channel</a>.
+      </p>
+      <p>
+        Meteor aims to cache metadata and artwork on the device. It does not operate a
+        central Meteor catalog that redistributes your library’s metadata to other users.
+      </p>
+
+      <h2>Configured providers</h2>
+      <p class="todo">
+        Set <code>enabled</code> in <code>assets/site.config.js</code> to match the published Android flavor
+        before calling a provider “active” on this page.
+      </p>
+
+      <!-- Provider cards: keep in sync with assets/site.config.js -->
+      <article class="provider-card" data-provider="omdb" data-enabled="true">
+        <span class="status">Configured (verify before publish)</span>
+        <h3>OMDb</h3>
+        <!-- Logo placeholder -->
+        <div class="screenshot-slot" style="margin-top: 0; padding: 16px;" role="img" aria-label="OMDb logo placeholder">
+          Provider logo placeholder
+        </div>
+        <p>
+          This product uses the OMDb API (CC BY-NC 4.0; personal / non-commercial).
+          Metadata is cached only on the device. Film art may include Wikimedia Commons images.
+        </p>
+        <p>
+          Homepage:
+          <a href="https://www.omdbapi.com/" rel="noopener noreferrer">https://www.omdbapi.com/</a>
+        </p>
+        <p class="todo">
+          Confirm OMDb is the active provider in the free / non-commercial build, and that
+          commercial distribution rules are respected.
+        </p>
+      </article>
+
+      <article class="provider-card" data-provider="tmdb" data-enabled="false">
+        <span class="status">Not marked active</span>
+        <h3>TMDB</h3>
+        <div class="screenshot-slot" style="margin-top: 0; padding: 16px;" role="img" aria-label="TMDB logo placeholder">
+          Provider logo placeholder
+        </div>
+        <p>
+          This product uses the TMDB API but is not endorsed or certified by TMDB.
+        </p>
+        <p>
+          Homepage:
+          <a href="https://www.themoviedb.org/" rel="noopener noreferrer">https://www.themoviedb.org/</a>
+        </p>
+        <p class="todo">
+          Enable this block only when the commercial / Pro build uses TMDB, and add any
+          additional notices required by TMDB’s terms.
+        </p>
+      </article>
+
+      <h2>Incorrect matches</h2>
+      <p>
+        If a movie is identified incorrectly, use the contact options on the
+        <a href="/contact/">Contact</a> page and include the filename (or folder name) and
+        the wrong title shown in the App when possible.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.1 · Updated July 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

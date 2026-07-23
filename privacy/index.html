@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Meteor</title>
+  <meta name="description" content="Privacy Policy draft for Meteor movie library. Review against the final Android app before publication.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/privacy/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/privacy/">
+  <meta property="og:title" content="Privacy Policy — Meteor">
+  <meta property="og:description" content="Initial privacy policy draft for Meteor.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Draft effective date placeholder: 23 July 2026 — must be confirmed before publication.</p>
+
+      <aside class="draft-banner" role="note">
+        <strong>Draft.</strong>
+        This document is an initial project draft and must be reviewed against the
+        final application behavior before publication.
+      </aside>
+
+      <p>
+        Meteor (“the App”) is an independent Android application for browsing and playing
+        movies from media servers on your local network. This policy describes, at a high level,
+        how the App is intended to handle information. It does not invent behaviour that has
+        not been confirmed in the shipped build.
+      </p>
+      <p>
+        Meteor does not require a Meteor account. The App is not designed to upload your movie
+        <em>files</em> to a Meteor-operated media backend (there is no such backend for storing
+        your library).
+      </p>
+
+      <h2>1. Local library and playback</h2>
+      <p>
+        When you select a DLNA media server and folder, Meteor indexes movie items locally on
+        the device so you can browse and search your library. Playback streams from the media
+        server using the device’s media capabilities.
+      </p>
+      <p class="todo">
+        Confirm exact local storage contents (index schema, artwork cache, watch progress,
+        settings) against the Android app before publication.
+      </p>
+      <p class="todo">
+        Confirm Android permissions requested (network, notifications, storage, etc.) and list them here.
+      </p>
+
+      <h2>2. Metadata identification</h2>
+      <p>
+        To identify movies and show posters and descriptive information, Meteor may send
+        search terms derived from filenames and folder names (for example a title and year)
+        from your device to third-party metadata providers configured for the build.
+      </p>
+      <p>
+        Those providers may receive technical information normally associated with an internet
+        request (such as IP address, request time, and the query text). Over time, many queries
+        from the same IP could suggest which titles were looked up. That is not the same as
+        knowing your identity, but it is not fully anonymous.
+      </p>
+      <p>
+        Returned metadata and artwork references may be cached on the device so the App does
+        not need to repeat every lookup while you browse.
+      </p>
+      <p class="todo">
+        Confirm exact metadata providers enabled in the published build (see also
+        <a href="/metadata/">Metadata &amp; Attribution</a> and <code>assets/site.config.js</code>).
+      </p>
+      <p class="todo">
+        Confirm exact fields sent in metadata queries (title, year, identifiers, language, etc.).
+      </p>
+      <p class="todo">
+        Confirm whether any device or installation identifiers are included in metadata requests.
+      </p>
+
+      <h2>3. Analytics, crash reporting, and diagnostics</h2>
+      <p class="todo">
+        Confirm whether Firebase, Crashlytics, Play pre-launch reports, or any other analytics /
+        crash / diagnostics SDK is included in the published build. If none are included, state
+        that clearly. If any are included, describe what is sent and that library titles / file
+        contents are not included — only if verified.
+      </p>
+      <p>
+        Until verified, this policy does <strong>not</strong> claim that “no data is collected.”
+      </p>
+
+      <h2>4. Support email</h2>
+      <p>
+        If you contact support, your message and email address are processed to respond to your
+        request.
+      </p>
+      <p class="todo">
+        Confirm retention period for support email and whether messages are stored only in the
+        mailbox or also elsewhere.
+      </p>
+
+      <h2>5. Children</h2>
+      <p>
+        The App is not directed at children and does not knowingly collect personal information
+        from children. Use is intended for people who control their own media libraries and devices.
+      </p>
+
+      <h2>6. Changes</h2>
+      <p>
+        This policy may be updated as the App evolves. The effective date above will be revised
+        when a reviewed version is published.
+      </p>
+
+      <h2>7. Contact</h2>
+      <p>
+        Privacy questions:
+        <a href="mailto:meteor@jlundmark.org">meteor@jlundmark.org</a>
+        <!-- TODO: confirm privacyEmail in assets/site.config.js -->
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.1 · Updated July 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

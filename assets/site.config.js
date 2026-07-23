@@ -1,0 +1,50 @@
+/**
+ * Meteor website configuration (reference).
+ * Values below are mirrored in the HTML pages. Update both when going live.
+ * See README.md for the full deployment checklist.
+ */
+window.METEOR_SITE = {
+  siteName: "Meteor",
+  siteTagline: "Your movies. Your library.",
+  siteUrl: "https://meteor.jlundmark.org",
+  /** Mirrored in every page footer — bump both when you ship a site change. */
+  websiteVersion: "0.1",
+  websiteUpdated: "July 2026",
+  packageId: "com.asteroid.mediaplayer",
+  // TODO: replace when the Play listing is live
+  appStoreUrl: "https://play.google.com/store/apps/details?id=com.asteroid.mediaplayer",
+  supportEmail: "meteor@jlundmark.org",
+  privacyEmail: "meteor@jlundmark.org",
+  // TODO: confirm public repo / issues URL
+  githubUrl: "https://github.com/JLUNDMRK/AsteroidMediaplayerKMP",
+  githubIssuesUrl: "https://github.com/JLUNDMRK/AsteroidMediaplayerKMP/issues",
+  social: {
+    // TODO: add when available
+  },
+  appStatus: "coming_soon", // "coming_soon" | "live"
+  // Site is unlisted until launch: robots.txt Disallow + meta noindex,nofollow on all pages
+  crawlable: false,
+  policyEffectiveDate: "2026-07-23",
+  metadataProviders: [
+    {
+      id: "omdb",
+      name: "OMDb",
+      enabled: true,
+      homepage: "https://www.omdbapi.com/",
+      attribution:
+        "This product uses the OMDb API (CC BY-NC 4.0; personal / non-commercial). Metadata is cached only on the device. Film art may include Wikimedia Commons images.",
+      notice: "Confirm enabled provider against the shipped Android build before publication.",
+      logo: null,
+    },
+    {
+      id: "tmdb",
+      name: "TMDB",
+      enabled: false,
+      homepage: "https://www.themoviedb.org/",
+      attribution:
+        "This product uses the TMDB API but is not endorsed or certified by TMDB.",
+      notice: "Enable only when the commercial / Pro build uses TMDB.",
+      logo: null,
+    },
+  ],
+};

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Getting Started — Meteor</title>
+  <meta name="description" content="Add your first movie library in Meteor: connect to the same network, discover a DLNA server, select a folder, and start indexing.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/getting-started/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/getting-started/">
+  <meta property="og:title" content="Getting Started — Meteor">
+  <meta property="og:description" content="Add your first movie library: discover DLNA, select a folder, index.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/" aria-current="page">Getting Started</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Add your first library</h1>
+      <p class="updated">First release focuses on DLNA media servers on your local network.</p>
+
+      <nav class="toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#steps">Steps</a></li>
+          <li><a href="#find-automatically">Find automatically</a></li>
+          <li><a href="#browse-and-select">Browse and select</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="steps">Steps</h2>
+      <ol>
+        <li>Connect your device to the same local network as your media server.</li>
+        <li>Open Meteor.</li>
+        <li>Select <strong>Find my movies</strong>.</li>
+        <li>Choose a discovered DLNA server.</li>
+        <li>Select the folder containing your movies.</li>
+        <li>Start indexing.</li>
+      </ol>
+      <p class="note">
+        Your movie files stay on your media server. Meteor builds a local index on the device
+        so you can browse and search the library.
+      </p>
+
+      <div class="screenshot-slot" role="img" aria-label="Screenshots placeholder for setup flow">
+        <strong>Setup screenshots</strong>
+        Placeholder for the Find my movies / server / folder flow. Use app captures when available.
+      </div>
+
+      <h2 id="find-automatically">Find automatically</h2>
+      <p>
+        Meteor searches the local network for compatible DLNA media servers and
+        suggests likely video libraries.
+      </p>
+      <p>
+        Discovery depends on your router, firewall, and how the media server is shared.
+        Not every network or NAS configuration will work the same way.
+      </p>
+
+      <h2 id="browse-and-select">Browse and select</h2>
+      <p>
+        Browse the folders exposed by a discovered server and choose the folder
+        Meteor should index.
+      </p>
+      <p>
+        Prefer a folder that primarily contains movie files (or clearly named movie folders).
+        Cleaner folder names usually lead to better identification.
+      </p>
+
+      <div class="callout" id="troubleshooting">
+        <h2>Having trouble?</h2>
+        <p>
+          If Meteor cannot find your server, or indexing does not start as expected,
+          see the <a href="/help/">Help</a> page for common DLNA checks and answers.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.1 · Updated July 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

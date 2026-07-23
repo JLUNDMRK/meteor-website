@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Help — Meteor</title>
+  <meta name="description" content="Help and FAQ for Meteor: DLNA discovery, movie identification, formats, privacy, and reporting problems.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/help/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/help/">
+  <meta property="og:title" content="Help — Meteor">
+  <meta property="og:description" content="FAQ and troubleshooting for Meteor movie library.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/help/" aria-current="page">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Help</h1>
+      <p class="updated">Answers for common questions. Sections expand in supporting browsers; all answers are visible in the page source without JavaScript.</p>
+
+      <div class="faq">
+        <details open>
+          <summary>Does Meteor require an account?</summary>
+          <p>
+            No. Meteor does not require a Meteor account to browse or play your local library.
+            You may still need accounts for third-party services you choose to use elsewhere
+            (for example your media server or Google Play).
+          </p>
+        </details>
+
+        <details>
+          <summary>Why can’t Meteor find my media server?</summary>
+          <p>Local discovery often fails for network reasons. Check the following:</p>
+          <ul>
+            <li>Your device and the media server must be on the <strong>same local network</strong>.</li>
+            <li><strong>DLNA</strong> (or equivalent media sharing) must be enabled on the media server.</li>
+            <li>A <strong>video folder</strong> must be shared by the server.</li>
+            <li><strong>VPN software</strong> can interfere with local discovery — try disabling it temporarily.</li>
+            <li>Router <strong>client isolation</strong> (AP isolation / guest Wi‑Fi) can prevent devices from seeing each other.</li>
+            <li><strong>Firewalls</strong> on the NAS, PC, or router may block local discovery traffic.</li>
+          </ul>
+          <p>
+            Meteor cannot promise compatibility with every router, NAS, DLNA implementation, or device.
+            If discovery still fails after these checks, see <a href="/contact/">Contact</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why was a movie identified incorrectly?</summary>
+          <p>
+            Identification uses filenames and folder names plus third-party metadata services.
+            Ambiguous names, missing years, or incomplete provider data can produce the wrong match.
+            You can report incorrect matches through the support channel on the
+            <a href="/contact/">Contact</a> page. See also
+            <a href="/metadata/">Metadata &amp; Attribution</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>Which formats are supported?</summary>
+          <p>
+            Playback support depends on the formats and codecs supported by the device
+            and operating system. Meteor does not currently include a complete software
+            codec package comparable to specialist players such as VLC.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does Meteor upload my movies?</summary>
+          <p>
+            Meteor is designed so that your movie <em>files</em> stay on your media server
+            and are streamed for playback. Meteor does not upload your movie files to a Meteor server
+            (there is no Meteor media backend for storing your library).
+          </p>
+          <p>
+            When movie identification runs, selected search terms (such as title and year derived
+            from filenames) may be sent from your device to third-party metadata providers.
+            See the <a href="/privacy/">Privacy Policy</a> (draft) for details that still need confirmation
+            against the shipped app.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does Meteor need an Internet connection?</summary>
+          <p>
+            Local discovery and playback of files on your LAN do not require Internet access.
+            An Internet connection is typically needed to identify movies and download posters
+            and descriptive metadata from third-party providers. Exact offline behaviour should be
+            confirmed against the shipped app before treating this as final.
+          </p>
+        </details>
+
+        <details>
+          <summary>Will Meteor always be free?</summary>
+          <p>
+            Future versions may offer different ways of accessing metadata, depending
+            on operating costs and the terms of metadata providers.
+          </p>
+          <p>
+            Meteor is an independent project. My goal is to keep it affordable and
+            accessible. If ongoing costs increase, optional subscriptions or other
+            funding models may be introduced to help keep the project sustainable.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I report a problem?</summary>
+          <p>
+            Use the support email or GitHub issues link on the <a href="/contact/">Contact</a> page.
+            Include your device model, Android version, media server type if known, and what you
+            expected versus what happened.
+          </p>
+        </details>
+      </div>
+
+      <p class="note" style="margin-top: 28px;">
+        New to Meteor? Start with <a href="/getting-started/">Getting Started</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.1 · Updated July 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
