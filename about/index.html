@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>About — Meteor</title>
-  <meta name="description" content="Why Meteor exists — an independent Android movie-library project. Install. Index. Enjoy.">
+  <meta name="description" content="Why Meteor exists — an independent movie-library app for Android, iPhone, and Apple TV. Install. Index. Enjoy.">
   <link rel="canonical" href="https://meteor.jlundmark.org/about/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
@@ -40,7 +40,7 @@
 
     <main class="doc">
       <h1>About Meteor</h1>
-      <p class="updated">Independent Android movie-library application.</p>
+      <p class="updated">Independent movie-library application for Android, iPhone, and Apple TV.</p>
 
       <aside class="why-meteor">
         <h2>Why Meteor?</h2>
@@ -65,10 +65,45 @@
       </p>
       <p>
         Meteor focuses primarily on indexing, movie identification, metadata and
-        library navigation. Playback uses the media capabilities available on the
-        device.
+        library navigation. Playback uses platform media stacks plus optional open-source
+        libraries described below.
       </p>
       <p class="tagline" style="text-align: left; margin: 20px 0;">Install. Index. Enjoy.</p>
+
+      <h2>Open source &amp; licenses</h2>
+      <div class="panel">
+        <p>
+          Meteor may include or link open-source components. Attribution also appears in
+          the app under Settings → Other / About.
+        </p>
+        <h3>FFmpeg (LGPL)</h3>
+        <p>
+          Optional decode-only FFmpeg builds are licensed under the
+          <strong>GNU LGPL v2.1+</strong> (no encoders; no GPL/nonfree components in the
+          freedom profile). See
+          <a href="https://ffmpeg.org/">ffmpeg.org</a>.
+          Hardware codecs such as H.264/HEVC on the device OS are separate from FFmpeg.
+        </p>
+        <h3>VLC / VLCKit</h3>
+        <p>
+          <strong>Apple (iPhone &amp; Apple TV):</strong> Meteor can embed
+          <strong>MobileVLCKit / TVVLCKit</strong> under <strong>LGPLv2.1+</strong> as a
+          dynamic framework (“Powered by VLC”). This is the VideoLAN VLCKit library —
+          not the GPL “VLC for iOS” application, and not GPL-only plugins.
+          Source: <a href="https://code.videolan.org/videolan/VLCKit">VideoLAN VLCKit</a>.
+          Users may replace the LGPL library; App Store builds include an object-file /
+          relink offer on request (same policy as FFmpeg).
+        </p>
+        <p>
+          <strong>Android:</strong> Meteor does <em>not</em> ship or embed a VLC binary.
+          When needed, Meteor may <strong>open the external VLC app</strong> if the user
+          has installed it. Playback otherwise uses Android Media3 / device codecs.
+        </p>
+        <p>
+          VLC and VideoLAN are trademarks of VideoLAN.
+          Project site: <a href="https://www.videolan.org/">videolan.org</a>.
+        </p>
+      </div>
 
       <h2>Independence</h2>
       <div class="panel">

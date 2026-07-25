@@ -79,9 +79,13 @@
         <details>
           <summary>Which formats are supported?</summary>
           <p>
-            Playback support depends on the formats and codecs supported by the device
-            and operating system. Meteor does not currently include a complete software
-            codec package comparable to specialist players such as VLC.
+            Playback support depends on the device and OS first (AVPlayer / Media3).
+            On <strong>Apple</strong>, Meteor may also use an embedded LGPL VLCKit engine
+            (“Powered by VLC”) for containers the system player cannot open.
+            On <strong>Android</strong>, Meteor does not embed VLC; it may open the
+            external VLC app if you have installed it. Optional LGPL FFmpeg decode
+            profiles may be used on some builds — see
+            <a href="/about/">About</a> for license details.
           </p>
         </details>
 
