@@ -15,9 +15,9 @@ window.METEOR_SITE = {
   appStoreUrl: "https://play.google.com/store/apps/details?id=com.asteroid.mediaplayer",
   supportEmail: "meteor@jlundmark.org",
   privacyEmail: "meteor@jlundmark.org",
-  // TODO: confirm public repo / issues URL
-  githubUrl: "https://github.com/JLUNDMRK/AsteroidMediaplayerKMP",
-  githubIssuesUrl: "https://github.com/JLUNDMRK/AsteroidMediaplayerKMP/issues",
+  // App source is private — do not link a private issues URL from the public site.
+  githubUrl: null,
+  githubIssuesUrl: null,
   social: {
     // TODO: add when available
   },

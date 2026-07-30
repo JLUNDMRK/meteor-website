@@ -1,8 +1,14 @@
-# Meteor — website (unlisted)
+# Meteor — website (unavailable)
 
-Static site for [meteor.jlundmark.org](https://meteor.jlundmark.org), deployed with **Cloudflare Pages** directly from the GitHub repository (no build).
+Static site formerly for [meteor.jlundmark.org](https://meteor.jlundmark.org).
 
-Asteroid remains on GitHub Pages until its Play review is fully done. Meteor uses Cloudflare Pages from the start.
+**Status:** the homepage shows **Not Found** / not available. Product messaging moved to
+**The Media Search Portal** (`themediasearchportal-website` → `tmsp.jlundmark.org`).
+Other paths under this repo are kept on disk but should not be promoted.
+
+---
+
+Historical notes below (Cloudflare Pages setup). Do not treat this as the active store listing site.
 
 **Crawl status:** intentionally **not** searchable while you work on drafts. Cloudflare Pages does **not** make the site private — a public URL can still be fetched and indexed. While drafting, keep both:
 
@@ -114,7 +120,7 @@ Site version shown in every footer (`Website v0.1 · Updated July 2026`) comes f
 | `appStoreUrl` | Play details URL with that id | Replace “Coming soon” badge on home when live |
 | `supportEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
 | `privacyEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
-| `githubUrl` / issues | `JLUNDMRK/AsteroidMediaplayerKMP` | Confirm public repo |
+| `githubUrl` / issues | `null` (private app repo) | Do not link private issues from the public site |
 | `appStatus` | `coming_soon` | Flip to `live` when listed |
 | `websiteVersion` / `websiteUpdated` | `0.1` / `July 2026` | Footer + config must stay in sync |
 | `crawlable` | `false` | Set `true` when opening search indexing |
