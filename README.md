@@ -1,14 +1,8 @@
-# Meteor — website (unavailable)
+# Meteor — website (unlisted)
 
-Static site formerly for [meteor.jlundmark.org](https://meteor.jlundmark.org).
+Static site for [meteor.jlundmark.org](https://meteor.jlundmark.org), deployed with **Cloudflare Pages** directly from the GitHub repository (no build).
 
-**Status:** the homepage shows **Not Found** / not available. Product messaging moved to
-**The Media Search Portal** (`themediasearchportal-website` → `tmsp.jlundmark.org`).
-Other paths under this repo are kept on disk but should not be promoted.
-
----
-
-Historical notes below (Cloudflare Pages setup). Do not treat this as the active store listing site.
+Asteroid remains on GitHub Pages until its Play review is fully done. Meteor uses Cloudflare Pages from the start.
 
 **Crawl status:** intentionally **not** searchable while you work on drafts. Cloudflare Pages does **not** make the site private — a public URL can still be fetched and indexed. While drafting, keep both:
 
@@ -116,11 +110,11 @@ Site version shown in every footer (`Website v0.1 · Updated July 2026`) comes f
 | Key | Current placeholder | Notes |
 |-----|---------------------|--------|
 | `siteUrl` | `https://meteor.jlundmark.org` | Confirm DNS / Pages custom domain |
-| `packageId` / Play URL | `com.asteroid.mediaplayer` | Confirm final applicationId |
+| `packageId` / Play URL | `com.meteor.mediaplayer` | Confirm final applicationId |
 | `appStoreUrl` | Play details URL with that id | Replace “Coming soon” badge on home when live |
 | `supportEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
 | `privacyEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
-| `githubUrl` / issues | `null` (private app repo) | Do not link private issues from the public site |
+| `githubUrl` / issues | `JLUNDMRK/AsteroidMediaplayerKMP` | Confirm public repo |
 | `appStatus` | `coming_soon` | Flip to `live` when listed |
 | `websiteVersion` / `websiteUpdated` | `0.1` / `July 2026` | Footer + config must stay in sync |
 | `crawlable` | `false` | Set `true` when opening search indexing |

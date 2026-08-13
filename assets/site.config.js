@@ -10,9 +10,9 @@ window.METEOR_SITE = {
   /** Mirrored in every page footer — bump both when you ship a site change. */
   websiteVersion: "0.1",
   websiteUpdated: "July 2026",
-  packageId: "com.asteroid.mediaplayer",
+  packageId: "com.meteor.mediaplayer",
   // TODO: replace when the Play listing is live
-  appStoreUrl: "https://play.google.com/store/apps/details?id=com.asteroid.mediaplayer",
+  appStoreUrl: "https://play.google.com/store/apps/details?id=com.meteor.mediaplayer",
   supportEmail: "meteor@jlundmark.org",
   privacyEmail: "meteor@jlundmark.org",
   // App source is private — do not link a private issues URL from the public site.
