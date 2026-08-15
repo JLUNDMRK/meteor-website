@@ -65,9 +65,25 @@
       <p>
         Meteor does not require a Meteor account and does not provide a Meteor-hosted library of
         movie files. Meteor does not provide movie files, images, or metadata of its own.
-        You are responsible for the media you access, copy, or download, and for ensuring you have
-        the right to access and play that media. You also accept responsibility for third-party
-        metadata (for example OMDb or other providers) that you use through the App.
+        Library media and related data that you browse, index, stream, or download come from
+        sources you connect (your servers and shares) and from third-party metadata services
+        configured for the App — currently the OMDb API for title identification, and Wikidata /
+        Wikimedia-related sources for artwork when used.
+      </p>
+      <p>
+        You are responsible for ensuring you have the rights to access, use, copy, and store that
+        media and related data. Meteor cannot technically determine whether you have such rights
+        and does not attempt to verify them. Where films include age ratings or similar labels in
+        metadata, Meteor displays that information as supplied by your library data or by those
+        third-party sources. Meteor cannot be held responsible if a rating is incorrect or missing —
+        the App only mediates between data you supply or third-party providers return, and you as
+        the user.
+      </p>
+      <p>
+        Meteor relies on the OMDb API for accurate titles and metadata. Users are encouraged to
+        support OMDb — for example by contributing to the project or by using their own API key
+        where that option is offered.
+        Homepage: <a href="https://www.omdbapi.com/" rel="noopener noreferrer">omdbapi.com</a>.
       </p>
 
       <h2>2. Your responsibilities</h2>
@@ -75,6 +91,7 @@
         <li>Only connect the App to servers and shares you are authorized to use.</li>
         <li>Keep share credentials secure; do not share them through unsupported channels.</li>
         <li>Comply with copyright and other laws that apply to your media and your location.</li>
+        <li>Accept responsibility for media and metadata brought into the App from your shares and from OMDb / Wikidata / Wikimedia-related sources as configured.</li>
         <li>Configure remote access (such as port forwarding) at your own risk; Meteor does not operate your network.</li>
       </ul>
 
@@ -98,8 +115,6 @@
         Base functions are intended to remain free to use. Some features may be reserved for an
         active Supporter subscription (a low tip-jar contribution via Google Play Billing) or for a
         <strong>local 90-day trial</strong> measured from first install on that device.
-        Reinstalling the App can reset the local trial clock because it is stored on the device,
-        not as a Google account entitlement.
       </p>
       <p>
         On Android TV / Google TV, some library browsing modes may require the trial or an active
@@ -134,8 +149,8 @@
       </p>
       <p>
         Third-party names, trademarks, artwork and data remain subject to their respective
-        owners and licences. Meteor is not affiliated with Netflix, TMDb, OMDb, IMDb,
-        Wikipedia, device manufacturers, or media server vendors.
+        owners and licences. Meteor is not affiliated with Netflix, OMDb, IMDb,
+        Wikipedia / Wikimedia, device manufacturers, or media server vendors.
       </p>
 
       <h2>7. Acceptable use</h2>
@@ -187,12 +202,21 @@
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
         <span class="site-version">Website v0.3 · Updated August 2026</span>
       </div>
-      <nav aria-label="Legal">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/metadata/">Metadata &amp; Attribution</a>
-        <a href="/contact/">Contact</a>
-      </nav>
+      <div class="footer-navs">
+        <nav class="footer-nav-primary" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/getting-started/">Getting Started</a>
+          <a href="/howto/">How-to</a>
+          <a href="/help/">Help</a>
+          <a href="/about/">About</a>
+        </nav>
+        <nav class="footer-nav-legal" aria-label="Legal">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/metadata/">Metadata &amp; Attribution</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
     </footer>
   </div>
 </body>

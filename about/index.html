@@ -99,9 +99,20 @@
       <h2>Your media &amp; metadata</h2>
       <div class="panel">
         <p>
-          Meteor provides no movie files, images, or metadata of its own. You accept
-          responsibility for OMDb API data (and other metadata providers) that you use,
-          and for any movies or files you copy or download locally for use with the app.
+          Meteor provides no movie files, images, or metadata of its own. Library media and
+          related data come from your servers and shares, and from the OMDb API and Wikidata /
+          Wikimedia-related sources as configured. You are responsible for having the rights to
+          use that data. Meteor cannot determine or verify those rights.
+        </p>
+        <p>
+          Where age ratings appear in metadata, Meteor only displays what your library or those
+          sources provide and cannot be held responsible if a rating is incorrect.
+        </p>
+        <p>
+          Meteor relies on the OMDb API for accurate titles and metadata. Supporting OMDb —
+          for example by contributing or using your own API key where offered — helps keep
+          identification working well.
+          See <a href="https://www.omdbapi.com/" rel="noopener noreferrer">omdbapi.com</a>.
         </p>
       </div>
 
@@ -122,8 +133,8 @@
       <h2>Independence</h2>
       <div class="panel">
         <p>
-          Meteor is developed independently and is not affiliated with Netflix, TMDb,
-          OMDb, IMDb, Wikipedia, any device manufacturer, or any media server vendor.
+          Meteor is developed independently and is not affiliated with Netflix,
+          OMDb, IMDb, Wikipedia / Wikimedia, any device manufacturer, or any media server vendor.
         </p>
       </div>
 
@@ -163,12 +174,21 @@
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
         <span class="site-version">Website v0.3 · Updated August 2026</span>
       </div>
-      <nav aria-label="Legal">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/metadata/">Metadata &amp; Attribution</a>
-        <a href="/contact/">Contact</a>
-      </nav>
+      <div class="footer-navs">
+        <nav class="footer-nav-primary" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/getting-started/">Getting Started</a>
+          <a href="/howto/">How-to</a>
+          <a href="/help/">Help</a>
+          <a href="/about/">About</a>
+        </nav>
+        <nav class="footer-nav-legal" aria-label="Legal">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/metadata/">Metadata &amp; Attribution</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
     </footer>
   </div>
 </body>

@@ -79,7 +79,7 @@
         <li>Watch progress, favorites / lists, and app settings.</li>
         <li>Credentials you enter for SMB, WebDAV, or similar access (stored with platform-appropriate protection on the device).</li>
         <li>Media files you choose to Download for offline playback.</li>
-        <li>A local first-install timestamp used for the optional <strong>90-day local trial</strong> of supporter features (reinstalling can reset this local trial clock).</li>
+        <li>A local first-install timestamp used for the optional <strong>90-day local trial</strong> of supporter features.</li>
       </ul>
       <p>
         Uninstalling the App removes app storage on that device, including local downloads stored in the App’s private storage. Media that remains on your PC or NAS is unaffected.
@@ -97,13 +97,18 @@
       <p>
         To identify movies and show posters and descriptive information, Meteor may send search
         terms derived from filenames and folder names (for example a title and year), and related
-        lookup identifiers when available, from your device to third-party metadata providers
-        configured for the build. The free / personal build typically uses OMDb; other providers
-        (such as TMDB) may be available depending on build and settings. Artwork may also be
-        fetched from provider or Wikimedia-related sources when configured.
+        lookup identifiers when available, from your device to the OMDb API. Artwork and related
+        descriptive data may also be fetched from Wikidata / Wikimedia-related sources when
+        configured. See <a href="/metadata/">Metadata &amp; Attribution</a>.
       </p>
       <p>
-        Those providers may receive technical information normally associated with an internet
+        Meteor relies on the OMDb API for accurate titles and metadata. Users are encouraged to
+        support OMDb — for example by contributing to the project or by using their own API key
+        where that option is offered.
+        Homepage: <a href="https://www.omdbapi.com/" rel="noopener noreferrer">omdbapi.com</a>.
+      </p>
+      <p>
+        Those services may receive technical information normally associated with an internet
         request (such as IP address, request time, and the query text). Over time, many queries
         from the same IP could suggest which titles were looked up. That is not the same as
         knowing your civil identity, but it is not fully anonymous.
@@ -111,8 +116,7 @@
       <p>
         Meteor aims to cache returned metadata and artwork on the device so lookups are not
         repeated unnecessarily. Meteor does not operate a central catalog that redistributes your
-        library’s metadata to other users. Provider terms and availability can change; see
-        <a href="/metadata/">Metadata &amp; Attribution</a>.
+        library’s metadata to other users. Provider terms and availability can change.
       </p>
 
       <h2>5. Analytics and crash reporting (Firebase)</h2>
@@ -194,7 +198,6 @@
 
       <h2>11. Your choices</h2>
       <ul>
-        <li>You can limit network features by not adding remote shares and by using offline downloads only after content is already on the device.</li>
         <li>You can clear app data or uninstall to remove local library state and credentials on that device.</li>
         <li>You can manage Play subscriptions in Google Play.</li>
         <li>Device-level advertising ID / app settings (where offered by Android) may affect what advertising identifiers third-party SDKs can read.</li>
@@ -227,12 +230,21 @@
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
         <span class="site-version">Website v0.3 · Updated August 2026</span>
       </div>
-      <nav aria-label="Legal">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/metadata/">Metadata &amp; Attribution</a>
-        <a href="/contact/">Contact</a>
-      </nav>
+      <div class="footer-navs">
+        <nav class="footer-nav-primary" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/getting-started/">Getting Started</a>
+          <a href="/howto/">How-to</a>
+          <a href="/help/">Help</a>
+          <a href="/about/">About</a>
+        </nav>
+        <nav class="footer-nav-legal" aria-label="Legal">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/metadata/">Metadata &amp; Attribution</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
     </footer>
   </div>
 </body>
