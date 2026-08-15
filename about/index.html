@@ -66,20 +66,20 @@
       </p>
       <p>
         Meteor focuses primarily on indexing, movie identification, metadata and
-        library navigation. Playback uses platform media stacks plus optional open-source
-        libraries described below.
+        library navigation. Playback uses the device’s built-in media player.
       </p>
       <p class="tagline" style="text-align: left; margin: 20px 0;">Install. Index. Enjoy.</p>
 
       <h2>Codecs &amp; playback</h2>
       <div class="panel">
         <p>
-          This version of Meteor plays with ExoPlayer (Media3) using your device’s
-          built-in media support. Some files may not play if the device cannot decode
-          them natively.
+          This version of Meteor plays with your device’s built-in media player and the
+          codecs that already come with the operating system. It does not embed extra
+          codec engines such as FFmpeg or VLCKit.
         </p>
         <p>
-          When needed, Meteor can open the VLC app so you can watch those titles there.
+          Some files may not play if the device cannot decode them. When needed, Meteor
+          can open the separate VLC app if you have installed it.
         </p>
       </div>
 
@@ -95,35 +95,13 @@
       <h2>Open source &amp; licenses</h2>
       <div class="panel">
         <p>
-          Meteor may include or link open-source components. Attribution also appears in
-          the app under Settings → Other / About.
-        </p>
-        <h3>FFmpeg (LGPL)</h3>
-        <p>
-          Optional decode-only FFmpeg builds are licensed under the
-          <strong>GNU LGPL v2.1+</strong> (no encoders; no GPL/nonfree components in the
-          freedom profile). See
-          <a href="https://ffmpeg.org/">ffmpeg.org</a>.
-          Hardware codecs such as H.264/HEVC on the device OS are separate from FFmpeg.
-        </p>
-        <h3>VLC / VLCKit</h3>
-        <p>
-          <strong>Apple (iPhone &amp; Apple TV):</strong> Meteor can embed
-          <strong>MobileVLCKit / TVVLCKit</strong> under <strong>LGPLv2.1+</strong> as a
-          dynamic framework (“Powered by VLC”). This is the VideoLAN VLCKit library —
-          not the GPL “VLC for iOS” application, and not GPL-only plugins.
-          Source: <a href="https://code.videolan.org/videolan/VLCKit">VideoLAN VLCKit</a>.
-          Users may replace the LGPL library; App Store builds include an object-file /
-          relink offer on request (same policy as FFmpeg).
+          Meteor may include or link open-source components used for the app itself
+          (for example networking and UI libraries). Attribution also appears in the app
+          under Settings → Other / About.
         </p>
         <p>
-          <strong>Android:</strong> This version uses <strong>ExoPlayer (Media3)</strong>
-          with device codecs. Meteor does <em>not</em> ship or embed a VLC binary.
-          When needed, Meteor may <strong>open the external VLC app</strong> if the user
-          has installed it.
-        </p>
-        <p>
-          VLC and VideoLAN are trademarks of VideoLAN.
+          VLC is a separate application from VideoLAN. Meteor may open it when you choose
+          to; Meteor does not ship or embed VLC / VLCKit in this version.
           Project site: <a href="https://www.videolan.org/">videolan.org</a>.
         </p>
       </div>
@@ -138,32 +116,18 @@
 
       <aside class="why-meteor" id="support">
         <h2>Support the Project</h2>
-        <p>The app is free to use for now.</p>
         <p>
-          If you'd like to support its development, you can choose an optional
-          low-cost Supporter subscription.
+          Base functions are free to use. Some features are reserved for active supporters —
+          a low tip-jar contribution that helps fund development and maintenance.
         </p>
         <p>
-          The Supporter subscription does not currently unlock any additional features.
-          It exists for people who want to support the project and help fund its
-          continued development.
+          My hope is that users who like the app will contribute so I can keep improving it.
+          The goal is to keep Meteor affordable and accessible. If ongoing costs increase,
+          the funding model may need to change to keep the project sustainable.
         </p>
         <p>
-          My goal is to keep the app affordable and accessible for everyone.
-          To help keep the project sustainable, some features may require a
-          Supporter subscription in the future.
-        </p>
-        <p>
-          There are no guarantees about which features may be added in the future
-          or which features may require a Supporter subscription.
-        </p>
-        <p>
-          The Supporter subscription is currently entirely optional, and you can
-          cancel it at any time.
-        </p>
-        <p>
-          The aim is to keep the core functionality of the app free while keeping
-          the Supporter subscription affordable.
+          You can cancel a Supporter subscription at any time. Features and pricing may change
+          as the project evolves; there is no guarantee which capabilities stay free forever.
         </p>
       </aside>
 

@@ -90,11 +90,14 @@
         <details>
           <summary>Which formats are supported?</summary>
           <p>
-            This Android version plays with <strong>ExoPlayer (Media3)</strong> and your
-            device’s built-in codecs. Some files may not play in-app if the device cannot
-            decode them natively — Meteor can open the external <strong>VLC app</strong>
-            when you have installed it. Optional LGPL FFmpeg decode profiles may appear on
-            some builds — see <a href="/about/">About</a>.
+            Meteor plays movies with your device’s <strong>built-in media player</strong>
+            and the codecs that already come with the operating system.
+            It does <em>not</em> embed extra codec engines such as FFmpeg or VLCKit.
+          </p>
+          <p>
+            Some files may not play in-app if the device cannot decode them.
+            When needed, Meteor can open the separate <strong>VLC app</strong> if you have
+            installed it.
           </p>
         </details>
 
@@ -124,15 +127,17 @@
         </details>
 
         <details>
-          <summary>Will Meteor always be free?</summary>
+          <summary>Is Meteor free?</summary>
           <p>
-            Future versions may offer different ways of accessing metadata, depending
-            on operating costs and the terms of metadata providers.
+            To support the development and maintenance of Meteor, the base functions are
+            currently free to use, but some functionalities are reserved for active
+            supporters. My hope is that users who use and like the app will contribute
+            with this low tip-jar contribution to the project, so I may continue developing
+            and improving the app.
           </p>
           <p>
-            Meteor is an independent project. My goal is to keep it affordable and
-            accessible. If ongoing costs increase, optional subscriptions or other
-            funding models may be introduced to help keep the project sustainable.
+            My goal is to keep it affordable and accessible. If ongoing costs increase,
+            the funding model may need to change to help keep the project sustainable.
           </p>
         </details>
 
@@ -140,7 +145,7 @@
           <summary>How do I report a problem?</summary>
           <p>
             Use the support email on the <a href="/contact/">Contact</a> page.
-            Include your device model, Android version, media server type if known, and what you
+            Include your device model, OS version, media server type if known, and what you
             expected versus what happened.
           </p>
         </details>
