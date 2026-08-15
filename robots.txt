@@ -1,4 +1,6 @@
-# Site is intentionally unlisted until launch.
-# Direct URL access still works; crawlers should stay out.
+# Site is intentionally unlisted for most paths until full public launch.
+# Privacy and Terms stay fetchable for Google Play and reviewers.
 User-agent: *
+Allow: /privacy/
+Allow: /terms/
 Disallow: /

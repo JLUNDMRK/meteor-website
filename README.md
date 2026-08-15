@@ -4,14 +4,14 @@ Static site for [meteor.jlundmark.org](https://meteor.jlundmark.org), deployed w
 
 Asteroid remains on GitHub Pages until its Play review is fully done. Meteor uses Cloudflare Pages from the start.
 
-**Crawl status:** intentionally **not** searchable while you work on drafts. Cloudflare Pages does **not** make the site private — a public URL can still be fetched and indexed. While drafting, keep both:
+**Crawl status:** most of the site is intentionally **not** searchable while you finish launch copy. Cloudflare Pages does **not** make the site private — a public URL can still be fetched. While drafting the rest of the site, keep:
 
-- `<meta name="robots" content="noindex, nofollow">` on every page
-- `robots.txt` with `User-agent: *` / `Disallow: /`
+- `<meta name="robots" content="noindex, nofollow">` on pages that should stay unlisted
+- `robots.txt` with `Disallow: /`, plus explicit `Allow: /privacy/` and `Allow: /terms/` so Play can fetch legal pages
 
 Anyone who knows the URL can still open the site (no login). That is what you want for sharing internally.
 
-When the Privacy Policy is ready for **Google Play**, the page must stay publicly reachable without login (Cloudflare Pages already does that). Then open crawling for the pages you want indexed: remove `noindex, nofollow`, set `Allow: /` in `robots.txt`, and re-add the Sitemap line. Play needs to fetch the policy URL; it does not require the page to appear in Google Search, but you should not block Play’s fetchers — so do not put the live privacy URL behind auth, and prefer opening `robots.txt` / removing blanket `Disallow: /` before you submit the listing.
+When you are ready for **full** public indexing: remove `noindex, nofollow` from the pages you want indexed, set `Allow: /` in `robots.txt`, and re-add the Sitemap line. Play needs to fetch the policy URL; it does not require the whole site to appear in Google Search.
 
 | URL | Page |
 |-----|------|
@@ -24,10 +24,10 @@ When the Privacy Policy is ready for **Google Play**, the page must stay publicl
 | `/howto/remote-webdav/` | Advanced remote WebDAV (+ port forwarding / NAT notes) |
 | `/help/` | FAQ / troubleshooting |
 | `/about/` | About |
-| `/privacy/` | Privacy policy (**draft**) |
-| `/terms/` | Terms of use (**draft**) |
+| `/privacy/` | Privacy policy (Play-ready) |
+| `/terms/` | Terms of use (Play-ready) |
 | `/metadata/` | Metadata & attribution (**draft**) |
-| `/contact/` | Contact placeholders |
+| `/contact/` | Contact |
 
 No build step. Edit HTML/CSS and push to `main` — Cloudflare Pages redeploys automatically.
 
@@ -99,16 +99,16 @@ You can still add extra Redirect Rules in the Cloudflare dashboard later if you 
 
 **Do not** point Play at Privacy/Terms until:
 
-1. Draft banners are removed and the documents match the shipped app
+1. These pages are published to production (push to `main` / Cloudflare Pages)
 2. The privacy URL loads without login (already true on Pages)
-3. You have opened crawl controls appropriately (see crawl status above) so nothing unexpectedly blocks reviewers or automated checks
+3. You have allowed Play to fetch the policy (`robots.txt` already `Allow: /privacy/` and `/terms/`)
 
 ## Configuration
 
 Central reference: [`assets/site.config.js`](assets/site.config.js).  
 Values are **mirrored in HTML** (no build). Update both when going live.
 
-Site version shown in every footer (`Website v0.2 · Updated August 2026`) comes from `websiteVersion` / `websiteUpdated` in that config — bump the config **and** the footer strings together when you ship a site change.
+Site version shown in every footer (`Website v0.3 · Updated August 2026`) comes from `websiteVersion` / `websiteUpdated` in that config — bump the config **and** the footer strings together when you ship a site change.
 
 ### Placeholder values to change before launch
 
@@ -121,9 +121,9 @@ Site version shown in every footer (`Website v0.2 · Updated August 2026`) comes
 | `privacyEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
 | `githubUrl` / issues | `JLUNDMRK/AsteroidMediaplayerKMP` | Confirm public repo |
 | `appStatus` | `coming_soon` | Flip to `live` when listed |
-| `websiteVersion` / `websiteUpdated` | `0.2` / `August 2026` | Footer + config must stay in sync |
-| `crawlable` | `false` | Set `true` when opening search indexing |
-| `policyEffectiveDate` | `2026-07-23` | Set real effective date after legal review |
+| `websiteVersion` / `websiteUpdated` | `0.3` / `August 2026` | Footer + config must stay in sync |
+| `crawlable` | `false` | Set `true` when opening full-site search indexing |
+| `policyEffectiveDate` | `2026-08-15` | Mirrored on Privacy / Terms pages |
 | `metadataProviders[].enabled` | OMDb `true`, TMDB `false` | Must match shipped flavor |
 | Social share image | `assets/og-share.png` | Currently a copy of the logo — replace with 1200×630 art |
 | App screenshots | optional | Add real captures when available |
@@ -136,31 +136,17 @@ Site version shown in every footer (`Website v0.2 · Updated August 2026`) comes
 - [ ] Confirm Play package id and store URL
 - [ ] Connect GitHub → Cloudflare Pages (`main`, no build, output `/` or `.`)
 - [ ] Attach custom domain `meteor.jlundmark.org`
-- [ ] Review Privacy against the Android app; remove draft banner
-- [ ] Review Terms; remove draft banner
+- [x] Review Privacy against the Android app; remove draft banner
+- [x] Review Terms; remove draft banner
 - [ ] Align Metadata provider cards with the shipped build
 - [ ] Add real screenshots (optional)
 - [ ] Replace `og-share.png`
 - [ ] Swap “Coming soon” for Play badge / working store link
-- [ ] Before Play / public launch: set `Allow: /` in `robots.txt`, add Sitemap line, remove `noindex, nofollow` from pages that should be indexed, set `crawlable: true` in `site.config.js`
+- [ ] Before full public launch: set `Allow: /` in `robots.txt`, add Sitemap line, remove `noindex, nofollow` from remaining pages, set `crawlable: true` in `site.config.js`
 
 ## Statements that still depend on app confirmation
 
-See the Privacy, Terms, and Metadata pages (`.todo` callouts). In short:
-
-**Privacy**
-
-- Exact local storage contents (index, artwork cache, progress, settings)
-- Exact Android permissions
-- Exact metadata providers and query fields
-- Whether any device/install identifiers are sent with metadata requests
-- Analytics / Crashlytics / diagnostics (present or not — do not claim “no collection” until verified)
-- Support-email retention
-
-**Terms**
-
-- Scope of SMB / WebDAV / DLNA sources in the current release
-- Any billing / subscription wording when introduced
+Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, Play Billing supporter, local 90-day trial, OMDb-oriented free metadata, Drive sync disabled for v1). Remaining draft callouts are mainly on the Metadata page:
 
 **Metadata**
 

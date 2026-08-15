@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Meteor</title>
-  <meta name="description" content="Privacy Policy draft for Meteor movie library. Review against the final Android app before publication.">
+  <meta name="description" content="Privacy Policy for Meteor Media Player: what stays on your device, what is sent to metadata providers, Firebase, and Google Play.">
   <link rel="canonical" href="https://meteor.jlundmark.org/privacy/">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
   <meta property="og:url" content="https://meteor.jlundmark.org/privacy/">
   <meta property="og:title" content="Privacy Policy — Meteor">
-  <meta property="og:description" content="Initial privacy policy draft for Meteor.">
+  <meta property="og:description" content="How Meteor handles library data, analytics, purchases, and third-party services.">
   <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
   <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -37,114 +37,195 @@
 
     <main class="doc">
       <h1>Privacy Policy</h1>
-      <p class="updated">Draft effective date placeholder: 23 July 2026 — must be confirmed before publication.</p>
+      <p class="updated">Effective date: 15 August 2026</p>
 
-      <aside class="draft-banner" role="note">
-        <strong>Draft.</strong>
-        This document is an initial project draft and must be reviewed against the
-        final application behavior before publication.
-      </aside>
+      <nav class="doc-nav-links" aria-label="Related documents">
+        <a href="/terms/">Terms of Use</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
 
       <p>
-        Meteor (“the App”) is an independent Android application for browsing and playing
-        movies from a PC or NAS (for example via DLNA, SMB, or WebDAV). This policy describes, at a high level,
-        how the App is intended to handle information. It does not invent behaviour that has
-        not been confirmed in the shipped build.
+        Meteor (“the App”) is an independent movie-library application for
+        <strong>Android phones, tablets, and Android TV / Google TV</strong>.
+        It helps you browse and play movies from a PC or NAS (for example via DLNA, SMB, or WebDAV),
+        index a library on the device, optionally download titles for offline playback, and identify
+        titles using third-party metadata services.
       </p>
       <p>
-        Meteor does not require a Meteor account. The App is not designed to upload your movie
-        <em>files</em> to a Meteor-operated media backend (there is no such backend for storing
-        your library).
+        Meteor does <strong>not</strong> require a Meteor account and does not operate a Meteor media
+        server that stores your movie files or library catalog. This policy describes how information
+        is handled when you use the App. Related rules of use are in the
+        <a href="/terms/">Terms of Use</a>.
       </p>
 
-      <h2>1. Local library and playback</h2>
+      <h2>1. Summary</h2>
+      <ul>
+        <li>Your library index, watch progress, settings, share credentials, cached artwork, and offline downloads stay on the device (or on your own PC/NAS for the original media files).</li>
+        <li>When you connect to a share, the App contacts <strong>your</strong> media servers on your network (or a remote WebDAV endpoint you configure) — not a Meteor content backend.</li>
+        <li>Movie identification may send filename-derived search terms to metadata providers such as OMDb (see <a href="/metadata/">Metadata &amp; Attribution</a>).</li>
+        <li>The Android build uses <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong> for product usage and crash diagnostics.</li>
+        <li>Optional Supporter purchases use <strong>Google Play Billing</strong>. Google processes purchase data under Google’s terms.</li>
+        <li>Meteor does not sell your personal information and does not show third-party advertising in the App.</li>
+      </ul>
+
+      <h2>2. Information stored on your device</h2>
       <p>
-        When you add a movie collection location (SMB, WebDAV, or DLNA) and choose a folder,
-        Meteor indexes movie items locally on the device so you can browse and search your
-        library. Playback uses the device’s media player (streaming from your server, or from
-        files you download in the App for offline use). Meteor reads your collection; it does not host or rewrite
-        your movie files on the NAS.
+        Depending on how you use the App, Meteor may store locally on the device:
       </p>
-      <p class="todo">
-        Confirm exact local storage contents (index schema, artwork cache, watch progress,
-        settings) against the Android app before publication.
-      </p>
-      <p class="todo">
-        Confirm Android permissions requested (network, notifications, storage, etc.) and list them here.
+      <ul>
+        <li>Library index entries derived from your folders and media listings (paths, titles, technical file info).</li>
+        <li>Cached metadata and artwork references returned by identification providers.</li>
+        <li>Watch progress, favorites / lists, and app settings.</li>
+        <li>Credentials you enter for SMB, WebDAV, or similar access (stored with platform-appropriate protection on the device).</li>
+        <li>Media files you choose to Download for offline playback.</li>
+        <li>A local first-install timestamp used for the optional <strong>90-day local trial</strong> of supporter features (reinstalling can reset this local trial clock).</li>
+      </ul>
+      <p>
+        Uninstalling the App removes app storage on that device, including local downloads stored in the App’s private storage. Media that remains on your PC or NAS is unaffected.
       </p>
 
-      <h2>2. Metadata identification</h2>
+      <h2>3. Network access to your media</h2>
       <p>
-        To identify movies and show posters and descriptive information, Meteor may send
-        search terms derived from filenames and folder names (for example a title and year)
-        from your device to third-party metadata providers configured for the build.
+        To discover, browse, stream, or download from your collection, Meteor connects to the
+        DLNA, SMB, WebDAV, or other endpoints you configure. Traffic goes between your device and
+        those servers. Meteor does not upload your movie files to a Meteor-operated media backend
+        (there is no such backend for hosting your library).
+      </p>
+
+      <h2>4. Metadata identification</h2>
+      <p>
+        To identify movies and show posters and descriptive information, Meteor may send search
+        terms derived from filenames and folder names (for example a title and year), and related
+        lookup identifiers when available, from your device to third-party metadata providers
+        configured for the build. The free / personal build typically uses OMDb; other providers
+        (such as TMDB) may be available depending on build and settings. Artwork may also be
+        fetched from provider or Wikimedia-related sources when configured.
       </p>
       <p>
         Those providers may receive technical information normally associated with an internet
         request (such as IP address, request time, and the query text). Over time, many queries
         from the same IP could suggest which titles were looked up. That is not the same as
-        knowing your identity, but it is not fully anonymous.
+        knowing your civil identity, but it is not fully anonymous.
       </p>
       <p>
-        Returned metadata and artwork references may be cached on the device so the App does
-        not need to repeat every lookup while you browse.
-      </p>
-      <p class="todo">
-        Confirm exact metadata providers enabled in the published build (see also
-        <a href="/metadata/">Metadata &amp; Attribution</a> and <code>assets/site.config.js</code>).
-      </p>
-      <p class="todo">
-        Confirm exact fields sent in metadata queries (title, year, identifiers, language, etc.).
-      </p>
-      <p class="todo">
-        Confirm whether any device or installation identifiers are included in metadata requests.
+        Meteor aims to cache returned metadata and artwork on the device so lookups are not
+        repeated unnecessarily. Meteor does not operate a central catalog that redistributes your
+        library’s metadata to other users. Provider terms and availability can change; see
+        <a href="/metadata/">Metadata &amp; Attribution</a>.
       </p>
 
-      <h2>3. Analytics, crash reporting, and diagnostics</h2>
-      <p class="todo">
-        Confirm whether Firebase, Crashlytics, Play pre-launch reports, or any other analytics /
-        crash / diagnostics SDK is included in the published build. If none are included, state
-        that clearly. If any are included, describe what is sent and that library titles / file
-        contents are not included — only if verified.
+      <h2>5. Analytics and crash reporting (Firebase)</h2>
+      <p>
+        The Android App includes Google Firebase services:
+      </p>
+      <ul>
+        <li><strong>Firebase Analytics</strong> — app usage events (for example app opens and similar product metrics) to understand stability and feature use.</li>
+        <li><strong>Firebase Crashlytics</strong> — crash and diagnostic reports (for example stack traces, app version, and device/OS information) to find and fix bugs.</li>
+      </ul>
+      <p>
+        These services are operated by Google. They may process device and app identifiers and
+        diagnostic data according to Google’s Firebase / Google Play services documentation.
+        Depending on platform version and SDK configuration, this can include an
+        <strong>advertising ID</strong> where the platform makes one available. Meteor does
+        <strong>not</strong> use advertising ID for ads, remarketing, or cross-app advertising,
+        and the App does not include a third-party ads SDK.
       </p>
       <p>
-        Until verified, this policy does <strong>not</strong> claim that “no data is collected.”
+        Meteor is not designed to send your full movie file contents or NAS passwords to Firebase.
+        Analytics events are kept intentionally limited; exact event names may evolve as the App
+        improves. Do not treat Firebase as “no data collected” — diagnostics and usage metrics
+        are collected when Firebase is active in the shipped build.
       </p>
 
-      <h2>4. Support email</h2>
+      <h2>6. Purchases (Google Play Billing)</h2>
       <p>
-        If you contact support, your message and email address are processed to respond to your
-        request.
+        Optional tip-jar / Supporter features are offered through Google Play Billing (subscription).
+        Google processes purchase tokens, order and subscription status, and related billing data
+        under Google’s policies. Meteor receives enough purchase state to unlock supporter features
+        on the device. Meteor does not receive your full payment card details.
       </p>
-      <p class="todo">
-        Confirm retention period for support email and whether messages are stored only in the
-        mailbox or also elsewhere.
-      </p>
-
-      <h2>5. Children</h2>
       <p>
-        The App is not directed at children and does not knowingly collect personal information
-        from children. Use is intended for people who control their own media libraries and devices.
+        Base browsing and playback features are intended to remain usable without a subscription;
+        some features may be reserved for the local trial period or active supporters. See the
+        <a href="/terms/">Terms of Use</a> and in-app wording for current entitlements.
       </p>
 
-      <h2>6. Changes</h2>
+      <h2>7. Permissions (Android)</h2>
       <p>
-        This policy may be updated as the App evolves. The effective date above will be revised
-        when a reviewed version is published.
+        Depending on device and Android version, the App may request permissions such as network
+        access (including Wi‑Fi multicast for discovery), notifications, and foreground service
+        access used for downloads. Permissions are requested so the App can reach your media
+        servers, notify you about downloads, and run download work reliably — not to scrape
+        unrelated personal data from the device.
       </p>
 
-      <h2>7. Contact</h2>
+      <h2>8. Support email</h2>
+      <p>
+        If you contact support or privacy at
+        <a href="mailto:meteor@jlundmark.org">meteor@jlundmark.org</a>,
+        your message and email address are processed to respond to your request. Messages are
+        handled in ordinary email systems used for that mailbox and retained as long as needed
+        to handle the conversation and any follow-up, then deleted or archived according to
+        normal mailbox practice. Do not send passwords in email if you can avoid it.
+      </p>
+
+      <h2>9. Children</h2>
+      <p>
+        The App is <strong>not directed at children</strong> and is not intended for use by children.
+        It does not knowingly collect personal information from children. Use is intended for people
+        who control their own media libraries and devices.
+      </p>
+
+      <h2>10. Sharing and processors</h2>
+      <p>
+        Meteor does not sell your personal information. Information may be processed by:
+      </p>
+      <ul>
+        <li>Google (Firebase Analytics, Crashlytics, Google Play, Play Billing), under Google’s terms and privacy documentation.</li>
+        <li>Metadata and artwork providers you trigger through identification (for example OMDb), under those providers’ terms.</li>
+        <li>Your own PC, NAS, or remote WebDAV host when you connect the App to it.</li>
+      </ul>
+      <p>
+        European users: where GDPR or similar laws apply, processing is based on providing the App
+        you requested (contract / legitimate interest in operating and improving a crash-aware product)
+        and, for purchases, Google’s role as payment platform. This summary is not legal advice.
+      </p>
+
+      <h2>11. Your choices</h2>
+      <ul>
+        <li>You can limit network features by not adding remote shares and by using offline downloads only after content is already on the device.</li>
+        <li>You can clear app data or uninstall to remove local library state and credentials on that device.</li>
+        <li>You can manage Play subscriptions in Google Play.</li>
+        <li>Device-level advertising ID / app settings (where offered by Android) may affect what advertising identifiers third-party SDKs can read.</li>
+        <li>Privacy questions: use the contact below.</li>
+      </ul>
+
+      <h2>12. Changes</h2>
+      <p>
+        This policy may be updated as the App evolves. The effective date at the top will be revised
+        when a new version is published. Continued use after an update means you should review the
+        revised policy.
+      </p>
+
+      <h2>13. Contact</h2>
       <p>
         Privacy questions:
         <a href="mailto:meteor@jlundmark.org">meteor@jlundmark.org</a>
-        <!-- TODO: confirm privacyEmail in assets/site.config.js -->
+      </p>
+      <p>
+        Developer: Johan Lundmark · Web:
+        <a href="https://meteor.jlundmark.org/">meteor.jlundmark.org</a>
+      </p>
+      <p>
+        See also the <a href="/terms/">Terms of Use</a>.
       </p>
     </main>
 
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.2 · Updated August 2026</span>
+        <span class="site-version">Website v0.3 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

@@ -8,7 +8,7 @@ window.METEOR_SITE = {
   siteTagline: "Your movies. Your library.",
   siteUrl: "https://meteor.jlundmark.org",
   /** Mirrored in every page footer â€” bump both when you ship a site change. */
-  websiteVersion: "0.2",
+  websiteVersion: "0.3",
   websiteUpdated: "August 2026",
   packageId: "com.meteor.mediaplayer",
   // TODO: replace when the Play listing is live
@@ -24,7 +24,7 @@ window.METEOR_SITE = {
   appStatus: "coming_soon", // "coming_soon" | "live"
   // Site is unlisted until launch: robots.txt Disallow + meta noindex,nofollow on all pages
   crawlable: false,
-  policyEffectiveDate: "2026-07-23",
+  policyEffectiveDate: "2026-08-15",
   metadataProviders: [
     {
       id: "omdb",
