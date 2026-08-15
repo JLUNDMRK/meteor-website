@@ -32,18 +32,19 @@ window.METEOR_SITE = {
       enabled: true,
       homepage: "https://www.omdbapi.com/",
       attribution:
-        "This product uses the OMDb API (CC BY-NC 4.0; personal / non-commercial). Metadata is cached only on the device. Film art may include Wikimedia Commons images.",
-      notice: "Confirm enabled provider against the shipped Android build before publication.",
+        "This product uses the OMDb API (CC BY-NC 4.0; personal / non-commercial). Metadata is cached only on the device.",
+      notice:
+        "Meteor relies on OMDb for accurate titles and metadata. Users are encouraged to support OMDb.",
       logo: null,
     },
     {
-      id: "tmdb",
-      name: "TMDB",
-      enabled: false,
-      homepage: "https://www.themoviedb.org/",
+      id: "wikimedia",
+      name: "Wikimedia",
+      enabled: true,
+      homepage: "https://www.wikimedia.org/",
       attribution:
-        "This product uses the TMDB API but is not endorsed or certified by TMDB.",
-      notice: "Enable only when the commercial / Pro build uses TMDB.",
+        "Film artwork and related data may come from Wikimedia Commons, Wikidata, or other Wikimedia-related sources when configured.",
+      notice: "Content remains subject to Wikimedia project licences and attribution requirements.",
       logo: null,
     },
   ],
