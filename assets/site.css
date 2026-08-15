@@ -1,5 +1,6 @@
 :root {
   color-scheme: dark;
+
   --bg: #070b14;
   --bg-elevated: #121a2b;
   --panel: #1a2740;
@@ -120,6 +121,10 @@ a:focus-visible {
   width: min(220px, 56vw);
   height: auto;
   margin-bottom: 24px;
+}
+
+.hero-logo--sm {
+  width: min(160px, 40vw);
 }
 
 .hero h1 {
@@ -287,7 +292,7 @@ a:focus-visible {
 }
 
 .panel {
-  padding: 18px 18px;
+  padding: 18px;
   border: 1px solid var(--border-soft);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.03);
@@ -311,6 +316,11 @@ a:focus-visible {
   text-align: center;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.screenshot-slot--logo {
+  margin-top: 0;
+  padding: 16px;
 }
 
 .screenshot-slot strong {
@@ -354,6 +364,15 @@ a:focus-visible {
 .doc ul,
 .doc ol {
   padding-left: 1.2rem;
+}
+
+.doc .tagline {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.doc-closing {
+  margin-top: 28px;
 }
 
 .doc code {
