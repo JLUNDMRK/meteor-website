@@ -29,6 +29,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -52,10 +53,10 @@
 
       <h2>1. What Meteor is</h2>
       <p>
-        Meteor helps you discover compatible DLNA media servers on your local network,
-        index a movie library on your device, identify titles using third-party metadata
-        services where configured, and browse and play movies using your device’s media
-        capabilities.
+        Meteor helps you connect to movie collections on your local network via SMB,
+        WebDAV, or DLNA, index a library on your device, identify titles using third-party
+        metadata services where configured, and browse and play movies using your
+        device’s media capabilities (ExoPlayer on Android).
       </p>
       <p>
         Meteor does not provide movie files, images, or metadata of its own. You accept
@@ -66,14 +67,12 @@
 
       <h2>2. Codecs &amp; playback</h2>
       <p>
-        Due to licensing constraints, the App is not compiled with all codecs, because
-        including them would prevent distributing the App without license fees. As a
-        result, some movies may not play.
+        This version of the App plays with ExoPlayer using the media support already on
+        your device. Some movies may not play in-app if the device cannot decode them
+        natively.
       </p>
       <p>
-        Some hardware and operating systems include codecs of their own, so the App may
-        not know in advance whether playback will work. When needed, Meteor can open VLC,
-        which plays most files.
+        When needed, Meteor can open the VLC app, which plays most files.
       </p>
 
       <h2>3. Software provided “as is”</h2>
@@ -86,7 +85,7 @@
       <p>
         There is no guarantee of uninterrupted availability, uninterrupted discovery of
         every media server, perfect metadata matches, or support for every device, router,
-        NAS, DLNA server, codec, or file format.
+        NAS, SMB/WebDAV/DLNA server, codec, or file format.
       </p>
 
       <h2>4. Third-party services</h2>
@@ -135,7 +134,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated July 2026</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

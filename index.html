@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Meteor — Your movies. Your library.</title>
-  <meta name="description" content="Meteor is a simple way to browse and enjoy movies stored on your local network. Discover DLNA servers, index your library, and play with a clean interface.">
+  <meta name="description" content="Meteor is a simple way to browse and enjoy movies stored on your local network. Connect via SMB, WebDAV, or DLNA, index your library, and play with a clean interface.">
   <link rel="canonical" href="https://meteor.jlundmark.org/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
@@ -33,6 +33,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/" aria-current="page">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -50,7 +51,7 @@
         <div class="cta-row">
           <!-- TODO: set appStoreUrl when Play listing is live (see assets/site.config.js) -->
           <a class="btn btn-primary" id="get-meteor" href="https://play.google.com/store/apps/details?id=com.meteor.mediaplayer">Get Meteor</a>
-          <a class="btn btn-secondary" href="#how-it-works">How it works</a>
+          <a class="btn btn-secondary" href="/howto/">How to connect</a>
         </div>
         <div class="play-badge-slot">
           <!-- Google Play badge placeholder — replace when listing is live -->
@@ -82,15 +83,15 @@
 
       <section class="section" aria-labelledby="features-title">
         <h2 id="features-title">What Meteor does</h2>
-        <p class="intro">Focused on the movie-library experience — not every codec under the sun.</p>
+        <p class="intro">Focused on the movie-library experience — clean browsing, not every advanced player feature.</p>
         <ul class="feature-grid">
-          <li><strong>Automatic DLNA discovery</strong> Find compatible media servers on your LAN.</li>
+          <li><strong>SMB, WebDAV &amp; DLNA</strong> Connect movie collections on your LAN the way your NAS already shares them.</li>
           <li><strong>Browse and select folders</strong> Choose the movie folder Meteor should index.</li>
           <li><strong>Fast local indexing</strong> Build a searchable library on your device.</li>
           <li><strong>Automatic movie identification</strong> Match titles so posters and details can appear.</li>
           <li><strong>Searchable personal library</strong> Find films quickly in your own collection.</li>
           <li><strong>Posters and movie information</strong> Browse with artwork and descriptive metadata.</li>
-          <li><strong>Native playback</strong> Play using the media capabilities of your device.</li>
+          <li><strong>ExoPlayer playback</strong> Play with your device’s built-in media support; open the VLC app when a file needs it.</li>
           <li><strong>No Meteor account</strong> Use your library without signing up for Meteor.</li>
         </ul>
       </section>
@@ -103,8 +104,9 @@
             fast indexing, reliable identification, rich metadata and effortless browsing.
           </p>
           <p>
-            It uses the native media capabilities of your device and does not attempt to
-            replace advanced players designed for every possible codec and format.
+            This version plays with ExoPlayer using your device’s built-in media support.
+            It does not try to replace advanced players for every possible codec and format —
+            when needed, Meteor can open the VLC app.
           </p>
         </div>
         <!-- Application screenshots placeholder -->
@@ -118,7 +120,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated July 2026</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Getting Started — Meteor</title>
-  <meta name="description" content="Add your first movie library in Meteor: connect to the same network, discover a DLNA server, select a folder, and start indexing.">
+  <meta name="description" content="Add your first movie library in Meteor: connect via SMB, WebDAV, or DLNA, select a folder, and start indexing.">
   <link rel="canonical" href="https://meteor.jlundmark.org/getting-started/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
   <meta property="og:url" content="https://meteor.jlundmark.org/getting-started/">
   <meta property="og:title" content="Getting Started — Meteor">
-  <meta property="og:description" content="Add your first movie library: discover DLNA, select a folder, index.">
+  <meta property="og:description" content="Add your first movie library: SMB, WebDAV, or DLNA, select a folder, index.">
   <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
   <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -29,6 +29,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/" aria-current="page">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -36,7 +37,7 @@
 
     <main class="doc">
       <h1>Add your first library</h1>
-      <p class="updated">First release focuses on DLNA media servers on your local network.</p>
+      <p class="updated">Connect a movie collection on your local network via SMB, WebDAV, or DLNA.</p>
 
       <nav class="toc" aria-label="Contents">
         <h2>Contents</h2>
@@ -50,18 +51,17 @@
 
       <h2 id="steps">Steps</h2>
       <ol>
-        <li>Connect your device to the same local network as your media server.</li>
+        <li>Connect your device to the same local network as your media server or NAS.</li>
         <li>Open Meteor.</li>
-        <li>Select <strong>Find my movies</strong>.</li>
-        <li>Choose a discovered DLNA server.</li>
+        <li>Add a <strong>movie collection location</strong>
+          (see <a href="/howto/">How-to</a> for DLNA vs WebDAV vs SMB).</li>
         <li>Select the folder containing your movies.</li>
         <li>Start indexing.</li>
       </ol>
       <p class="note">
-        Your movie files stay on your media server or NAS. Meteor builds a local index on the device
-        so you can browse and search the library. Meteor does not run a server for your collection,
-        and you do not need to install a web server on the NAS — DLNA media sharing is enough for
-        the first release.
+        Your movie files stay on your media server or NAS. Meteor only reads them to build a local
+        index on the device so you can browse and search the library. Meteor does not run a server
+        for your collection, and you do not need to install a web server on the NAS.
       </p>
 
       <div class="screenshot-slot" role="img" aria-label="Screenshots placeholder for setup flow">
@@ -71,8 +71,9 @@
 
       <h2 id="find-automatically">Find automatically</h2>
       <p>
-        Meteor searches the local network for compatible DLNA media servers and
-        suggests likely video libraries.
+        Meteor can search the local network for SMB shares and DLNA media servers, and you can
+        add WebDAV manually. For a plain-language comparison and setup outlines (Synology + Windows),
+        see <a href="/howto/">How to connect your movies</a>.
       </p>
       <p>
         Discovery depends on your router, firewall, and how the media server is shared.
@@ -93,7 +94,7 @@
         <h2>Having trouble?</h2>
         <p>
           If Meteor cannot find your server, or indexing does not start as expected,
-          see the <a href="/help/">Help</a> page for common DLNA checks and answers.
+          see the <a href="/help/">Help</a> page for common network and sharing checks.
         </p>
       </div>
     </main>
@@ -101,7 +102,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated July 2026</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

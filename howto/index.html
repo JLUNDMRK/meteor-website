@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>How to connect your movies — Meteor</title>
+  <meta name="description" content="When to use DLNA, WebDAV, or SMB with Meteor. Quick setup outlines for Synology and Windows PC, plus what remote viewing requires.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/howto/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/howto/">
+  <meta property="og:title" content="How to connect your movies — Meteor">
+  <meta property="og:description" content="Choose DLNA, WebDAV, or SMB — and set up Synology or a Windows PC.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/" aria-current="page">How-to</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>How to connect your movies</h1>
+      <p class="updated">
+        Short guide: which protocol to pick, then rough setup for a Synology NAS or a Windows PC.
+        This is not a deep networking manual — just what usually matters.
+      </p>
+
+      <nav class="toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#choose">When to choose what</a></li>
+          <li><a href="#synology">Example: Synology</a></li>
+          <li><a href="#windows">Example: Windows PC</a></li>
+          <li><a href="#away">Watching away from home</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="choose">When to choose what</h2>
+      <p>
+        Meteor only <strong>reads</strong> your movie collection. You pick how the phone/TV reaches those files.
+        All three options work on a home LAN; they differ in simplicity and features.
+      </p>
+
+      <div class="panel">
+        <h3>DLNA — easiest first try</h3>
+        <ul>
+          <li>Usually <strong>no username/password</strong> in Meteor.</li>
+          <li>Many NAS boxes and some PC apps expose a “media server” with one toggle.</li>
+          <li>Good for a quick “does my library show up?” test.</li>
+          <li><strong>No sidecar subtitles</strong> (external <code>.srt</code> next to the movie) over DLNA.</li>
+          <li>Often slower to browse/index large libraries than SMB/WebDAV.</li>
+          <li>Casting to other living-room devices is often simpler in the DLNA world (future / device-dependent).</li>
+        </ul>
+        <p><strong>Pick DLNA</strong> if you want the simplest start on the same Wi‑Fi.</p>
+      </div>
+
+      <div class="panel">
+        <h3>WebDAV — flexible, including away from home</h3>
+        <ul>
+          <li>Needs login (user/password) and a correct URL/port.</li>
+          <li>Supports <strong>sidecar subtitles</strong> when files sit next to the movie.</li>
+          <li>Solid for larger libraries when the share is set up cleanly.</li>
+          <li>If you expose WebDAV safely to the internet (HTTPS, strong password, or VPN),
+            Meteor can stream on <strong>mobile data outside the home</strong> — SMB typically cannot without a VPN.</li>
+        </ul>
+        <p><strong>Pick WebDAV</strong> if you want subtitles and/or watching away from home without a full VPN.</p>
+      </div>
+
+      <div class="panel">
+        <h3>SMB — familiar LAN shares</h3>
+        <ul>
+          <li>Same “shared folder” idea Windows and most NAS use on the local network.</li>
+          <li>Setup effort is similar to WebDAV (host, share name, credentials).</li>
+          <li>Supports sidecar subtitles.</li>
+          <li>Designed for the <strong>local network</strong>. Reaching SMB from outside usually means a VPN
+            into your home — not opening SMB ports to the open internet.</li>
+        </ul>
+        <p><strong>Pick SMB</strong> if you already share folders that way and stay on home Wi‑Fi (or VPN).</p>
+      </div>
+
+      <p class="note">
+        Rough rule: try <strong>DLNA</strong> to verify discovery → use <strong>WebDAV or SMB</strong> for everyday libraries with subtitles →
+        use <strong>WebDAV (or VPN + SMB)</strong> if you need access away from home.
+      </p>
+
+      <h2 id="synology">Example: Synology</h2>
+      <p>Exact menu names vary by DSM version; look for the same ideas.</p>
+
+      <h3>DLNA on Synology</h3>
+      <ol>
+        <li>Install / open <strong>Media Server</strong> (or equivalent) in Package Center.</li>
+        <li>Enable DLNA / UPnP media sharing and point it at the folders that contain movies.</li>
+        <li>Phone/TV on the <strong>same Wi‑Fi</strong> as the NAS → in Meteor use <strong>Find DLNA</strong>.</li>
+      </ol>
+
+      <h3>WebDAV on Synology</h3>
+      <ol>
+        <li>Enable <strong>WebDAV Server</strong> (Package Center / File Services).</li>
+        <li>Note HTTP/HTTPS ports (common examples: 5005 / 5006 — check your DSM).</li>
+        <li>Create a user that can <strong>read</strong> the movie folders (Meteor does not need write access).</li>
+        <li>In Meteor: Add WebDAV → host = NAS IP or hostname, port if needed, user/password, path to the movie folder.</li>
+      </ol>
+
+      <h3>SMB on Synology</h3>
+      <ol>
+        <li>Control Panel → File Services → enable SMB.</li>
+        <li>Share the movie folder; grant the user read permission.</li>
+        <li>In Meteor: Find SMB or enter the NAS host, then pick the share and folder.</li>
+      </ol>
+
+      <h2 id="windows">Example: Windows PC</h2>
+      <p>Use a PC that stays on (or wakes) when you want to watch. Firewall prompts may appear the first time.</p>
+
+      <h3>DLNA on Windows</h3>
+      <ol>
+        <li>Use Windows Media Player / “Media streaming” options, or a lightweight DLNA server app
+          that shares a movie folder.</li>
+        <li>Allow the app through Windows Firewall on private networks.</li>
+        <li>Same Wi‑Fi as the phone/TV → Meteor <strong>Find DLNA</strong>.</li>
+      </ol>
+
+      <h3>SMB on Windows</h3>
+      <ol>
+        <li>Right‑click the movie folder → Properties → Sharing → share it.</li>
+        <li>Use a Windows user with permission to read that share.</li>
+        <li>In Meteor: Find SMB or enter the PC’s IP, then select the share.</li>
+      </ol>
+
+      <h3>WebDAV on Windows</h3>
+      <ol>
+        <li>Windows does not ship a simple “movie WebDAV” toggle. Typical options:
+          enable IIS + WebDAV features, or run a small WebDAV server that points at your movie folder.</li>
+        <li>Prefer HTTPS if you ever expose it beyond the LAN.</li>
+        <li>In Meteor: Add WebDAV with the PC’s address, port, credentials, and folder path.</li>
+      </ol>
+
+      <h2 id="away">Watching away from home</h2>
+      <p>
+        On home Wi‑Fi, discovery and LAN IPs are enough. Outside the house you need a path from the phone
+        to your server — Meteor does not create that path for you.
+      </p>
+      <div class="panel">
+        <h3>What is usually required</h3>
+        <ul>
+          <li><strong>A reachable address</strong> — public IP or a hostname (DynDNS / your NAS vendor’s QuickConnect-style name / your domain).</li>
+          <li><strong>Router port forwarding</strong> (or UPnP) from the internet to the NAS/PC service port — <em>or</em> a <strong>VPN</strong> into your home network (often safer).</li>
+          <li><strong>HTTPS</strong> for WebDAV on the open internet, plus a strong unique password.</li>
+          <li><strong>Do not</strong> expose SMB (Windows file sharing) directly to the internet.</li>
+          <li>Mobile carriers and CGNAT can block inbound connections; a VPN or vendor relay may still be needed.</li>
+        </ul>
+      </div>
+      <p class="note">
+        Practical combo: <strong>VPN into home + SMB/WebDAV on the LAN</strong>, or <strong>HTTPS WebDAV</strong> with careful router/NAS setup.
+        Exact clicks differ per router — check your model’s “port forwarding” / “VPN server” pages.
+      </p>
+      <p>
+        More setup tips: <a href="/getting-started/">Getting Started</a> ·
+        troubleshooting: <a href="/help/">Help</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

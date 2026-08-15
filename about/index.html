@@ -33,6 +33,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/" aria-current="page">About</a>
       </nav>
@@ -73,14 +74,12 @@
       <h2>Codecs &amp; playback</h2>
       <div class="panel">
         <p>
-          Due to licensing constraints, Meteor is not compiled with all codecs, because
-          including them would prevent distributing the app without license fees. As a
-          result, some movies may not play.
+          This version of Meteor plays with ExoPlayer (Media3) using your device’s
+          built-in media support. Some files may not play if the device cannot decode
+          them natively.
         </p>
         <p>
-          Some hardware and operating systems include codecs of their own, so the app may
-          not know in advance whether playback will work. When needed, Meteor can open
-          VLC, which plays most files.
+          When needed, Meteor can open the VLC app so you can watch those titles there.
         </p>
       </div>
 
@@ -118,9 +117,10 @@
           relink offer on request (same policy as FFmpeg).
         </p>
         <p>
-          <strong>Android:</strong> Meteor does <em>not</em> ship or embed a VLC binary.
+          <strong>Android:</strong> This version uses <strong>ExoPlayer (Media3)</strong>
+          with device codecs. Meteor does <em>not</em> ship or embed a VLC binary.
           When needed, Meteor may <strong>open the external VLC app</strong> if the user
-          has installed it. Playback otherwise uses Android Media3 / device codecs.
+          has installed it.
         </p>
         <p>
           VLC and VideoLAN are trademarks of VideoLAN.
@@ -181,7 +181,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated July 2026</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

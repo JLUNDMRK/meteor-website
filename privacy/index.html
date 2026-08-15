@@ -29,6 +29,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -58,9 +59,11 @@
 
       <h2>1. Local library and playback</h2>
       <p>
-        When you select a DLNA media server and folder, Meteor indexes movie items locally on
-        the device so you can browse and search your library. Playback streams from the media
-        server using the device’s media capabilities.
+        When you add a movie collection location (SMB, WebDAV, or DLNA) and choose a folder,
+        Meteor indexes movie items locally on the device so you can browse and search your
+        library. Playback streams from your server using the device’s media capabilities
+        (ExoPlayer on Android). Meteor reads your collection; it does not host or rewrite
+        your movie files on the NAS.
       </p>
       <p class="todo">
         Confirm exact local storage contents (index schema, artwork cache, watch progress,
@@ -141,7 +144,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated July 2026</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Help — Meteor</title>
-  <meta name="description" content="Help and FAQ for Meteor: DLNA discovery, movie identification, formats, privacy, and reporting problems.">
+  <meta name="description" content="Help and FAQ for Meteor: SMB, WebDAV, DLNA, movie identification, formats, privacy, and reporting problems.">
   <link rel="canonical" href="https://meteor.jlundmark.org/help/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
@@ -29,6 +29,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/" aria-current="page">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -49,18 +50,28 @@
         </details>
 
         <details>
+          <summary>DLNA, WebDAV, or SMB — which should I use?</summary>
+          <p>
+            Short answer: DLNA is the easiest first try; WebDAV/SMB are better for large libraries
+            and sidecar subtitles; WebDAV (or VPN) is the usual path for watching away from home.
+            Full comparison and setup outlines:
+            <a href="/howto/">How to connect your movies</a>.
+          </p>
+        </details>
+
+        <details>
           <summary>Why can’t Meteor find my media server?</summary>
           <p>Local discovery often fails for network reasons. Check the following:</p>
           <ul>
             <li>Your device and the media server must be on the <strong>same local network</strong>.</li>
-            <li><strong>DLNA</strong> (or equivalent media sharing) must be enabled on the media server.</li>
+            <li><strong>SMB, WebDAV, or DLNA</strong> sharing must be enabled for the folders you want to index.</li>
             <li>A <strong>video folder</strong> must be shared by the server.</li>
             <li><strong>VPN software</strong> can interfere with local discovery — try disabling it temporarily.</li>
             <li>Router <strong>client isolation</strong> (AP isolation / guest Wi‑Fi) can prevent devices from seeing each other.</li>
             <li><strong>Firewalls</strong> on the NAS, PC, or router may block local discovery traffic.</li>
           </ul>
           <p>
-            Meteor cannot promise compatibility with every router, NAS, DLNA implementation, or device.
+            Meteor cannot promise compatibility with every router, NAS, sharing protocol, or device.
             If discovery still fails after these checks, see <a href="/contact/">Contact</a>.
           </p>
         </details>
@@ -79,13 +90,11 @@
         <details>
           <summary>Which formats are supported?</summary>
           <p>
-            Playback support depends on the device and OS first (AVPlayer / Media3).
-            On <strong>Apple</strong>, Meteor may also use an embedded LGPL VLCKit engine
-            (“Powered by VLC”) for containers the system player cannot open.
-            On <strong>Android</strong>, Meteor does not embed VLC; it may open the
-            external VLC app if you have installed it. Optional LGPL FFmpeg decode
-            profiles may be used on some builds — see
-            <a href="/about/">About</a> for license details.
+            This Android version plays with <strong>ExoPlayer (Media3)</strong> and your
+            device’s built-in codecs. Some files may not play in-app if the device cannot
+            decode them natively — Meteor can open the external <strong>VLC app</strong>
+            when you have installed it. Optional LGPL FFmpeg decode profiles may appear on
+            some builds — see <a href="/about/">About</a>.
           </p>
         </details>
 
@@ -145,7 +154,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated July 2026</span>
+        <span class="site-version">Website v0.1 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

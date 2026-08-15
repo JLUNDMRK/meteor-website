@@ -1,0 +1,63 @@
+name: Site checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install checkers
+        run: |
+          npm install --no-save html-validate@9 stylelint@16 stylelint-config-standard@36
+
+      - name: HTML validate
+        run: |
+          npx html-validate \
+            "index.html" \
+            "404.html" \
+            "about/index.html" \
+            "contact/index.html" \
+            "getting-started/index.html" \
+            "howto/index.html" \
+            "help/index.html" \
+            "metadata/index.html" \
+            "privacy/index.html" \
+            "terms/index.html"
+
+      - name: CSS validate
+        run: |
+          cat > .stylelintrc.json <<'EOF'
+          {
+            "extends": "stylelint-config-standard",
+            "rules": {
+              "selector-class-pattern": null,
+              "custom-property-pattern": null,
+              "color-function-notation": null,
+              "alpha-value-notation": null,
+              "media-feature-range-notation": null,
+              "declaration-block-no-redundant-longhand-properties": null,
+              "no-descending-specificity": null
+            }
+          }
+          EOF
+          npx stylelint "assets/site.css"
+
+      - name: Broken link check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline
+            --include-fragments
+            --root-dir .
+            './**/*.html'
+          fail: true

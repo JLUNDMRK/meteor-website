@@ -17,6 +17,7 @@ When the Privacy Policy is ready for **Google Play**, the page must stay publicl
 |-----|------|
 | `/` | Home |
 | `/getting-started/` | Add your first library |
+| `/howto/` | Connect protocols + Synology/Windows setup |
 | `/help/` | FAQ / troubleshooting |
 | `/about/` | About |
 | `/privacy/` | Privacy policy (**draft**) |
@@ -103,7 +104,7 @@ You can still add extra Redirect Rules in the Cloudflare dashboard later if you 
 Central reference: [`assets/site.config.js`](assets/site.config.js).  
 Values are **mirrored in HTML** (no build). Update both when going live.
 
-Site version shown in every footer (`Website v0.1 · Updated July 2026`) comes from `websiteVersion` / `websiteUpdated` in that config — bump the config **and** the footer strings together when you ship a site change.
+Site version shown in every footer (`Website v0.1 · Updated August 2026`) comes from `websiteVersion` / `websiteUpdated` in that config — bump the config **and** the footer strings together when you ship a site change.
 
 ### Placeholder values to change before launch
 
@@ -116,7 +117,7 @@ Site version shown in every footer (`Website v0.1 · Updated July 2026`) comes f
 | `privacyEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
 | `githubUrl` / issues | `JLUNDMRK/AsteroidMediaplayerKMP` | Confirm public repo |
 | `appStatus` | `coming_soon` | Flip to `live` when listed |
-| `websiteVersion` / `websiteUpdated` | `0.1` / `July 2026` | Footer + config must stay in sync |
+| `websiteVersion` / `websiteUpdated` | `0.1` / `August 2026` | Footer + config must stay in sync |
 | `crawlable` | `false` | Set `true` when opening search indexing |
 | `policyEffectiveDate` | `2026-07-23` | Set real effective date after legal review |
 | `metadataProviders[].enabled` | OMDb `true`, TMDB `false` | Must match shipped flavor |
@@ -154,7 +155,7 @@ See the Privacy, Terms, and Metadata pages (`.todo` callouts). In short:
 
 **Terms**
 
-- Scope of DLNA-only first release vs any other sources that might ship
+- Scope of SMB / WebDAV / DLNA sources in the current release
 - Any billing / subscription wording when introduced
 
 **Metadata**
