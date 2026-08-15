@@ -90,14 +90,19 @@
         <details>
           <summary>Which formats are supported?</summary>
           <p>
-            Meteor plays movies with your device’s <strong>built-in media player</strong>
-            and the codecs that already come with the operating system.
-            It does <em>not</em> embed extra codec engines such as FFmpeg or VLCKit.
+            Meteor currently uses your device’s <strong>built-in codecs</strong>. They often
+            provide power-efficient, hardware-supported decoding.
           </p>
           <p>
-            Some files may not play in-app if the device cannot decode them.
-            When needed, Meteor can open the separate <strong>VLC app</strong> if you have
-            installed it.
+            Some files may not play if the device cannot decode them. We recommend
+            installing the excellent <strong>VLC</strong> app as a fallback — it can play
+            almost anything, and Meteor can open it for titles the built-in player cannot
+            handle.
+          </p>
+          <p>
+            VLC already solves broad format support so well that Meteor focuses on what it
+            adds: searching and presenting your collection. See also
+            <a href="/about/">About</a>.
           </p>
         </details>
 

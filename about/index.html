@@ -71,20 +71,26 @@
       </p>
       <p>
         Meteor focuses primarily on indexing, movie identification, metadata and
-        library navigation. Playback uses the device’s built-in media player.
+        library navigation — finding and presenting your collection.
       </p>
       <p class="tagline" style="text-align: left; margin: 20px 0;">Install. Index. Enjoy.</p>
 
       <h2>Codecs &amp; playback</h2>
       <div class="panel">
         <p>
-          This version of Meteor plays with your device’s built-in media player and the
-          codecs that already come with the operating system. It does not embed extra
-          codec engines such as FFmpeg or VLCKit.
+          Meteor currently uses your device’s built-in codecs. They often provide
+          power-efficient, hardware-supported decoding.
         </p>
         <p>
-          Some files may not play if the device cannot decode them. When needed, Meteor
-          can open the separate VLC app if you have installed it.
+          Some files may not play if the device cannot decode them. We recommend
+          installing the excellent <strong>VLC</strong> app as a fallback — it can play
+          almost anything, and Meteor can open it for titles the built-in player cannot
+          handle.
+        </p>
+        <p>
+          VLC already solves broad format support so well that there is little reason for
+          Meteor to rebuild that. What Meteor adds is searching and presenting your
+          collection.
         </p>
       </div>
 
@@ -105,8 +111,8 @@
           under Settings → Other / About.
         </p>
         <p>
-          VLC is a separate application from VideoLAN. Meteor may open it when you choose
-          to; Meteor does not ship or embed VLC / VLCKit in this version.
+          <strong>VLC</strong> is a separate application from VideoLAN. Meteor can open it
+          as a recommended fallback when needed.
           Project site: <a href="https://www.videolan.org/">videolan.org</a>.
         </p>
       </div>
