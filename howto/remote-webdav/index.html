@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Remote WebDAV — Meteor</title>
+  <meta name="description" content="Advanced guide: expose WebDAV safely for Meteor with HTTPS, DDNS, port forwarding, and basic NAT/CGNAT checks. Prefer Download when you only need offline playback.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/howto/remote-webdav/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/howto/remote-webdav/">
+  <meta property="og:title" content="Remote WebDAV — Meteor">
+  <meta property="og:description" content="Advanced remote WebDAV for Meteor — only after local WebDAV works.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/" aria-current="page">How-to</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Remote WebDAV</h1>
+      <p class="updated">
+        Advanced path for streaming from home while you are away. Skip this if
+        <a href="/howto/#download">Download / offline playback</a> is enough.
+      </p>
+
+      <nav class="doc-nav-links" aria-label="Related guides">
+        <a href="/howto/">← Media access</a>
+        <a href="/howto/webdav/">Local WebDAV first</a>
+        <a href="/help/#remote-access">Help — remote troubleshooting</a>
+      </nav>
+
+      <div class="draft-banner" role="note">
+        <strong>Prerequisite.</strong>
+        WebDAV must already work on your home Wi‑Fi using the NAS/PC local IP.
+        Fix local login, path, and HTTPS issues on the <a href="/howto/webdav/">WebDAV</a> page before continuing.
+      </div>
+
+      <nav class="toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#sequence">Suggested sequence</a></li>
+          <li><a href="#https">HTTPS and certificates</a></li>
+          <li><a href="#hostname">Stable hostname / DDNS</a></li>
+          <li><a href="#synology">Synology notes</a></li>
+          <li><a href="#port-forwarding">Port forwarding examples</a></li>
+          <li><a href="#public-ip">Public IP, NAT, and CGNAT</a></li>
+          <li><a href="#test">Test from outside</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="sequence">Suggested sequence</h2>
+      <ol>
+        <li>Confirm <strong>local WebDAV</strong> works in Meteor.</li>
+        <li>Use <strong>HTTPS</strong> with a certificate your device can trust.</li>
+        <li>Give the NAS a <strong>stable hostname</strong> (DDNS or your own domain) if your public IP changes.</li>
+        <li>Confirm you have a usable <strong>public IPv4</strong> path (see <a href="#public-ip">below</a>).</li>
+        <li>Add a <strong>port-forward</strong> (or equivalent) from the router to the NAS WebDAV HTTPS port.</li>
+        <li>Test from <strong>outside</strong> the home network (mobile data, Wi‑Fi off).</li>
+      </ol>
+      <p class="note">
+        A home VPN (so your phone joins the LAN) is often safer than publishing WebDAV.
+        Meteor does not create that VPN for you — use your router/NAS vendor’s VPN, or another VPN you trust.
+      </p>
+
+      <h2 id="https">HTTPS and certificates</h2>
+      <ul>
+        <li>Prefer HTTPS for anything reachable from the Internet.</li>
+        <li>Use a certificate that matches the hostname you type in Meteor (for example Let’s Encrypt via your NAS).</li>
+        <li>Self-signed certificates may work at home but often fail or warn on mobile clients over the Internet.</li>
+        <li>Use a strong, unique password — and ideally a dedicated user with read-only access to movie folders.</li>
+      </ul>
+
+      <h2 id="hostname">Stable hostname / DDNS</h2>
+      <p>
+        Many home connections get a changing public IP. A DDNS hostname updates DNS when the IP changes,
+        so Meteor can keep using the same URL.
+      </p>
+      <ul>
+        <li>Synology: Control Panel → External Access → DDNS (vendor hostname such as synology.me, or another provider).</li>
+        <li>Other NAS brands: look for <strong>DDNS</strong>, <strong>Dynamic DNS</strong>, or “Easy Connect”-style hostnames —
+          then confirm that hostname works with <em>WebDAV</em>, not only with the vendor’s own apps.</li>
+      </ul>
+
+      <h2 id="synology">Synology notes</h2>
+      <div class="panel">
+        <p>
+          <strong>QuickConnect</strong> and <strong>DDNS</strong> are different.
+          QuickConnect helps Synology apps reach DSM through Synology’s service and does not replace a normal
+          WebDAV URL. Synology documents that WebDAV should use a direct IP or DDNS hostname — not a QuickConnect address.
+        </p>
+        <p>
+          Comparison:
+          <a href="https://kb.synology.com/en-global/DSM/tutorial/What_are_the_differences_between_QuickConnect_and_DDNS">QuickConnect vs DDNS</a>.
+          WebDAV access:
+          <a href="https://kb.synology.com/en-global/DSM/tutorial/How_to_access_files_on_Synology_NAS_with_WebDAV">Access files with WebDAV</a>.
+          Connection issues (including QuickConnect and ports):
+          <a href="https://kb.synology.com/DSM/tutorial/How_to_fix_WebDAV_connection_issues">Resolve WebDAV connection issues</a>.
+        </p>
+        <p>
+          Typical HTTPS WebDAV port on Synology is <strong>5006</strong> unless you changed it — forward that
+          (or your reverse-proxy HTTPS port) to the NAS.
+        </p>
+      </div>
+
+      <h2 id="port-forwarding">Port forwarding examples</h2>
+      <p>
+        Port forwarding (also called <strong>Port Mapping</strong>, <strong>Virtual Server</strong>, or
+        <strong>NAT rules</strong>) tells the router: “traffic arriving on this public port goes to this
+        device and port on my home network.”
+      </p>
+      <p>You usually need:</p>
+      <ul>
+        <li>The NAS/PC <strong>local IP</strong> (give it a DHCP reservation so it does not change).</li>
+        <li>The WebDAV <strong>HTTPS port</strong> on that device.</li>
+        <li>TCP protocol (unless your vendor says otherwise).</li>
+      </ul>
+
+      <details class="vendor-block" open>
+        <summary>ASUS</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Open the router admin page (often <code>http://www.asusrouter.com</code>).</li>
+            <li>Go to <strong>WAN</strong> → <strong>Virtual Server / Port Forwarding</strong>.</li>
+            <li>Enable port forwarding, add a profile: external port → NAS local IP → internal WebDAV HTTPS port, TCP.</li>
+          </ol>
+          <p>
+            Official FAQ:
+            <a href="https://www.asus.com/support/faq/1037906/">ASUS — Virtual Server / Port Forwarding</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>TP-Link</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Log in to the router admin page.</li>
+            <li>Look under <strong>Forwarding → Virtual Servers</strong>, or
+              <strong>Advanced → NAT Forwarding → Virtual Servers / Port Forwarding</strong>
+              (wording depends on the model).</li>
+            <li>Add the external port, internal IP, internal port, and protocol.</li>
+          </ol>
+          <p>
+            Official overview:
+            <a href="https://www.tp-link.com/us/support/faq/1379/">TP-Link — port forwarding</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Netgear / other routers</summary>
+        <div class="vendor-body">
+          <p>
+            Search for your model plus <strong>port forwarding</strong>. Menus may say Port Forwarding,
+            Port Mapping, Virtual Server, or NAT / Firewall rules.
+          </p>
+          <p>
+            Example starting point for many Netgear models: the router’s Advanced → Port Forwarding /
+            Port Triggering section in the vendor help for your exact model.
+          </p>
+        </div>
+      </details>
+
+      <h2 id="public-ip">Public IP, NAT, and CGNAT</h2>
+      <p>
+        Port forwarding only works if the Internet can reach your router’s public address.
+        A practical check:
+      </p>
+      <ol>
+        <li>Note the router’s <strong>WAN IPv4</strong> address in the router status page.</li>
+        <li>On a phone or PC, open a “what is my IP” site and note the <strong>external IPv4</strong> you see.</li>
+      </ol>
+      <ul>
+        <li><strong>Same address</strong> — your router likely has the public IPv4 (good starting point for forwarding).</li>
+        <li><strong>Different addresses</strong> — there is another NAT layer in front of you.
+          That <em>might</em> be CGNAT, double NAT (ISP router + your router), or another intermediate network.
+          Different addresses do <strong>not</strong> automatically mean CGNAT.</li>
+        <li>WAN address in <strong>100.64.0.0/10</strong> — shared address space often used for CGNAT.</li>
+        <li>WAN address in private ranges (<code>10.x</code>, <code>172.16–31.x</code>, <code>192.168.x</code>) —
+          your router is behind another NAT device.</li>
+      </ul>
+      <p>
+        If inbound connections fail after correct forwarding, ask your ISP whether you are on CGNAT and
+        whether a public IPv4 (or an alternative) is available. A VPN into home can still work when inbound
+        ports do not.
+      </p>
+
+      <h2 id="test">Test from outside</h2>
+      <ol>
+        <li>Turn off home Wi‑Fi on the phone; use mobile data.</li>
+        <li>In Meteor, use the HTTPS WebDAV URL with your hostname/DDNS and forwarded port.</li>
+        <li>If it fails only off-LAN while local IP still works, revisit forwarding, firewall, DDNS IP, and the NAT checks above.</li>
+      </ol>
+      <p class="note">
+        Some routers lack <strong>NAT loopback / hairpin</strong>: a DDNS name may fail while you are
+        <em>inside</em> the home network even when it works from mobile data. Test from outside to avoid false failures.
+      </p>
+      <p>
+        Deeper symptom list:
+        <a href="/help/#remote-access">Help — remote access troubleshooting</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

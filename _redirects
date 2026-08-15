@@ -7,3 +7,7 @@
 /getting-started.html /getting-started/ 301
 /metadata.html       /metadata/        301
 /howto.html          /howto/           301
+/howto/dlna.html     /howto/dlna/      301
+/howto/smb.html      /howto/smb/       301
+/howto/webdav.html   /howto/webdav/    301
+/howto/remote-webdav.html /howto/remote-webdav/ 301

@@ -17,7 +17,11 @@ When the Privacy Policy is ready for **Google Play**, the page must stay publicl
 |-----|------|
 | `/` | Home |
 | `/getting-started/` | Add your first library |
-| `/howto/` | Connect protocols + Synology/Windows setup |
+| `/howto/` | Set up media access (DLNA / SMB / WebDAV comparison) |
+| `/howto/dlna/` | DLNA setup |
+| `/howto/smb/` | SMB setup |
+| `/howto/webdav/` | Local WebDAV setup |
+| `/howto/remote-webdav/` | Advanced remote WebDAV (+ port forwarding / NAT notes) |
 | `/help/` | FAQ / troubleshooting |
 | `/about/` | About |
 | `/privacy/` | Privacy policy (**draft**) |
@@ -104,7 +108,7 @@ You can still add extra Redirect Rules in the Cloudflare dashboard later if you 
 Central reference: [`assets/site.config.js`](assets/site.config.js).  
 Values are **mirrored in HTML** (no build). Update both when going live.
 
-Site version shown in every footer (`Website v0.1 · Updated August 2026`) comes from `websiteVersion` / `websiteUpdated` in that config — bump the config **and** the footer strings together when you ship a site change.
+Site version shown in every footer (`Website v0.2 · Updated August 2026`) comes from `websiteVersion` / `websiteUpdated` in that config — bump the config **and** the footer strings together when you ship a site change.
 
 ### Placeholder values to change before launch
 
@@ -117,12 +121,12 @@ Site version shown in every footer (`Website v0.1 · Updated August 2026`) comes
 | `privacyEmail` | `meteor@jlundmark.org` | Confirm mailbox exists |
 | `githubUrl` / issues | `JLUNDMRK/AsteroidMediaplayerKMP` | Confirm public repo |
 | `appStatus` | `coming_soon` | Flip to `live` when listed |
-| `websiteVersion` / `websiteUpdated` | `0.1` / `August 2026` | Footer + config must stay in sync |
+| `websiteVersion` / `websiteUpdated` | `0.2` / `August 2026` | Footer + config must stay in sync |
 | `crawlable` | `false` | Set `true` when opening search indexing |
 | `policyEffectiveDate` | `2026-07-23` | Set real effective date after legal review |
 | `metadataProviders[].enabled` | OMDb `true`, TMDB `false` | Must match shipped flavor |
 | Social share image | `assets/og-share.png` | Currently a copy of the logo — replace with 1200×630 art |
-| App screenshots | dashed placeholders on Home / Getting Started | Add real captures |
+| App screenshots | optional | Add real captures when available |
 | Google Play badge | “Coming soon” pill | Official badge when listing is live |
 | Provider logos | placeholders on Metadata page | Optional |
 
@@ -135,7 +139,7 @@ Site version shown in every footer (`Website v0.1 · Updated August 2026`) comes
 - [ ] Review Privacy against the Android app; remove draft banner
 - [ ] Review Terms; remove draft banner
 - [ ] Align Metadata provider cards with the shipped build
-- [ ] Add real screenshots
+- [ ] Add real screenshots (optional)
 - [ ] Replace `og-share.png`
 - [ ] Swap “Coming soon” for Play badge / working store link
 - [ ] Before Play / public launch: set `Allow: /` in `robots.txt`, add Sitemap line, remove `noindex, nofollow` from pages that should be indexed, set `crawlable: true` in `site.config.js`
@@ -197,6 +201,11 @@ about/index.html
 contact/index.html
 getting-started/index.html
 help/index.html
+howto/index.html
+howto/dlna/index.html
+howto/smb/index.html
+howto/webdav/index.html
+howto/remote-webdav/index.html
 metadata/index.html
 privacy/index.html
 terms/index.html

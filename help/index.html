@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Help — Meteor</title>
-  <meta name="description" content="Help and FAQ for Meteor: SMB, WebDAV, DLNA, movie identification, formats, privacy, and reporting problems.">
+  <meta name="description" content="Help and FAQ for Meteor: DLNA, SMB, WebDAV, Download, playback, privacy, and advanced remote-access troubleshooting.">
   <link rel="canonical" href="https://meteor.jlundmark.org/help/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
@@ -37,42 +37,71 @@
 
     <main class="doc">
       <h1>Help</h1>
-      <p class="updated">Answers for common questions. Sections expand in supporting browsers; all answers are visible in the page source without JavaScript.</p>
+      <p class="updated">
+        Common questions first. Advanced networking (remote WebDAV, CGNAT, port forwarding) is grouped at the end —
+        you can ignore it for a normal home setup.
+      </p>
 
       <div class="faq">
         <details open>
           <summary>Does Meteor require an account?</summary>
           <p>
-            No. Meteor does not require a Meteor account to browse or play your local library.
+            No. Meteor does not require a Meteor account to browse or play your library.
             You may still need accounts for third-party services you choose to use elsewhere
-            (for example your media server or Google Play).
+            (for example your NAS login or Google Play).
           </p>
         </details>
 
         <details>
           <summary>DLNA, WebDAV, or SMB — which should I use?</summary>
           <p>
-            Short answer: DLNA is the easiest first try; WebDAV/SMB are better for large libraries
-            and sidecar subtitles; WebDAV (or VPN) is the usual path for watching away from home.
-            Full comparison and setup outlines:
-            <a href="/howto/">How to connect your movies</a>.
+            Not sure? Start with <strong>DLNA</strong> on your home network.
+            Use <strong>SMB</strong> if you already have shared folders or want reliable sidecar subtitles.
+            Use <strong>WebDAV</strong> for similar folder access; treat Internet-facing WebDAV as advanced.
+          </p>
+          <p>
+            Full comparison and setup:
+            <a href="/howto/">Set up media access</a>.
           </p>
         </details>
 
-        <details>
+        <details id="discovery">
           <summary>Why can’t Meteor find my media server?</summary>
           <p>Local discovery often fails for network reasons. Check the following:</p>
           <ul>
-            <li>Your device and the media server must be on the <strong>same local network</strong>.</li>
-            <li><strong>SMB, WebDAV, or DLNA</strong> sharing must be enabled for the folders you want to index.</li>
-            <li>A <strong>video folder</strong> must be shared by the server.</li>
-            <li><strong>VPN software</strong> can interfere with local discovery — try disabling it temporarily.</li>
+            <li>Your device and the PC/NAS must be on the <strong>same local network</strong>.</li>
+            <li><strong>DLNA, SMB, or WebDAV</strong> must be enabled for the folders you want.</li>
+            <li>A <strong>video / movie folder</strong> must actually be shared.</li>
+            <li><strong>VPN software</strong> on the phone can interfere with local discovery — try disabling it temporarily.</li>
             <li>Router <strong>client isolation</strong> (AP isolation / guest Wi‑Fi) can prevent devices from seeing each other.</li>
-            <li><strong>Firewalls</strong> on the NAS, PC, or router may block local discovery traffic.</li>
+            <li><strong>Firewalls</strong> on the NAS, PC, or router may block local discovery or file sharing.</li>
           </ul>
           <p>
-            Meteor cannot promise compatibility with every router, NAS, sharing protocol, or device.
+            Protocol-specific tips:
+            <a href="/howto/dlna/">DLNA</a> ·
+            <a href="/howto/smb/">SMB</a> ·
+            <a href="/howto/webdav/">WebDAV</a>.
             If discovery still fails after these checks, see <a href="/contact/">Contact</a>.
+          </p>
+        </details>
+
+        <details id="smb-login">
+          <summary>SMB login fails</summary>
+          <ul>
+            <li>Confirm username/password and that the user can read the share.</li>
+            <li>Try the device’s local IP instead of a name if name resolution is unreliable.</li>
+            <li>Check whether the NAS restricts SMB versions (SMB2/SMB3).</li>
+            <li>Do not try to reach SMB over the public Internet — use home Wi‑Fi, a VPN, or another approach.</li>
+          </ul>
+          <p>Setup outline: <a href="/howto/smb/">Set up SMB</a>.</p>
+        </details>
+
+        <details>
+          <summary>Can I watch away from home without remote networking?</summary>
+          <p>
+            Yes. At home, connect with DLNA or SMB (or local WebDAV), then use
+            <strong>Download</strong> in Meteor for titles you want offline.
+            See <a href="/howto/#download">Download as an easy alternative</a>.
           </p>
         </details>
 
@@ -90,8 +119,8 @@
         <details>
           <summary>Which formats are supported?</summary>
           <p>
-            Meteor currently uses your device’s <strong>built-in codecs</strong>. They often
-            provide power-efficient, hardware-supported decoding.
+            Playback depends substantially on your <strong>device and platform media stack</strong>
+            (including hardware decoding when available). Meteor does not ship its own broad codec package.
           </p>
           <p>
             Some files may not play if the device cannot decode them. We recommend
@@ -100,17 +129,15 @@
             handle.
           </p>
           <p>
-            VLC already solves broad format support so well that Meteor focuses on what it
-            adds: searching and presenting your collection. See also
-            <a href="/about/">About</a>.
+            See also <a href="/about/">About</a>.
           </p>
         </details>
 
         <details>
           <summary>Does Meteor upload my movies?</summary>
           <p>
-            Meteor is designed so that your movie <em>files</em> stay on your media server
-            and are streamed for playback. Meteor does not upload your movie files to a Meteor server
+            Meteor is designed so that your movie <em>files</em> stay on your PC or NAS
+            (or on the device if you use Download). Meteor does not upload your movie files to a Meteor server
             (there is no Meteor media backend for storing your library).
           </p>
           <p>
@@ -124,10 +151,10 @@
         <details>
           <summary>Does Meteor need an Internet connection?</summary>
           <p>
-            Local discovery and playback of files on your LAN do not require Internet access.
+            Local discovery and playback from your home network do not require Internet access.
             An Internet connection is typically needed to identify movies and download posters
-            and descriptive metadata from third-party providers. Exact offline behaviour should be
-            confirmed against the shipped app before treating this as final.
+            and descriptive metadata from third-party providers. Downloaded titles can play offline.
+            Exact offline behaviour should be confirmed against the shipped app before treating this as final.
           </p>
         </details>
 
@@ -156,6 +183,66 @@
         </details>
       </div>
 
+      <h2 id="remote-access">Advanced: remote access troubleshooting</h2>
+      <p class="note">
+        Only relevant if you are publishing WebDAV (or similar) to the Internet.
+        Prefer <a href="/howto/#download">Download</a> when you only need offline playback.
+        Full setup sequence: <a href="/howto/remote-webdav/">Remote WebDAV</a>.
+      </p>
+
+      <div class="faq">
+        <details>
+          <summary>WebDAV works at home but not away</summary>
+          <ul>
+            <li>Confirm HTTPS URL, hostname, and port match what you forwarded.</li>
+            <li>Test on mobile data with home Wi‑Fi off.</li>
+            <li>Check router port forwarding / firewall and NAS firewall.</li>
+            <li>Verify DDNS points at your current public IP.</li>
+            <li>On Synology, do not use a QuickConnect URL for WebDAV.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>DDNS hostname looks wrong</summary>
+          <ul>
+            <li>Check the DDNS status page on the NAS/router — is the recorded IP current?</li>
+            <li>Wait for DNS TTL; try again after a few minutes.</li>
+            <li>Compare with a “what is my IP” result from inside the home.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Port forward seems set but nothing connects</summary>
+          <ul>
+            <li>Forward to the NAS <strong>local</strong> IP and the correct internal WebDAV port.</li>
+            <li>Give the NAS a DHCP reservation so the IP does not change.</li>
+            <li>Confirm the router WAN address is actually reachable (see public IP / NAT below).</li>
+            <li>Disable conflicting UPnP rules or duplicate forwards for the same port.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Public IP, double NAT, or CGNAT?</summary>
+          <p>
+            Compare the router’s WAN IPv4 with an external “what is my IP” result.
+            Matching addresses suggest your router holds the public IPv4.
+            Different addresses mean another NAT layer — which may be CGNAT, double NAT, or something else.
+            Do not assume CGNAT from a mismatch alone. A WAN IP in <code>100.64.0.0/10</code> often indicates CGNAT;
+            private WAN ranges usually mean another router in front. Ask your ISP about CGNAT / public IPv4 if inbound access fails.
+            A VPN into home remains a valid fallback.
+          </p>
+          <p>More detail: <a href="/howto/remote-webdav/#public-ip">Remote WebDAV — public IP, NAT, and CGNAT</a>.</p>
+        </details>
+
+        <details>
+          <summary>DDNS works on mobile data but not on home Wi‑Fi</summary>
+          <p>
+            Many routers lack NAT loopback (hairpin). Use the local IP while at home, and the
+            public hostname when away — or test remote access only from outside the LAN.
+          </p>
+        </details>
+      </div>
+
       <p class="note" style="margin-top: 28px;">
         New to Meteor? Start with <a href="/getting-started/">Getting Started</a>.
       </p>
@@ -164,7 +251,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated August 2026</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

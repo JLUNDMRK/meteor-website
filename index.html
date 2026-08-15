@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Meteor — Your movies. Your library.</title>
-  <meta name="description" content="Meteor is a simple way to browse and enjoy movies stored on your local network. Connect via SMB, WebDAV, or DLNA, index your library, and play with a clean interface.">
+  <meta name="description" content="Meteor is a simple way to browse and enjoy movies on your PC or NAS. Connect via DLNA, SMB, or WebDAV, index on your device, and play on Android phones, tablets, and Android TV.">
   <link rel="canonical" href="https://meteor.jlundmark.org/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
@@ -41,20 +41,19 @@
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <!-- Logo placeholder / brand mark -->
         <img class="hero-logo" src="/assets/logo.png" alt="Meteor" width="220" height="220">
         <h1 id="hero-title">Your movies. Your library.</h1>
         <p class="lede">
-          A simple, familiar way to browse and enjoy movies stored on your local network.
+          A simple, familiar way to browse and enjoy movies stored on your PC or NAS —
+          on Android phones, tablets, and Android TV.
         </p>
         <p class="tagline">Install. Index. Enjoy.</p>
         <div class="cta-row">
-          <!-- TODO: set appStoreUrl when Play listing is live (see assets/site.config.js) -->
-          <a class="btn btn-primary" id="get-meteor" href="https://play.google.com/store/apps/details?id=com.meteor.mediaplayer">Get Meteor</a>
-          <a class="btn btn-secondary" href="/howto/">How to connect</a>
+          <a class="btn btn-primary" href="/getting-started/">Getting Started</a>
+          <a class="btn btn-secondary" href="/howto/">Set up media access</a>
         </div>
         <div class="play-badge-slot">
-          <!-- Google Play badge placeholder — replace when listing is live -->
+          <!-- Google Play badge — replace when listing is live (see assets/site.config.js) -->
           <p class="coming-soon">Coming soon on Google Play</p>
         </div>
       </section>
@@ -65,18 +64,18 @@
         <ol class="steps">
           <li class="step">
             <span class="n">1</span>
-            <h3>Install and Discover</h3>
-            <p>Meteor finds compatible media servers on your local network.</p>
+            <h3>Install and connect</h3>
+            <p>Point Meteor at movies on your home network via DLNA, SMB, or WebDAV.</p>
           </li>
           <li class="step">
             <span class="n">2</span>
             <h3>Index</h3>
-            <p>Select your movie library and let Meteor identify and organize your collection.</p>
+            <p>Select your movie library and let Meteor identify and organize your collection on the device.</p>
           </li>
           <li class="step">
             <span class="n">3</span>
             <h3>Enjoy</h3>
-            <p>Browse, search and play your movies in a clean, familiar interface.</p>
+            <p>Browse, search, play — and download titles for offline viewing when you leave home.</p>
           </li>
         </ol>
       </section>
@@ -85,13 +84,13 @@
         <h2 id="features-title">What Meteor does</h2>
         <p class="intro">Focused on the movie-library experience — clean browsing, not every advanced player feature.</p>
         <ul class="feature-grid">
-          <li><strong>SMB, WebDAV &amp; DLNA</strong> Connect movie collections on your LAN the way your NAS already shares them.</li>
+          <li><strong>DLNA, SMB &amp; WebDAV</strong> Connect collections the way your PC or NAS already shares them.</li>
           <li><strong>Browse and select folders</strong> Choose the movie folder Meteor should index.</li>
-          <li><strong>Fast local indexing</strong> Build a searchable library on your device.</li>
+          <li><strong>Local indexing</strong> Build a searchable library on your device — no Meteor server.</li>
           <li><strong>Automatic movie identification</strong> Match titles so posters and details can appear.</li>
           <li><strong>Searchable personal library</strong> Find films quickly in your own collection.</li>
-          <li><strong>Posters and movie information</strong> Browse with artwork and descriptive metadata.</li>
-          <li><strong>Built-in playback</strong> Power-efficient hardware decoding when the device supports it; recommend VLC as a fallback for tough files.</li>
+          <li><strong>Download for offline</strong> Save individual titles on the device to watch away from home.</li>
+          <li><strong>Platform playback</strong> Uses your device’s media capabilities; VLC is a recommended fallback for tough files.</li>
           <li><strong>No Meteor account</strong> Use your library without signing up for Meteor.</li>
         </ul>
       </section>
@@ -105,20 +104,15 @@
             without complicated server setups.
           </p>
           <p>
-            The aim is a good browsing experience for anyone with films on a NAS or PC,
-            at home or on the go, without copying files between devices — and without
-            needing advanced computer skills.
+            The aim is a good browsing experience for anyone with films on a NAS or PC —
+            without needing advanced computer skills. At home, stream from your network.
+            On the go, download titles in Meteor, or use remote WebDAV only if you choose
+            that advanced path.
           </p>
           <p>
-            Built-in codecs handle everyday playback with power-efficient hardware
-            decoding when available. We recommend the VLC app as a fallback for tougher
-            files.
+            Playback depends on your device’s media stack and hardware decoding when available.
+            We recommend the VLC app as a fallback for tougher files.
           </p>
-        </div>
-        <!-- Application screenshots placeholder -->
-        <div class="screenshot-slot" role="img" aria-label="Application screenshots placeholder">
-          <strong>Screenshots</strong>
-          App screenshots will appear here. Until then, the logo and layout stand in for the product look.
         </div>
       </section>
     </main>
@@ -126,7 +120,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated August 2026</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

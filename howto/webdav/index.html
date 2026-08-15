@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Set up WebDAV — Meteor</title>
+  <meta name="description" content="Enable WebDAV on Synology, QNAP, ASUSTOR, or Windows and connect it in Meteor on your home network. Remote access is a separate advanced guide.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/howto/webdav/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/howto/webdav/">
+  <meta property="og:title" content="Set up WebDAV — Meteor">
+  <meta property="og:description" content="Local WebDAV setup for Meteor — remote access covered separately.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/" aria-current="page">How-to</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Set up WebDAV</h1>
+      <p class="updated">
+        WebDAV gives direct folder access (similar to SMB) using a URL, port, and login.
+        This page is for <strong>home network</strong> setup. Opening WebDAV to the Internet is harder —
+        cover that only in <a href="/howto/remote-webdav/">Remote WebDAV</a> after local access works.
+      </p>
+
+      <nav class="doc-nav-links" aria-label="Related guides">
+        <a href="/howto/">← Media access</a>
+        <a href="/howto/dlna/">DLNA</a>
+        <a href="/howto/smb/">SMB</a>
+        <a href="/howto/remote-webdav/">Remote WebDAV</a>
+      </nav>
+
+      <div class="callout">
+        <h2>Prefer watching away from home without remote setup?</h2>
+        <p>
+          At home, connect with WebDAV (or DLNA/SMB), then use <strong>Download</strong> in Meteor
+          for offline playback. See <a href="/howto/#download">Download as an alternative</a>.
+        </p>
+      </div>
+
+      <h2>In Meteor</h2>
+      <ol>
+        <li>On the same network as the server, add a WebDAV location.</li>
+        <li>Enter the host or IP, HTTP/HTTPS port if needed, username/password, and path to the movie folder.</li>
+        <li>Browse and select the folder to index.</li>
+      </ol>
+      <p>Meteor only needs <strong>read</strong> access.</p>
+
+      <h2>Enable WebDAV locally</h2>
+
+      <details class="vendor-block" open>
+        <summary>Synology</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Package Center → install <strong>WebDAV Server</strong>.</li>
+            <li>Open WebDAV Server and enable HTTP and/or HTTPS. Note the ports (common defaults: HTTP <strong>5005</strong>, HTTPS <strong>5006</strong> — confirm in your DSM).</li>
+            <li>Control Panel → grant the user permission to use WebDAV Server, and read rights on the movie shared folder.</li>
+            <li>In Meteor, use the NAS <strong>local IP</strong> (for example <code>https://192.168.x.x:5006</code>) while testing at home.</li>
+          </ol>
+          <p>
+            Official guide:
+            <a href="https://kb.synology.com/en-global/DSM/tutorial/How_to_access_files_on_Synology_NAS_with_WebDAV">Access files on Synology NAS with WebDAV</a>.
+          </p>
+          <p class="note">
+            Synology <strong>QuickConnect</strong> is not a WebDAV address. For WebDAV, use a local IP,
+            a DDNS/hostname you configure, or another direct URL — see Synology’s WebDAV connection notes
+            and the <a href="/howto/remote-webdav/">Remote WebDAV</a> guide.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>QNAP</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Control Panel → Applications → <strong>Web Server</strong> (enable if required).</li>
+            <li>Open the <strong>WebDAV</strong> tab and enable WebDAV.</li>
+            <li>Note the HTTP/HTTPS ports shown in the UI.</li>
+            <li>Ensure your user can read the movie folders; connect from Meteor with the NAS local IP.</li>
+          </ol>
+          <p>
+            See <a href="https://docs.qnap.com/">QNAP documentation</a> for Web Server / WebDAV on your QTS version.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>ASUSTOR</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>ADM → <strong>Services</strong> → <strong>WebDAV</strong>.</li>
+            <li>Enable WebDAV and/or secured WebDAV (SSL). Note the ports (HTTPS often defaults around <strong>9802</strong> on ASUSTOR — confirm in ADM).</li>
+            <li>Connect from Meteor using the NAS local IP and credentials.</li>
+          </ol>
+          <p>
+            Vendor guide:
+            <a href="https://www.asustor.com/en/online/College_topic?topic=208">ASUSTOR — WebDAV</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Windows PC</summary>
+        <div class="vendor-body">
+          <p>
+            Windows does not include a simple “share this movie folder as WebDAV” toggle for home users.
+            Typical options are IIS + WebDAV features, or a small third-party WebDAV server pointed at your movie folder.
+          </p>
+          <ul>
+            <li>For a first library on Windows, <a href="/howto/dlna/">DLNA</a> or <a href="/howto/smb/">SMB</a> is usually easier.</li>
+            <li>If you do run WebDAV, prefer HTTPS before any exposure beyond the LAN.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Other NAS</summary>
+        <div class="vendor-body">
+          <p>Look for <strong>WebDAV</strong> under file services, web server, or applications.</p>
+          <ul>
+            <li>Enable the service and note HTTP vs HTTPS ports.</li>
+            <li>Create a user with read access to movie folders.</li>
+            <li>Test from Meteor with the device’s <strong>local</strong> IP first.</li>
+          </ul>
+        </div>
+      </details>
+
+      <h2>Basic troubleshooting (local)</h2>
+      <ul>
+        <li>Wrong port or <code>http</code> vs <code>https</code>.</li>
+        <li>User not allowed to use WebDAV, or no read permission on the folder.</li>
+        <li>Self-signed HTTPS certificates may need trust / acceptance depending on the client.</li>
+        <li>Service enabled but path incorrect — try the shared-folder root first.</li>
+      </ul>
+      <p>
+        Local works but outside does not? That belongs in
+        <a href="/howto/remote-webdav/">Remote WebDAV</a> and
+        <a href="/help/#remote-access">Help — remote access</a> — not here.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

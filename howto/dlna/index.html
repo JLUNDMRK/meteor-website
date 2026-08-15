@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Set up DLNA — Meteor</title>
+  <meta name="description" content="Enable DLNA / media streaming on Windows, Synology, QNAP, or ASUSTOR so Meteor can find your movies on the home network.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/howto/dlna/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/howto/dlna/">
+  <meta property="og:title" content="Set up DLNA — Meteor">
+  <meta property="og:description" content="Practical DLNA setup for Windows PC and common NAS brands.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/" aria-current="page">How-to</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Set up DLNA</h1>
+      <p class="updated">
+        Recommended first option for home use. Usually no username or password in Meteor.
+        Your phone, tablet, or TV and the PC/NAS must be on the same Wi‑Fi / home network.
+      </p>
+
+      <nav class="doc-nav-links" aria-label="Related guides">
+        <a href="/howto/">← Media access</a>
+        <a href="/howto/smb/">SMB</a>
+        <a href="/howto/webdav/">WebDAV</a>
+      </nav>
+
+      <div class="note">
+        DLNA shares what the <em>media server</em> chooses to expose. Folder layout, extras, and
+        sidecar subtitle files are not guaranteed — that depends on the server, not on Meteor alone.
+      </div>
+
+      <h2>In Meteor</h2>
+      <ol>
+        <li>Connect to the same network as your PC or NAS.</li>
+        <li>Add a library and look for DLNA / media server discovery.</li>
+        <li>Pick the server and the movie folder (or collection) Meteor should index.</li>
+      </ol>
+
+      <h2>Enable a media server</h2>
+      <p>Open the section that matches your device. Menu names vary slightly by software version.</p>
+
+      <details class="vendor-block" open>
+        <summary>Windows PC</summary>
+        <div class="vendor-body">
+          <p>Windows can share libraries with DLNA-style media streaming. The controls live in the classic Control Panel.</p>
+          <ol>
+            <li>Put your movie files in a Videos library folder (or add that folder to the Videos library).</li>
+            <li>Open <strong>Control Panel</strong> → <strong>Network and Sharing Center</strong> →
+              <strong>Media streaming options</strong>.</li>
+            <li>Choose <strong>Turn on media streaming</strong>. Give the library a clear name and allow devices on your private network.</li>
+            <li>If the option is missing, enable <strong>Windows Media Player</strong> under optional / Windows features (N editions may need the Media Feature Pack).</li>
+            <li>Allow the media sharing service through Windows Firewall on <strong>private</strong> networks if prompted.</li>
+            <li>Keep the PC awake (or able to wake) while you watch.</li>
+          </ol>
+          <p>
+            Official context:
+            <a href="https://support.microsoft.com/windows">Microsoft Windows support</a>
+            (search “media streaming” for your Windows version).
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Synology</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>In Package Center, install <strong>Media Server</strong>.</li>
+            <li>Open Media Server and share the folders that contain your movies (defaults often include a <code>video</code> shared folder).</li>
+            <li>Confirm newly detected DLNA devices are allowed if you use access restrictions.</li>
+            <li>On the same Wi‑Fi as the NAS, discover the server in Meteor.</li>
+          </ol>
+          <p>
+            Vendor help:
+            <a href="https://kb.synology.com/">Synology Knowledge Center</a>
+            (search “Media Server” / DLNA for your DSM version).
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>QNAP</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Enable multimedia services if required (often under Control Panel → Applications → Multimedia Console).</li>
+            <li>Go to Control Panel → Applications → <strong>DLNA Media Server</strong> and enable it.</li>
+            <li>Confirm the folders / user permissions that define which videos appear.</li>
+            <li>Discover the server in Meteor on the same network.</li>
+          </ol>
+          <p>
+            Example docs:
+            <a href="https://docs.qnap.com/operating-system/qts/5.0.x/en-us/enabling-dlna-media-server-86443D8B.html">Enabling DLNA Media Server (QTS)</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>ASUSTOR</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>In App Central, install a DLNA/UPnP media server app (for example MiniDLNA or UPnP Media Server).</li>
+            <li>Open the app and set the sharing folder(s) that contain your movies.</li>
+            <li>Discover the server in Meteor on the same network.</li>
+          </ol>
+          <p>
+            Vendor overview:
+            <a href="https://www.asustor.com/en/online/College_topic?topic=168">ASUSTOR — home media center / MiniDLNA</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Other NAS or media PC</summary>
+        <div class="vendor-body">
+          <p>Look for settings named <strong>Media Server</strong>, <strong>DLNA</strong>, <strong>UPnP AV</strong>, or <strong>DMA</strong>.</p>
+          <ul>
+            <li>Enable the service and point it at your movie folders.</li>
+            <li>Use the home / private network profile — guest Wi‑Fi with client isolation often blocks discovery.</li>
+            <li>Check the vendor’s DLNA help for folder and device-access options.</li>
+          </ul>
+        </div>
+      </details>
+
+      <h2>Basic troubleshooting</h2>
+      <ul>
+        <li>Same Wi‑Fi as the PC/NAS (not guest / isolated Wi‑Fi).</li>
+        <li>Media server actually enabled and sharing a video folder.</li>
+        <li>PC/NAS firewall allowing local media sharing.</li>
+        <li>VPN apps on the phone can hide local devices — try without VPN.</li>
+      </ul>
+      <p>
+        More checks:
+        <a href="/help/#discovery">Help — discovery</a>.
+        Prefer sidecar subtitles or a clearer folder tree? Try
+        <a href="/howto/smb/">SMB</a> or <a href="/howto/webdav/">WebDAV</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

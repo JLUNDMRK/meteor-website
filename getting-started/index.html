@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Getting Started — Meteor</title>
-  <meta name="description" content="Add your first movie library in Meteor: connect via SMB, WebDAV, or DLNA, select a folder, and start indexing.">
+  <meta name="description" content="Install Meteor, add your first movie library from a PC or NAS, and start watching. Short path from install to indexing.">
   <link rel="canonical" href="https://meteor.jlundmark.org/getting-started/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
   <meta property="og:url" content="https://meteor.jlundmark.org/getting-started/">
   <meta property="og:title" content="Getting Started — Meteor">
-  <meta property="og:description" content="Add your first movie library: SMB, WebDAV, or DLNA, select a folder, index.">
+  <meta property="og:description" content="Add your first movie library in Meteor.">
   <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
   <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -37,64 +37,46 @@
 
     <main class="doc">
       <h1>Add your first library</h1>
-      <p class="updated">Connect a movie collection on your local network via SMB, WebDAV, or DLNA.</p>
+      <p class="updated">
+        Shortest path from install to browsing your movies. No Meteor account or Meteor server required.
+      </p>
 
-      <nav class="toc" aria-label="Contents">
-        <h2>Contents</h2>
-        <ol>
-          <li><a href="#steps">Steps</a></li>
-          <li><a href="#find-automatically">Find automatically</a></li>
-          <li><a href="#browse-and-select">Browse and select</a></li>
-          <li><a href="#troubleshooting">Troubleshooting</a></li>
-        </ol>
-      </nav>
-
-      <h2 id="steps">Steps</h2>
+      <h2>Steps</h2>
       <ol>
-        <li>Connect your device to the same local network as your media server or NAS.</li>
-        <li>Open Meteor.</li>
-        <li>Add a <strong>movie collection location</strong>
-          (see <a href="/howto/">How-to</a> for DLNA vs WebDAV vs SMB).</li>
-        <li>Select the folder containing your movies.</li>
-        <li>Start indexing.</li>
+        <li>Install Meteor on your Android phone, tablet, or Android TV device.</li>
+        <li>Connect that device to the <strong>same home network</strong> as your PC or NAS.</li>
+        <li>Open Meteor and add a movie collection location.
+          Not sure which type? Start with <strong>DLNA</strong> — details in
+          <a href="/howto/">Set up media access</a>.</li>
+        <li>Select the folder (or collection) that contains your movies.</li>
+        <li>Start indexing. Meteor builds a searchable library on the device; your files stay on the PC/NAS.</li>
       </ol>
+
       <p class="note">
-        Your movie files stay on your media server or NAS. Meteor only reads them to build a local
-        index on the device so you can browse and search the library. Meteor does not run a server
-        for your collection, and you do not need to install a web server on the NAS.
+        Prefer a clear movie folder with sensible names. Cleaner names usually identify better.
+        Meteor does not run a server for your collection.
       </p>
 
-      <div class="screenshot-slot" role="img" aria-label="Screenshots placeholder for setup flow">
-        <strong>Setup screenshots</strong>
-        Placeholder for the Find my movies / server / folder flow. Use app captures when available.
-      </div>
-
-      <h2 id="find-automatically">Find automatically</h2>
+      <h2>Need help choosing a source?</h2>
       <p>
-        Meteor can search the local network for SMB shares and DLNA media servers, and you can
-        add WebDAV manually. For a plain-language comparison and setup outlines (Synology + Windows),
-        see <a href="/howto/">How to connect your movies</a>.
-      </p>
-      <p>
-        Discovery depends on your router, firewall, and how the media server is shared.
-        Not every network or NAS configuration will work the same way.
+        Use the comparison and setup guides under
+        <a href="/howto/">Set up media access</a> (DLNA, SMB, WebDAV).
+        Keep protocol details there — this page stays short on purpose.
       </p>
 
-      <h2 id="browse-and-select">Browse and select</h2>
+      <h2>Watch later without remote networking</h2>
       <p>
-        Browse the folders exposed by a discovered server and choose the folder
-        Meteor should index.
-      </p>
-      <p>
-        Prefer a folder that primarily contains movie files (or clearly named movie folders).
-        Cleaner folder names usually lead to better identification.
+        At home, index your library, then use <strong>Download</strong> in Meteor for titles you want offline.
+        You can play those downloads away from home without opening your network to the Internet.
+        See <a href="/howto/#download">Download as an easy alternative</a>.
       </p>
 
-      <div class="callout" id="troubleshooting">
+      <div class="callout">
         <h2>Having trouble?</h2>
         <p>
-          If Meteor cannot find your server, or indexing does not start as expected,
-          see the <a href="/help/">Help</a> page for common network and sharing checks.
+          If Meteor cannot find your server, or indexing does not start, check the basics on
+          <a href="/help/">Help</a>. Deeper networking topics (remote access, CGNAT, port forwarding)
+          stay in advanced guides — you do not need them for a first DLNA library at home.
         </p>
       </div>
     </main>
@@ -102,7 +84,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated August 2026</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>

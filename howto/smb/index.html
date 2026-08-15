@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Set up SMB — Meteor</title>
+  <meta name="description" content="Share movie folders with SMB on Windows, Synology, QNAP, or ASUSTOR and connect them in Meteor.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/howto/smb/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meteor">
+  <meta property="og:url" content="https://meteor.jlundmark.org/howto/smb/">
+  <meta property="og:title" content="Set up SMB — Meteor">
+  <meta property="og:description" content="Practical SMB / network share setup for Meteor.">
+  <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
+  <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/" aria-current="page">How-to</a>
+        <a href="/help/">Help</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Set up SMB</h1>
+      <p class="updated">
+        SMB is the familiar “shared folder” protocol used by Windows and most NAS devices.
+        You get direct folder access (good for sidecar subtitles and extras). A username and password are normally required.
+      </p>
+
+      <nav class="doc-nav-links" aria-label="Related guides">
+        <a href="/howto/">← Media access</a>
+        <a href="/howto/dlna/">DLNA</a>
+        <a href="/howto/webdav/">WebDAV</a>
+      </nav>
+
+      <div class="note">
+        Use SMB on your <strong>home network</strong> (or a VPN into home). Do <strong>not</strong> expose SMB ports
+        directly to the public Internet. For watching away from home without VPN, prefer
+        <a href="/howto/#download">Download in Meteor</a> or carefully set up
+        <a href="/howto/remote-webdav/">Remote WebDAV</a>.
+      </div>
+
+      <h2>In Meteor</h2>
+      <ol>
+        <li>Stay on the same network as the share (or connect via your home VPN).</li>
+        <li>Add a library via SMB discovery or by entering the host / IP, share name, and credentials.</li>
+        <li>Browse to the movie folder and start indexing.</li>
+      </ol>
+      <p>Meteor only needs <strong>read</strong> permission on the movie folders.</p>
+
+      <h2>Enable file sharing</h2>
+
+      <details class="vendor-block" open>
+        <summary>Windows PC</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Right‑click the movie folder → <strong>Properties</strong> → <strong>Sharing</strong> → share it with a user who may read the files.</li>
+            <li>Confirm the network is set to <strong>Private</strong>, and that password-protected sharing matches how you plan to sign in.</li>
+            <li>Allow File and Printer Sharing through Windows Firewall on private networks if prompted.</li>
+            <li>In Meteor, find the PC or enter its local IP address, then select the share and folder.</li>
+          </ol>
+          <p>
+            Microsoft help:
+            <a href="https://support.microsoft.com/windows">share files over a network in Windows</a>
+            (search “file sharing” for your version).
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Synology</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Control Panel → <strong>File Services</strong> → enable <strong>SMB</strong>.</li>
+            <li>Create or select a shared folder for movies; grant your user at least read permission.</li>
+            <li>In Meteor: discover SMB or enter the NAS hostname / IP, then open the share.</li>
+          </ol>
+          <p>
+            Vendor docs:
+            <a href="https://kb.synology.com/">Synology Knowledge Center</a>
+            (File Services / SMB for your DSM version).
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>QNAP</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>Enable Microsoft Networking / SMB in Control Panel (often under Network &amp; File Services / Win/Mac/NFS).</li>
+            <li>Share the movie folder and assign a user with read access.</li>
+            <li>Connect from Meteor with the NAS IP or hostname and that user.</li>
+          </ol>
+          <p>
+            See your QTS / QuTS hero help for “Microsoft Networking” or “SMB”.
+            <a href="https://docs.qnap.com/">QNAP documentation</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>ASUSTOR</summary>
+        <div class="vendor-body">
+          <ol>
+            <li>In ADM: <strong>Services</strong> → <strong>SMB</strong> → enable SMB.</li>
+            <li>Ensure Access Control grants your user rights to the movie shared folder.</li>
+            <li>Connect from Meteor with the NAS address and credentials.</li>
+          </ol>
+          <p>
+            Vendor help:
+            <a href="https://www.asustor.com/online/online_help?id=17&amp;lan=en">ASUSTOR SMB online help</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="vendor-block">
+        <summary>Other NAS</summary>
+        <div class="vendor-body">
+          <p>Look for <strong>File Sharing</strong>, <strong>SMB</strong>, <strong>CIFS</strong>, or <strong>Windows file service</strong>.</p>
+          <ul>
+            <li>Enable SMB and share the movie folder.</li>
+            <li>Create a user with read access (avoid using your admin account day to day if you can).</li>
+            <li>Connect from Meteor using the device’s local IP or hostname.</li>
+          </ul>
+        </div>
+      </details>
+
+      <h2>Basic troubleshooting</h2>
+      <ul>
+        <li>Wrong username/password or the user lacks permission on that share.</li>
+        <li>SMB disabled, or only older/newer SMB versions allowed than your NAS expects.</li>
+        <li>Firewall or guest Wi‑Fi blocking access between devices.</li>
+        <li>Typing a public hostname by mistake — on the home LAN, use the local IP or local hostname.</li>
+      </ul>
+      <p>
+        See also <a href="/help/#smb-login">Help — SMB login</a> and
+        <a href="/howto/#download">Download for offline use</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
+      </div>
+      <nav aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/metadata/">Metadata &amp; Attribution</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>

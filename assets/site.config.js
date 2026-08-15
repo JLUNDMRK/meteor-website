@@ -8,7 +8,7 @@ window.METEOR_SITE = {
   siteTagline: "Your movies. Your library.",
   siteUrl: "https://meteor.jlundmark.org",
   /** Mirrored in every page footer â€” bump both when you ship a site change. */
-  websiteVersion: "0.1",
+  websiteVersion: "0.2",
   websiteUpdated: "August 2026",
   packageId: "com.meteor.mediaplayer",
   // TODO: replace when the Play listing is live

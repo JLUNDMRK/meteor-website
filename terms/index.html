@@ -53,10 +53,11 @@
 
       <h2>1. What Meteor is</h2>
       <p>
-        Meteor helps you connect to movie collections on your local network via SMB,
-        WebDAV, or DLNA, index a library on your device, identify titles using third-party
-        metadata services where configured, and browse and play movies using your
-        device’s built-in media player.
+        Meteor helps you connect to movie collections on a PC or NAS via SMB,
+        WebDAV, or DLNA (including carefully configured remote WebDAV when you choose that),
+        index a library on your device, optionally download individual media files for offline
+        playback, identify titles using third-party metadata services where configured, and
+        browse and play movies using your device’s media player.
       </p>
       <p>
         Meteor does not provide movie files, images, or metadata of its own. You accept
@@ -65,11 +66,11 @@
         also responsible for ensuring you have the right to access and play that media.
       </p>
 
-      <h2>2. Codecs &amp; playback</h2>
+      <h2>2. Playback</h2>
       <p>
-        The App currently uses your device’s built-in codecs. They often provide
-        power-efficient, hardware-supported decoding. Some movies may not play in-app if
-        the device cannot decode them.
+        Playback depends substantially on your device and platform media stack, including
+        hardware-supported decoding when available. Meteor does not ship its own broad codec
+        package. Some movies may not play in-app if the device cannot decode them.
       </p>
       <p>
         We recommend installing the VLC app as a fallback. Meteor can open it for titles
@@ -135,7 +136,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.1 · Updated August 2026</span>
+        <span class="site-version">Website v0.2 · Updated August 2026</span>
       </div>
       <nav aria-label="Legal">
         <a href="/privacy/">Privacy</a>
