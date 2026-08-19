@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "issued_at": "2026-08-19T20:00:00Z",
+  "issued_at": "2026-08-19T20:50:00Z",
   "ttl_seconds": 86400,
   "policy": {
     "metadata_enabled": true,
@@ -8,12 +8,11 @@
     "providers": {
       "omdb": {
         "allowed": true,
-        "built_in_key": null,
         "byok_allowed": false
       },
       "tmdb": {
         "allowed": true,
-        "built_in_key": "enc:Io1+pgT6yMAQ/YBqUIetIP2EKBGDws5y6gcD3heCSfFh3GVTC3CK7EY0wJ9zRgHp1UUa2yfDGLVJ6Yp8",
+        "built_in_key": "enc:PyWKNrpCX8fIRQ0BdmFG8IoYzD/OoD7tfCQx/yk5ccZ3lHL80yUGkGUVjBXY15lKi/coffcVtUlo/qaJ",
         "byok_allowed": false
       }
     },
@@ -24,5 +23,5 @@
       }
     }
   },
-  "signature": "9oo4KqgoRjJVg9t9lYsm2TKnflMQUt9tctRbdBbdxow="
+  "signature": "9G1gSsDi3x5m1wGYy7pY4HtaE+Ug8qnVm18aGxzF2Q0="
 }
