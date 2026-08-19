@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "issued_at": "2026-08-19T18:00:00Z",
+  "ttl_seconds": 86400,
+  "policy": {
+    "metadata_enabled": true,
+    "provider_mode": "omdb_only",
+    "providers": {
+      "omdb": {
+        "allowed": true,
+        "built_in_key": "enc:XhE5ztC+RK9D0mURYU86MfChK4wC4q+dU5OPLzAp32OpA5cu",
+        "byok_allowed": true
+      },
+      "tmdb": {
+        "allowed": false,
+        "built_in_key": null,
+        "byok_allowed": false
+      }
+    },
+    "messages": {
+      "settings_hint": {
+        "sv": "Ingen metadata-nyckel tillgänglig. Lägg in egen OMDb-nyckel under Avancerat.",
+        "en": "No metadata key available. Add your own OMDb key under Advanced."
+      }
+    }
+  },
+  "signature": "OYkqI/a36poGnfz2a0yJwxXRTFqJVcKTTfn17RKYzdo="
+}

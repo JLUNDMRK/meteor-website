@@ -27,6 +27,7 @@ When you are ready for **full** public indexing: remove `noindex, nofollow` from
 | `/privacy/` | Privacy policy (Play-ready) |
 | `/terms/` | Terms of use (Play-ready) |
 | `/metadata/` | Metadata & attribution (OMDb + Wikimedia) |
+| `/policy.v1.json` | Signed remote metadata policy (Meteor app) |
 | `/contact/` | Contact |
 
 No build step. Edit HTML/CSS and push to `main` — Cloudflare Pages redeploys automatically.
