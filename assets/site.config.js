@@ -27,6 +27,17 @@ window.METEOR_SITE = {
   policyEffectiveDate: "2026-08-15",
   metadataProviders: [
     {
+      id: "tmdb",
+      name: "TMDB",
+      enabled: true,
+      homepage: "https://www.themoviedb.org/",
+      attribution:
+        "This product uses the TMDB API but is not endorsed or certified by TMDB. Metadata is cached only on the device.",
+      notice:
+        "Meteor may use TMDB as a metadata resolver service for accurate titles and metadata.",
+      logo: null,
+    },
+    {
       id: "omdb",
       name: "OMDb",
       enabled: true,
@@ -34,7 +45,7 @@ window.METEOR_SITE = {
       attribution:
         "This product uses the OMDb API (CC BY-NC 4.0; personal / non-commercial). Metadata is cached only on the device.",
       notice:
-        "Meteor relies on OMDb for accurate titles and metadata. Users are encouraged to support OMDb.",
+        "Meteor may use OMDb as a metadata resolver service for accurate titles and metadata. Users are encouraged to support OMDb.",
       logo: null,
     },
     {

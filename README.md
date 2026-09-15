@@ -26,7 +26,7 @@ When you are ready for **full** public indexing: remove `noindex, nofollow` from
 | `/about/` | About |
 | `/privacy/` | Privacy policy (Play-ready) |
 | `/terms/` | Terms of use (Play-ready) |
-| `/metadata/` | Metadata & attribution (OMDb + Wikimedia) |
+| `/metadata/` | Metadata & attribution (TMDB or OMDb + Wikimedia) |
 | `/policy.v1.json` | Signed remote metadata policy (Meteor app) |
 | `/contact/` | Contact |
 
@@ -125,7 +125,7 @@ Site version shown in every footer (`Website v0.3 · Updated August 2026`) comes
 | `websiteVersion` / `websiteUpdated` | `0.3` / `August 2026` | Footer + config must stay in sync |
 | `crawlable` | `false` | Set `true` when opening full-site search indexing |
 | `policyEffectiveDate` | `2026-08-15` | Mirrored on Privacy / Terms pages |
-| `metadataProviders[].enabled` | OMDb + Wikimedia `true` | Match shipped free build; no TMDB in current binary |
+| `metadataProviders[].enabled` | TMDB + OMDb + Wikimedia `true` | Either TMDB or OMDb may be the active resolver |
 | Social share image | `assets/og-share.png` | Currently a copy of the logo — replace with 1200×630 art |
 | App screenshots | optional | Add real captures when available |
 | Google Play badge | “Coming soon” pill | Official badge when listing is live |
@@ -139,7 +139,7 @@ Site version shown in every footer (`Website v0.3 · Updated August 2026`) comes
 - [ ] Attach custom domain `meteor.jlundmark.org`
 - [x] Review Privacy against the Android app; remove draft banner
 - [x] Review Terms; remove draft banner
-- [x] Align Metadata page with shipped sources (OMDb + Wikimedia; TMDB removed)
+- [x] Align Metadata page with resolver sources (TMDB or OMDb API + Wikimedia)
 - [ ] Add real screenshots (optional)
 - [ ] Replace `og-share.png`
 - [ ] Swap “Coming soon” for Play badge / working store link
@@ -147,12 +147,12 @@ Site version shown in every footer (`Website v0.3 · Updated August 2026`) comes
 
 ## Statements that still depend on app confirmation
 
-Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, Play Billing supporter, local 90-day trial, OMDb + Wikimedia metadata, Drive sync disabled for v1).
+Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, Play Billing supporter, local 90-day trial, TMDB or OMDb + Wikimedia metadata, Drive sync disabled for v1).
 
-**Metadata (shipped free build)**
+**Metadata**
 
-- Active sources: OMDb API and Wikimedia / Wikidata-related artwork lookups
-- Future versions may add additional providers; update this page and `site.config.js` when they ship
+- Active resolver: a metadata resolver service such as the TMDB or OMDb API, plus Wikimedia / Wikidata-related artwork lookups when configured
+- Which of TMDB or OMDb is used depends on remote policy / app configuration
 - Offline / online behaviour for identification may still be refined in Help copy
 
 ## Design notes

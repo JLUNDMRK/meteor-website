@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Metadata &amp; Attribution — Meteor</title>
-  <meta name="description" content="How Meteor uses the OMDb API and Wikimedia for movie identification and artwork.">
+  <meta name="description" content="How Meteor uses a metadata resolver service (TMDB or OMDb API) and Wikimedia for movie identification and artwork.">
   <link rel="canonical" href="https://meteor.jlundmark.org/metadata/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
   <meta property="og:url" content="https://meteor.jlundmark.org/metadata/">
   <meta property="og:title" content="Metadata &amp; Attribution — Meteor">
-  <meta property="og:description" content="OMDb and Wikimedia attribution for Meteor movie identification.">
+  <meta property="og:description" content="TMDB, OMDb, and Wikimedia attribution for Meteor movie identification.">
   <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
   <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -46,11 +46,12 @@
 
       <h2>Current sources</h2>
       <p>
-        Meteor currently uses the <strong>OMDb API</strong> to identify movies and retrieve
-        titles and descriptive metadata, and may use <strong>Wikimedia</strong> /
-        Wikidata-related sources for artwork and related lookup data when configured.
-        Metadata is cached on the device. Meteor does not operate a central catalog that
-        redistributes your library’s metadata to other users.
+        Meteor uses a <strong>metadata resolver service such as the TMDB or OMDb API</strong>
+        to identify movies and retrieve titles and descriptive metadata, and may use
+        <strong>Wikimedia</strong> / Wikidata-related sources for artwork and related lookup
+        data when configured. Which resolver is active depends on app configuration and
+        availability. Metadata is cached on the device. Meteor does not operate a central
+        catalog that redistributes your library’s metadata to other users.
       </p>
       <p>
         Metadata can be incomplete, outdated, or incorrect. Provider availability and terms
@@ -62,15 +63,26 @@
         page will be updated when that happens.
       </p>
 
+      <h2>TMDB</h2>
+      <div class="panel">
+        <p>
+          This product uses the TMDB API but is not endorsed or certified by TMDB.
+        </p>
+        <p>
+          Homepage:
+          <a href="https://www.themoviedb.org/" rel="noopener noreferrer">themoviedb.org</a>
+        </p>
+      </div>
+
       <h2>OMDb</h2>
       <div class="panel">
         <p>
           This product uses the OMDb API (CC BY-NC 4.0; personal / non-commercial).
         </p>
         <p>
-          Meteor relies on the OMDb API for accurate titles and metadata. Users are encouraged
-          to support OMDb — for example by contributing to the project or by using their own
-          API key where that option is offered.
+          When OMDb is the configured resolver, Meteor relies on it for accurate titles and
+          metadata. Users are encouraged to support OMDb — for example by contributing to the
+          project or by using their own API key where that option is offered.
         </p>
         <p>
           Homepage:

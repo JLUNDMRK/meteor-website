@@ -29,6 +29,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -62,7 +63,7 @@
       <ul>
         <li>Your library index, watch progress, settings, share credentials, cached artwork, and offline downloads stay on the device (or on your own PC/NAS for the original media files).</li>
         <li>When you connect to a share, the App contacts <strong>your</strong> media servers on your network (or a remote WebDAV endpoint you configure) — not a Meteor content backend.</li>
-        <li>Movie identification may send filename-derived search terms to metadata providers such as OMDb (see <a href="/metadata/">Metadata &amp; Attribution</a>).</li>
+        <li>Movie identification may send filename-derived search terms to a metadata resolver service such as the TMDB or OMDb API (see <a href="/metadata/">Metadata &amp; Attribution</a>).</li>
         <li>The Android build uses <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong> for product usage and crash diagnostics.</li>
         <li>Optional Supporter purchases use <strong>Google Play Billing</strong>. Google processes purchase data under Google’s terms.</li>
         <li>Meteor does not sell your personal information and does not show third-party advertising in the App.</li>
@@ -96,15 +97,15 @@
       <p>
         To identify movies and show posters and descriptive information, Meteor may send search
         terms derived from filenames and folder names (for example a title and year), and related
-        lookup identifiers when available, from your device to the OMDb API. Artwork and related
-        descriptive data may also be fetched from Wikidata / Wikimedia-related sources when
-        configured. See <a href="/metadata/">Metadata &amp; Attribution</a>.
+        lookup identifiers when available, from your device to a metadata resolver service such
+        as the TMDB or OMDb API. Artwork and related descriptive data may also be fetched from
+        Wikidata / Wikimedia-related sources when configured. See
+        <a href="/metadata/">Metadata &amp; Attribution</a>.
       </p>
       <p>
-        Meteor relies on the OMDb API for accurate titles and metadata. Users are encouraged to
-        support OMDb — for example by contributing to the project or by using their own API key
-        where that option is offered.
-        Homepage: <a href="https://www.omdbapi.com/" rel="noopener noreferrer">omdbapi.com</a>.
+        Meteor uses a metadata resolver service such as the TMDB or OMDb API for accurate titles
+        and metadata. Users are encouraged to support the configured provider — for example by
+        contributing to the project or by using their own API key where that option is offered.
       </p>
       <p>
         Those services may receive technical information normally associated with an internet
@@ -186,7 +187,7 @@
       </p>
       <ul>
         <li>Google (Firebase Analytics, Crashlytics, Google Play, Play Billing), under Google’s terms and privacy documentation.</li>
-        <li>Metadata and artwork providers you trigger through identification (for example OMDb), under those providers’ terms.</li>
+        <li>Metadata and artwork providers you trigger through identification (for example TMDB or OMDb), under those providers’ terms.</li>
         <li>Your own PC, NAS, or remote WebDAV host when you connect the App to it.</li>
       </ul>
       <p>
@@ -233,6 +234,7 @@
         <nav class="footer-nav-primary" aria-label="Footer">
           <a href="/">Home</a>
           <a href="/getting-started/">Getting Started</a>
+          <a href="/howto/">How-to</a>
           <a href="/help/">Help</a>
           <a href="/about/">About</a>
         </nav>

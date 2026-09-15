@@ -29,6 +29,7 @@
       <nav class="site-nav" aria-label="Site">
         <a href="/">Home</a>
         <a href="/getting-started/">Getting Started</a>
+        <a href="/howto/">How-to</a>
         <a href="/help/">Help</a>
         <a href="/about/">About</a>
       </nav>
@@ -66,8 +67,8 @@
         movie files. Meteor does not provide movie files, images, or metadata of its own.
         Library media and related data that you browse, index, stream, or download come from
         sources you connect (your servers and shares) and from third-party metadata services
-        configured for the App — currently the OMDb API for title identification, and Wikidata /
-        Wikimedia-related sources for artwork when used.
+        configured for the App — a metadata resolver service such as the TMDB or OMDb API for
+        title identification, and Wikidata / Wikimedia-related sources for artwork when used.
       </p>
       <p>
         You are responsible for ensuring you have the rights to access, use, copy, and store that
@@ -79,10 +80,10 @@
         the user.
       </p>
       <p>
-        Meteor relies on the OMDb API for accurate titles and metadata. Users are encouraged to
-        support OMDb — for example by contributing to the project or by using their own API key
-        where that option is offered.
-        Homepage: <a href="https://www.omdbapi.com/" rel="noopener noreferrer">omdbapi.com</a>.
+        Meteor uses a metadata resolver service such as the TMDB or OMDb API for accurate titles
+        and metadata. Users are encouraged to support the configured provider — for example by
+        contributing to the project or by using their own API key where that option is offered.
+        See <a href="/metadata/">Metadata &amp; Attribution</a>.
       </p>
 
       <h2>2. Your responsibilities</h2>
@@ -90,7 +91,7 @@
         <li>Only connect the App to servers and shares you are authorized to use.</li>
         <li>Keep share credentials secure; do not share them through unsupported channels.</li>
         <li>Comply with copyright and other laws that apply to your media and your location.</li>
-        <li>Accept responsibility for media and metadata brought into the App from your shares and from OMDb / Wikidata / Wikimedia-related sources as configured.</li>
+        <li>Accept responsibility for media and metadata brought into the App from your shares and from TMDB / OMDb / Wikidata / Wikimedia-related sources as configured.</li>
         <li>Configure remote access (such as port forwarding) at your own risk; Meteor does not operate your network.</li>
       </ul>
 
@@ -148,7 +149,7 @@
       </p>
       <p>
         Third-party names, trademarks, artwork and data remain subject to their respective
-        owners and licences. Meteor is not affiliated with Netflix, OMDb, IMDb,
+        owners and licences. Meteor is not affiliated with Netflix, TMDB, OMDb, IMDb,
         Wikipedia / Wikimedia, device manufacturers, or media server vendors.
       </p>
 
@@ -205,6 +206,7 @@
         <nav class="footer-nav-primary" aria-label="Footer">
           <a href="/">Home</a>
           <a href="/getting-started/">Getting Started</a>
+          <a href="/howto/">How-to</a>
           <a href="/help/">Help</a>
           <a href="/about/">About</a>
         </nav>
