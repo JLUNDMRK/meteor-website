@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "issued_at": "2026-08-19T20:50:00Z",
+  "issued_at": "2026-10-03T22:50:00Z",
   "ttl_seconds": 86400,
   "policy": {
     "metadata_enabled": true,
@@ -12,7 +12,7 @@
       },
       "tmdb": {
         "allowed": true,
-        "built_in_key": "enc:PyWKNrpCX8fIRQ0BdmFG8IoYzD/OoD7tfCQx/yk5ccZ3lHL80yUGkGUVjBXY15lKi/coffcVtUlo/qaJ",
+        "built_in_key": "enc:IZHIeB+yFk8/G/9/0Axpc9zv4B5Z85ZpoFUm8mo074sKjX8ox1/+5NXSImVRkNsXjLRS7+Zhg56BzMNf",
         "byok_allowed": false
       }
     },
@@ -21,7 +21,21 @@
         "sv": "TMDB-metadata är inte tillgänglig just nu. Försök igen senare.",
         "en": "TMDB metadata is not available right now. Try again later."
       }
-    }
+    },
+    "announcements": [
+      {
+        "id": "meteor-remote-control-2026-10",
+        "display": "until_ack",
+        "title": {
+          "sv": "Meddelande från Meteor",
+          "en": "Message from Meteor"
+        },
+        "body": {
+          "sv": "Vi kan nu skicka meddelanden och styra app-/metadata-tillgång via servern. Tryck OK för att fortsätta.",
+          "en": "We can now send messages and control app/metadata access from the server. Tap OK to continue."
+        }
+      }
+    ]
   },
-  "signature": "9G1gSsDi3x5m1wGYy7pY4HtaE+Ug8qnVm18aGxzF2Q0="
+  "signature": "4Rz+liN/EctI6nLHSryEGhNjARw/z7Xx+HdEsUKpvS0="
 }
