@@ -67,7 +67,9 @@
         <li>When you connect to a share, the App contacts <strong>your</strong> media servers on your network (or a remote WebDAV endpoint you configure) — not a Meteor content backend.</li>
         <li>The App may fetch remote configuration / policy and open help or information pages from <a href="https://meteor.jlundmark.org/">meteor.jlundmark.org</a> (see below).</li>
         <li>Movie identification may send filename-derived search terms to a metadata resolver service such as the TMDB or OMDb API (see <a href="/metadata/">Metadata &amp; Attribution</a>).</li>
-        <li>The Android build uses <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong> for product usage and crash diagnostics.</li>
+        <li>Meteor does <strong>not intentionally collect personal data</strong> such as your name, email, postal address, or a Meteor account profile. There is no Meteor login.</li>
+        <li>The Android build uses <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong> (Google) for limited product metrics and crash diagnostics — not for ads or marketing profiles.</li>
+        <li>Those Google SDKs may read a device <strong>advertising ID</strong> where Android makes one available. Meteor does not use it to identify you as a person, show ads, or build a marketing profile.</li>
         <li>The current public release has <strong>no in-app purchases or subscriptions</strong>. Google Play Billing code is not used to start purchases in this build.</li>
         <li>I do not sell your personal information. Meteor does not show third-party advertising in the App.</li>
       </ul>
@@ -159,25 +161,34 @@
 
       <h2>6. Analytics and crash reporting (Firebase)</h2>
       <p>
-        The Android App includes Google Firebase services:
+        Meteor does <strong>not</strong> ask for or collect classic personal contact details
+        (name, email, phone, postal address) and does not create a Meteor user account. Library
+        contents and share passwords stay on your device / your storage — they are not uploaded to
+        Firebase for identity or advertising.
+      </p>
+      <p>
+        The Android App includes Google Firebase services for product quality only:
       </p>
       <ul>
-        <li><strong>Firebase Analytics</strong> — app usage events (for example app opens and similar product metrics) to understand stability and feature use.</li>
+        <li><strong>Firebase Analytics</strong> — limited app usage events (for example app opens and similar product metrics) to understand stability and feature use.</li>
         <li><strong>Firebase Crashlytics</strong> — crash and diagnostic reports (for example stack traces, app version, and device/OS information) to find and fix bugs.</li>
       </ul>
       <p>
-        These services are operated by Google. They may process device and app identifiers and
-        diagnostic data according to Google’s Firebase / Google Play services documentation.
-        Depending on platform version and SDK configuration, this can include an
-        <strong>advertising ID</strong> where the platform makes one available. Meteor does
-        <strong>not</strong> use advertising ID for ads, remarketing, or cross-app advertising,
-        and the App does not include a third-party ads SDK.
+        These services are operated by <strong>Google</strong>. They may process technical device and
+        app identifiers and diagnostic data according to Google’s Firebase / Google Play services
+        documentation. Depending on platform version and SDK configuration, that can include an
+        <strong>advertising ID</strong> where Android makes one available. That identifier is a
+        resettable device/app identifier used by Google’s diagnostics stack — it is
+        <strong>not</strong> your name or civil identity, and Meteor cannot use it to identify you
+        as a person. Meteor does <strong>not</strong> use advertising ID for ads, remarketing,
+        cross-app advertising, or marketing profiles, and the App does not include a third-party
+        ads SDK.
       </p>
       <p>
-        Meteor is not designed to send your full movie file contents or NAS passwords to Firebase.
         Analytics events are kept intentionally limited; exact event names may evolve as the App
-        improves. Do not treat Firebase as “no data collected” — diagnostics and usage metrics
-        are collected when Firebase is active in the shipped build.
+        improves. Do not treat Firebase as “zero data” — technical diagnostics and limited usage
+        metrics are processed by Google when Firebase is active in the shipped build — but Meteor
+        is not designed to build a personal profile of you from that data.
       </p>
 
       <h2>7. Purchases (current release)</h2>
@@ -206,10 +217,18 @@
       <p>
         If you contact me about support or privacy at
         <a href="mailto:meteor@jlundmark.org">meteor@jlundmark.org</a>,
-        your message and email address are processed so I can respond. Messages are
-        handled in ordinary email systems used for that mailbox and retained as long as needed
-        to handle the conversation and any follow-up, then deleted or archived according to
-        normal mailbox practice. Please do not send passwords in email if you can avoid it.
+        your message and the email address you send from are processed only so I can respond.
+        Messages are handled in ordinary email systems for that mailbox and retained as long as
+        needed for the conversation, then deleted or archived according to normal mailbox practice.
+      </p>
+      <p>
+        <strong>Please do not include personal data in support mail</strong> (for example full name
+        beyond what your email address already shows, national ID numbers, photos of IDs, private
+        addresses, or share/NAS passwords). Meteor is not set up as a personal-data helpdesk and I
+        do not want to receive or store that information. Describe the technical problem (device
+        model, Android version, media server type if known, steps to reproduce) without attaching
+        credentials or unnecessary personal details. If you send such data anyway, I may ask you
+        to resend a redacted message and will delete the sensitive content when practical.
       </p>
 
       <h2>10. Children</h2>
@@ -230,9 +249,15 @@
         <li>This website (<a href="https://meteor.jlundmark.org/">meteor.jlundmark.org</a>) when the App fetches remote configuration or when you open help / information pages.</li>
       </ul>
       <p>
-        European users: where GDPR or similar laws apply, processing is based on providing the App
-        you requested (contract / legitimate interest in operating and improving a crash-aware product).
-        This summary is not legal advice.
+        European users (GDPR and similar laws): Meteor does <strong>not intentionally collect
+        personal data</strong> to identify you (no Meteor account; no request for name, national ID,
+        or similar as part of normal app use). Technical processing for Firebase diagnostics /
+        limited analytics (including, where applicable, an advertising ID read by Google’s SDKs)
+        and metadata lookups you trigger is based on providing the App you requested and legitimate
+        interest in operating a stable, crash-aware product. That technical data is not used by
+        Meteor to identify you as a named individual. Support email is voluntary — please avoid
+        sending personal data (see §9); any message you send is processed only to reply. This
+        summary is not legal advice.
       </p>
 
       <h2>12. Your choices</h2>
