@@ -53,10 +53,12 @@
         download titles for offline playback, and identify titles using third-party metadata services.
       </p>
       <p>
-        Meteor does <strong>not</strong> require a Meteor account and does not operate a Meteor media
-        server that stores your movie files or library catalog. This policy describes how information
-        is handled when you use the App. Related rules of use are in the
-        <a href="/terms/">Terms of Use</a>.
+        Meteor does <strong>not</strong> require a Meteor account. Your <strong>movie files</strong> stay
+        on your own storage (PC, NAS, or downloads on the device) — Meteor does not run a media host
+        that stores or streams your film library. Optional app services (for example remote
+        configuration from this website, or future optional sync of settings) are separate from hosting
+        your movies. This policy describes how information is handled when you use the App. Related
+        rules of use are in the <a href="/terms/">Terms of Use</a>.
       </p>
 
       <h2>1. Summary</h2>
@@ -81,8 +83,8 @@
         <li>
           Credentials you choose to save for SMB, WebDAV, or similar access. On Android these are
           stored on the device using the platform’s normal secure storage approach (Android Keystore
-          for key material, with ciphertext kept in app-private storage). They are not uploaded to
-          meteor.jlundmark.org or to a Meteor media backend.
+          for key material, with ciphertext kept in app-private storage). In the current release they
+          are not uploaded to meteor.jlundmark.org or used to host your movies elsewhere.
         </li>
         <li>Media files you choose to Download for offline playback.</li>
         <li>A local first-seen / first-install timestamp that may be used for product analytics or future early-adopter eligibility. It does <strong>not</strong> lock features after 90 days in the current free-during-development release.</li>
@@ -106,8 +108,8 @@
       <p>
         To discover, browse, stream, or download from your collection, Meteor connects to the
         DLNA, SMB, WebDAV, or other endpoints you configure. Traffic goes between your device and
-        those servers. Meteor does not upload your movie files to a Meteor-operated media backend
-        (there is no such backend for hosting your library).
+        those servers. Meteor does not upload your movie files to a Meteor-operated media host —
+        film data stays on your storage (or on the device if you use Download).
       </p>
 
       <h2>4. App configuration and this website</h2>

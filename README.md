@@ -147,7 +147,7 @@ Site version shown in every footer (`Website v0.3 · Updated August 2026`) comes
 
 ## Statements that still depend on app confirmation
 
-Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, Play Billing supporter, local 90-day trial, TMDB or OMDb + Wikimedia metadata, Drive sync disabled for v1).
+Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, FREE_DURING_DEVELOPMENT — no trial lock / no purchase flow, TMDB or OMDb + Wikimedia metadata via remote policy, Drive sync disabled for v1).
 
 **Metadata**
 
