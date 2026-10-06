@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "issued_at": "2026-10-03T22:50:00Z",
+  "issued_at": "2026-10-06T21:50:00Z",
   "ttl_seconds": 86400,
   "policy": {
     "metadata_enabled": true,
@@ -12,7 +12,7 @@
       },
       "tmdb": {
         "allowed": true,
-        "built_in_key": "enc:IZHIeB+yFk8/G/9/0Axpc9zv4B5Z85ZpoFUm8mo074sKjX8ox1/+5NXSImVRkNsXjLRS7+Zhg56BzMNf",
+        "built_in_key": "enc:ePjXzM4F2xZRGdM4oCbvtTORFx8qX827WgGAnAlpJqFIzKUTjC3Jragdc+6dhQLLi6q3CtMvjbtOewHC",
         "byok_allowed": false
       }
     },
@@ -24,18 +24,18 @@
     },
     "announcements": [
       {
-        "id": "meteor-remote-control-2026-10",
+        "id": "meteor-beta-testers-2026-10",
         "display": "until_ack",
         "title": {
-          "sv": "Meddelande från Meteor",
-          "en": "Message from Meteor"
+          "sv": "Tack för att du betatestar Meteor",
+          "en": "Thanks for beta-testing Meteor"
         },
         "body": {
-          "sv": "Vi kan nu skicka meddelanden och styra app-/metadata-tillgång via servern. Tryck OK för att fortsätta.",
-          "en": "We can now send messages and control app/metadata access from the server. Tap OK to continue."
+          "sv": "Du är betatestare medan Meteor är under aktiv utveckling. Jag hoppas på förståelse för att buggar kan finnas kvar — feedback är mycket välkommen, och jag vill gärna försöka lösa de problem som dyker upp.",
+          "en": "You’re a beta tester while Meteor is under active development. I hope you’ll bear with remaining bugs — feedback is very welcome, and I’ll do my best to fix the issues that turn up."
         }
       }
     ]
   },
-  "signature": "4Rz+liN/EctI6nLHSryEGhNjARw/z7Xx+HdEsUKpvS0="
+  "signature": "t4lwscI95rutCNixnS8lpKEWChC4JS6QVNlasrzbPPM="
 }
