@@ -96,6 +96,25 @@
           <p>Setup outline: <a href="/howto/smb/">Set up SMB</a>.</p>
         </details>
 
+        <details id="webdav-checklist">
+          <summary>WebDAV checklist (port, HTTPS, router)</summary>
+          <p>
+            Quick reminder if you already know networking — exact values vary a lot by
+            <strong>NAS, router, and ISP</strong>:
+          </p>
+          <ul>
+            <li><strong>Port</strong> — use the WebDAV port shown in your NAS settings (defaults differ by brand).</li>
+            <li><strong>HTTP vs HTTPS</strong> — must match the NAS; prefer <strong>HTTPS</strong>.</li>
+            <li><strong>At home</strong> — same Wi‑Fi / local IP is usually enough; no router opening required.</li>
+            <li><strong>Away from home</strong> — the router typically needs a port-forward (or VPN) for the WebDAV HTTPS port, plus a reachable public IP / DDNS. Some ISPs use CGNAT, which blocks inbound access.</li>
+          </ul>
+          <p>
+            Details: <a href="/howto/webdav/">WebDAV</a> (local) ·
+            <a href="/howto/remote-webdav/">Remote WebDAV</a> ·
+            <a href="#remote-access">remote troubleshooting</a> below.
+          </p>
+        </details>
+
         <details>
           <summary>Can I watch away from home without remote networking?</summary>
           <p>
