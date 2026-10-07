@@ -57,10 +57,34 @@
         </p>
       </div>
 
+      <h2>Ports, HTTP, and HTTPS</h2>
+      <ul>
+        <li>
+          <strong>Ports differ by NAS and settings.</strong> Synology, QNAP, ASUSTOR, and others
+          use different default HTTP/HTTPS ports — and you may have changed them. Always check the
+          port shown in your NAS WebDAV settings; do not assume a “standard” port.
+        </li>
+        <li>
+          <strong>HTTP vs HTTPS matters.</strong> In Meteor you must pick the same scheme the NAS
+          expects. If the server is HTTPS-only, <code>http://…</code> will fail (and the reverse).
+          We <strong>recommend HTTPS</strong> whenever the NAS offers it.
+        </li>
+        <li>
+          <strong>Home LAN first.</strong> On the same Wi‑Fi you usually do <em>not</em> need to
+          open the router. If you later want access from outside the home, you often must
+          <em>port-forward / unlock</em> the router for the WebDAV HTTPS port — that is covered in
+          <a href="/howto/remote-webdav/">Remote WebDAV</a>, not required for a first local library.
+        </li>
+      </ul>
+
       <h2>In Meteor</h2>
       <ol>
         <li>On the same network as the server, add a WebDAV location.</li>
-        <li>Enter the host or IP, HTTP/HTTPS port if needed, username/password, and path to the movie folder.</li>
+        <li>
+          Enter the host or IP, choose <strong>HTTP or HTTPS</strong> to match the NAS, enter the
+          correct <strong>port</strong> from the NAS WebDAV settings, then username/password and
+          path to the movie folder. Prefer HTTPS.
+        </li>
         <li>Browse and select the folder to index.</li>
       </ol>
       <p>Meteor only needs <strong>read</strong> access.</p>
@@ -146,10 +170,12 @@
 
       <h2>Basic troubleshooting (local)</h2>
       <ul>
-        <li>Wrong port or <code>http</code> vs <code>https</code>.</li>
+        <li>Wrong port (ports vary by NAS — re-check the WebDAV settings page).</li>
+        <li>Wrong scheme: <code>http</code> vs <code>https</code> must match the NAS (prefer HTTPS).</li>
         <li>User not allowed to use WebDAV, or no read permission on the folder.</li>
         <li>Self-signed HTTPS certificates may need trust / acceptance depending on the client.</li>
         <li>Service enabled but path incorrect — try the shared-folder root first.</li>
+        <li>Trying from outside the home without router port-forward — use local IP on home Wi‑Fi first; remote setup is separate.</li>
       </ul>
       <p>
         Local works but outside does not? That belongs in
@@ -161,7 +187,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.2 · Updated August 2026</span>
+        <span class="site-version">Website v0.4 · Updated October 2026</span>
       </div>
       <div class="footer-navs">
         <nav class="footer-nav-primary" aria-label="Footer">
