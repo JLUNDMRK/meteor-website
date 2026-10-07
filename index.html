@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Meteor — Your movies. Your library.</title>
-  <meta name="description" content="Meteor is a simple way to browse and enjoy movies on your PC or NAS. Connect via DLNA, SMB, or WebDAV, index on your device, and play on Android phones, tablets, and Android TV.">
+  <meta name="description" content="Meteor Media Portal — a solo-developed Android app to index and browse movies on your PC or NAS via DLNA, SMB, or WebDAV. Your files stay on your own storage.">
   <link rel="canonical" href="https://meteor.jlundmark.org/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Meteor">
   <meta property="og:url" content="https://meteor.jlundmark.org/">
   <meta property="og:title" content="Meteor">
-  <meta property="og:description" content="Your movies. Your library.">
+  <meta property="og:description" content="Your movies. Your library. Built by a single developer.">
   <meta property="og:image" content="https://meteor.jlundmark.org/assets/og-share.png">
   <meta property="og:image:alt" content="Meteor — Your movies. Your library.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Meteor">
-  <meta name="twitter:description" content="Your movies. Your library.">
+  <meta name="twitter:description" content="Your movies. Your library. Built by a single developer.">
   <meta name="twitter:image" content="https://meteor.jlundmark.org/assets/og-share.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -43,54 +43,31 @@
         <img class="hero-logo" src="/assets/logo.png" alt="Meteor" width="220" height="220">
         <h1 id="hero-title">Your movies. Your library.</h1>
         <p class="lede">
-          A simple, familiar way to browse and enjoy movies stored on your PC or NAS —
+          A simple way to browse and enjoy movies stored on your PC or NAS —
           on Android phones, tablets, and Android TV.
         </p>
         <p class="tagline">Install. Index. Enjoy.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="/getting-started/">Getting Started</a>
-          <a class="btn btn-secondary" href="/howto/">Set up media access</a>
-        </div>
+        <p class="solo-dev">
+          Developed by a single developer — Johan Lundmark.
+        </p>
         <div class="play-badge-slot">
           <!-- Google Play badge — replace when listing is live (see assets/site.config.js) -->
           <p class="coming-soon">Coming soon on Google Play</p>
         </div>
       </section>
 
-      <section class="section" id="how-it-works" aria-labelledby="how-title">
-        <h2 id="how-title">How it works</h2>
-        <p class="intro">Three steps from install to watching.</p>
-        <ol class="steps">
-          <li class="step">
-            <span class="n">1</span>
-            <h3>Install and connect</h3>
-            <p>Point Meteor at movies on your home network via DLNA, SMB, or WebDAV.</p>
-          </li>
-          <li class="step">
-            <span class="n">2</span>
-            <h3>Index</h3>
-            <p>Select your movie library and let Meteor identify and organize your collection on the device.</p>
-          </li>
-          <li class="step">
-            <span class="n">3</span>
-            <h3>Enjoy</h3>
-            <p>Browse, search, play — and download titles for offline viewing when you leave home.</p>
-          </li>
-        </ol>
-      </section>
-
       <section class="section" aria-labelledby="features-title">
         <h2 id="features-title">What Meteor does</h2>
         <p class="intro">Focused on the movie-library experience — clean browsing, not every advanced player feature.</p>
         <ul class="feature-grid">
-          <li><strong>DLNA, SMB &amp; WebDAV</strong> Connect collections the way your PC or NAS already shares them.</li>
+          <li><strong>DLNA, SMB &amp; WebDAV</strong> Connect collections the way your PC or NAS already shares them. No need to set up separate “server side” software beyond what you already use.</li>
           <li><strong>Browse and select folders</strong> Choose the movie folder Meteor should index.</li>
           <li><strong>Local indexing</strong> Build a searchable library on your device — your movie files stay on your own storage.</li>
-          <li><strong>Automatic movie identification</strong> Match titles so posters and details can appear.</li>
+          <li><strong>Automatic movie identification</strong> Match titles so posters and details can appear. Focus to pick the right match, or choose manually. When the title and year are clear in the filename, the correct movie is usually found.</li>
           <li><strong>Searchable personal library</strong> Find films quickly in your own collection.</li>
-          <li><strong>Download for offline</strong> Save individual titles on the device to watch away from home.</li>
+          <li><strong>Download for offline</strong> Save individual titles on the device to watch away from home on your phone or tablet.</li>
           <li><strong>Platform playback</strong> Uses your device’s media capabilities; VLC is a recommended fallback for tough files.</li>
-          <li><strong>No Meteor account</strong> Use your library without signing up for Meteor.</li>
+          <li><strong>No Meteor account</strong> Meteor does not store your collection. It stays on your own devices.</li>
         </ul>
       </section>
 
@@ -98,19 +75,23 @@
         <h2 id="product-title">Built for your collection</h2>
         <div class="panel">
           <p>
-            VLC is excellent at playing files, and a metadata resolver service such as the
-            TMDB or OMDb API can identify most movies. Meteor is for the missing piece:
-            presenting your library nicely — without complicated server setups.
+            Meteor Media Portal aims to make your movies searchable and present them in a
+            pleasant way — with a simple interface and without a complicated setup.
           </p>
           <p>
-            The aim is a good browsing experience for anyone with films on a NAS or PC —
-            without needing advanced computer skills. At home, stream from your network.
-            On the go, download titles in Meteor, or use remote WebDAV only if you choose
-            that advanced path.
+            The first version focuses on that library experience, not on supporting every
+            codec. Android devices often have strong hardware decoding, which is better for
+            battery life and performance. My goal is to avoid picking the wrong titles and
+            to keep the interface easy to use.
           </p>
           <p>
-            Playback depends on your device’s media stack and hardware decoding when available.
-            I recommend the VLC app as a fallback for tougher files.
+            For files the device cannot decode natively, I recommend the excellent
+            <strong>VLC</strong> app. Meteor can open the selected title in VLC, which
+            supports more codecs.
+          </p>
+          <p>
+            In this release, movie identification primarily uses <strong>TMDB</strong>,
+            with Wikimedia as support for some artwork and related media.
           </p>
         </div>
       </section>
@@ -119,7 +100,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.2 · Updated August 2026</span>
+        <span class="site-version">Website v0.4 · Updated October 2026</span>
       </div>
       <div class="footer-navs">
         <nav class="footer-nav-primary" aria-label="Footer">
