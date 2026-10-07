@@ -37,7 +37,8 @@
     <main class="doc">
       <h1>Add your first library</h1>
       <p class="updated">
-        Shortest path from install to browsing your movies. No Meteor account or Meteor server required.
+        Shortest path from install to browsing your movies. No Meteor account required —
+        your movie files stay on your own PC or NAS.
       </p>
 
       <h2>Steps</h2>
@@ -51,9 +52,35 @@
         <li>Start indexing. Meteor builds a searchable library on the device; your files stay on the PC/NAS.</li>
       </ol>
 
-      <p class="note">
+      <h2>Name your files clearly</h2>
+      <p>
         Prefer a clear movie folder with sensible names. Cleaner names usually identify better.
-        Meteor does not run a server for your collection.
+        Meteor does not host your collection — it only indexes what you point it at.
+      </p>
+      <p>
+        Put the <strong>official title</strong> and <strong>year</strong> first, ideally as
+        <code>Title (YYYY)</code>. Tags for quality, audio, or edition after that are fine
+        (for example <code>1080p</code>, <code>DTS</code>, <code>Director’s Cut</code>).
+        Avoid typos and personal notes that do not belong in the title — those often make
+        Meteor pick the wrong movie, or none at all.
+      </p>
+      <p><strong>Helpful examples</strong></p>
+      <ul>
+        <li><code>The Matrix (1999).mkv</code></li>
+        <li><code>The Matrix (1999) 1080p DTS Director’s Cut.mkv</code></li>
+        <li><code>Casablanca (1942).mp4</code></li>
+        <li><code>Spirited Away (2001) Japanese.mkv</code></li>
+      </ul>
+      <p><strong>Less helpful examples</strong></p>
+      <ul>
+        <li><code>The Matrix - my old tape copy.mkv</code> — personal notes confuse matching</li>
+        <li><code>Mattrix (1999).mkv</code> — typos often miss the right title</li>
+        <li><code>The Matrix.mkv</code> — missing year (harder when several films share a name)</li>
+        <li><code>Holiday movies from the attic.mkv</code> — no real title or year</li>
+      </ul>
+      <p class="note">
+        If a title is still wrong after indexing, use <strong>Pick a match</strong> or
+        <strong>Search again</strong> in the app — you can choose the correct movie manually.
       </p>
 
       <h2>Need help choosing a source?</h2>
@@ -83,7 +110,7 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <span>&copy; 2026 Johan Lundmark. Meteor.</span>
-        <span class="site-version">Website v0.2 · Updated August 2026</span>
+        <span class="site-version">Website v0.4 · Updated October 2026</span>
       </div>
       <div class="footer-navs">
         <nav class="footer-nav-primary" aria-label="Footer">
