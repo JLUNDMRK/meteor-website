@@ -1,0 +1,15 @@
+# Optional local / binding reference for Cloudflare Pages Functions (FEAT-096).
+# In Dashboard → Workers & Pages → meteor-website → Settings → Functions:
+#   KV namespace binding: FEEDBACK_KV → create namespace e.g. meteor-feedback
+#   Secret: FEEDBACK_EXPORT_TOKEN (for /api/feedback/export digest tool)
+#
+# Without FEEDBACK_KV the API returns mode=mailto (safe free fallback).
+
+name = "meteor-website"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "FEEDBACK_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_KV_NAMESPACE_ID"

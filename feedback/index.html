@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Send feedback — Meteor</title>
+  <meta name="description" content="Send structured feedback for Meteor. Version and device details can be prefilled from the app.">
+  <link rel="canonical" href="https://meteor.jlundmark.org/feedback/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .feedback-meta {
+      display: grid;
+      gap: 6px;
+      margin: 16px 0 20px;
+      padding: 12px 14px;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      font-size: 0.92rem;
+      color: var(--body);
+    }
+    .feedback-meta strong { color: var(--text); }
+    .feedback-form label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .feedback-form input[type="text"],
+    .feedback-form select,
+    .feedback-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0c1220;
+      color: var(--text);
+      font: inherit;
+    }
+    .feedback-form textarea { min-height: 120px; resize: vertical; }
+    .feedback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+      align-items: center;
+    }
+    .feedback-actions button,
+    .feedback-actions .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .feedback-actions button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .feedback-actions .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .feedback-banner {
+      margin: 16px 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--warn-border);
+      background: var(--warn-bg);
+      color: var(--text);
+    }
+    .feedback-status { margin-top: 12px; color: var(--muted); font-size: 0.9rem; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/assets/logo.png" alt="" width="40" height="40">
+        <span class="brand-name">Meteor</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/help/">Help</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Send feedback</h1>
+      <p class="updated">
+        Structured reports help fix bugs faster. Please do not include passwords or personal data.
+      </p>
+
+      <div id="loading" class="feedback-status">Checking feedback service…</div>
+
+      <div id="mailtoPanel" class="hidden">
+        <div class="feedback-banner" role="status">
+          The structured form is temporarily unavailable (free quota or maintenance).
+          You can still send email with the same details prefilled.
+        </div>
+        <div class="feedback-actions">
+          <a id="mailtoBtn" class="btn" href="mailto:feedback_meteor@jlundmark.org">Open email</a>
+        </div>
+      </div>
+
+      <div id="donePanel" class="hidden">
+        <div class="feedback-banner" role="status">
+          Thanks — your report was sent. Reference: <strong id="doneId"></strong>
+        </div>
+      </div>
+
+      <form id="formPanel" class="feedback-form hidden">
+        <div class="feedback-meta" id="metaBox" aria-live="polite"></div>
+
+        <label for="type">Type</label>
+        <select id="type" name="type">
+          <option value="bug">Bug</option>
+          <option value="playback">Playback</option>
+          <option value="resolve">Title match / resolve</option>
+          <option value="feedback">Feedback / idea</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="summary">Short summary</label>
+        <input id="summary" name="summary" type="text" maxlength="500" required placeholder="What went wrong or what you want?">
+
+        <label for="details">Details (optional)</label>
+        <textarea id="details" name="details" maxlength="4000" placeholder="Steps to reproduce, what you expected, etc."></textarea>
+
+        <div class="feedback-actions">
+          <button type="submit" id="submitBtn">Send report</button>
+          <a id="mailtoAlt" class="btn btn-secondary" href="mailto:feedback_meteor@jlundmark.org">Email instead</a>
+        </div>
+        <p id="formStatus" class="feedback-status"></p>
+      </form>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span>&copy; 2026 Johan Lundmark. Meteor.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var API = "/api/feedback";
+      var state = {
+        reportId: "",
+        meta: {
+          type: "bug",
+          appVersion: "",
+          versionCode: "",
+          buildType: "",
+          device: "",
+          osSdk: "",
+          locale: "",
+          installId: "",
+          diagnostic: ""
+        }
+      };
+
+      function $(id) { return document.getElementById(id); }
+
+      function pathReportId() {
+        var parts = location.pathname.replace(/\/+$/, "").split("/");
+        var last = parts[parts.length - 1] || "";
+        if (last && last !== "feedback" && /^[a-f0-9]{8,24}$/i.test(last)) return last;
+        return "";
+      }
+
+      function fromQuery() {
+        var q = new URLSearchParams(location.search);
+        ["type", "appVersion", "versionCode", "buildType", "device", "osSdk", "locale", "installId"].forEach(function (k) {
+          var alt = k === "appVersion" ? "v" : (k === "versionCode" ? "code" : k);
+          var v = q.get(k) || q.get(alt);
+          if (v) state.meta[k] = v;
+        });
+        var diag = q.get("diagnostic");
+        if (diag) state.meta.diagnostic = diag.slice(0, 4096);
+        if (q.get("type")) $("type").value = state.meta.type;
+      }
+
+      function renderMeta() {
+        var m = state.meta;
+        var bits = [];
+        if (m.appVersion) bits.push("<div><strong>App</strong> " + esc(m.appVersion) + (m.versionCode ? " (" + esc(m.versionCode) + ")" : "") + "</div>");
+        if (m.device) bits.push("<div><strong>Device</strong> " + esc(m.device) + (m.osSdk ? " · SDK " + esc(m.osSdk) : "") + "</div>");
+        if (m.buildType) bits.push("<div><strong>Build</strong> " + esc(m.buildType) + "</div>");
+        if (m.locale) bits.push("<div><strong>Locale</strong> " + esc(m.locale) + "</div>");
+        if (state.reportId) bits.push("<div><strong>Report id</strong> " + esc(state.reportId) + "</div>");
+        if (m.diagnostic) bits.push("<div><strong>Diagnostic attached</strong> yes (" + m.diagnostic.length + " chars)</div>");
+        $("metaBox").innerHTML = bits.length ? bits.join("") : "<div>No app metadata attached — you can still send feedback.</div>";
+      }
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+        });
+      }
+
+      function showMailto(mailto) {
+        $("loading").classList.add("hidden");
+        $("formPanel").classList.add("hidden");
+        $("mailtoPanel").classList.remove("hidden");
+        $("mailtoBtn").href = mailto || "mailto:feedback_meteor@jlundmark.org";
+      }
+
+      function showForm() {
+        $("loading").classList.add("hidden");
+        $("mailtoPanel").classList.add("hidden");
+        $("formPanel").classList.remove("hidden");
+        $("type").value = state.meta.type || "bug";
+        renderMeta();
+        updateMailtoAlt();
+      }
+
+      function updateMailtoAlt() {
+        var type = $("type").value || state.meta.type || "other";
+        var summary = ($("summary").value || "Feedback").trim().slice(0, 80);
+        var details = ($("details").value || "").trim();
+        var lines = [
+          details || summary,
+          "",
+          "---",
+          "type: " + type,
+          "reportId: " + (state.reportId || ""),
+          "appVersion: " + (state.meta.appVersion || ""),
+          "versionCode: " + (state.meta.versionCode || ""),
+          "buildType: " + (state.meta.buildType || ""),
+          "device: " + (state.meta.device || ""),
+          "osSdk: " + (state.meta.osSdk || ""),
+          "locale: " + (state.meta.locale || "")
+        ];
+        if (state.meta.diagnostic) lines.push("diagnostic:", state.meta.diagnostic);
+        var href = "mailto:feedback_meteor@jlundmark.org"
+          + "?subject=" + encodeURIComponent("[Meteor " + type + "] " + summary)
+          + "&body=" + encodeURIComponent(lines.join("\n"));
+        $("mailtoAlt").href = href;
+      }
+
+      async function boot() {
+        fromQuery();
+        state.reportId = pathReportId();
+
+        try {
+          var statusRes = await fetch(API + "/status");
+          var status = await statusRes.json();
+          if (status.mode === "mailto") {
+            showMailto(status.mailto);
+            return;
+          }
+        } catch (e) {
+          showMailto("mailto:feedback_meteor@jlundmark.org?subject=" + encodeURIComponent("[Meteor] Feedback"));
+          return;
+        }
+
+        if (state.reportId) {
+          try {
+            var r = await fetch(API + "/" + encodeURIComponent(state.reportId));
+            if (r.ok) {
+              var payload = await r.json();
+              var rec = payload.record || {};
+              if (rec.status === "submitted") {
+                $("loading").classList.add("hidden");
+                $("donePanel").classList.remove("hidden");
+                $("doneId").textContent = rec.id || state.reportId;
+                return;
+              }
+              ["type", "appVersion", "versionCode", "buildType", "device", "osSdk", "locale", "installId", "diagnostic"].forEach(function (k) {
+                if (rec[k]) state.meta[k] = rec[k];
+              });
+            }
+          } catch (e) { /* keep query meta */ }
+        }
+
+        showForm();
+      }
+
+      $("type").addEventListener("change", updateMailtoAlt);
+      $("summary").addEventListener("input", updateMailtoAlt);
+      $("details").addEventListener("input", updateMailtoAlt);
+
+      $("formPanel").addEventListener("submit", async function (ev) {
+        ev.preventDefault();
+        var btn = $("submitBtn");
+        var statusEl = $("formStatus");
+        btn.disabled = true;
+        statusEl.textContent = "Sending…";
+        var body = {
+          reportId: state.reportId || undefined,
+          type: $("type").value,
+          summary: $("summary").value.trim(),
+          details: $("details").value.trim(),
+          appVersion: state.meta.appVersion,
+          versionCode: state.meta.versionCode,
+          buildType: state.meta.buildType,
+          device: state.meta.device,
+          osSdk: state.meta.osSdk,
+          locale: state.meta.locale,
+          installId: state.meta.installId,
+          diagnostic: state.meta.diagnostic
+        };
+        try {
+          var res = await fetch(API, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(body)
+          });
+          var data = await res.json();
+          if (res.status === 503 && data.mode === "mailto") {
+            showMailto(data.mailto);
+            return;
+          }
+          if (!res.ok) {
+            statusEl.textContent = data.error || "Could not send. Try email instead.";
+            btn.disabled = false;
+            updateMailtoAlt();
+            return;
+          }
+          $("formPanel").classList.add("hidden");
+          $("donePanel").classList.remove("hidden");
+          $("doneId").textContent = data.reportId || state.reportId || "ok";
+        } catch (e) {
+          statusEl.textContent = "Network error. Use Email instead.";
+          btn.disabled = false;
+          updateMailtoAlt();
+        }
+      });
+
+      boot();
+    })();
+  </script>
+</body>
+</html>

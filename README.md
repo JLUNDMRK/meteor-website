@@ -29,8 +29,21 @@ When you are ready for **full** public indexing: remove `noindex, nofollow` from
 | `/metadata/` | Metadata & attribution (TMDB or OMDb + Wikimedia) |
 | `/policy.v1.json` | Signed remote metadata policy (Meteor app) |
 | `/contact/` | Contact |
+| `/feedback/` | Structured feedback form (app + QR); mailto fallback when over free quota |
+| `/api/feedback` | Pages Function — submit / status (requires KV binding) |
 
 No build step. Edit HTML/CSS and push to `main` — Cloudflare Pages redeploys automatically.
+
+### Feedback API (FEAT-096)
+
+Free-tier only. Soft quotas in `functions/utils/feedback.js` close the form before Cloudflare billing; clients get a prefilled `mailto:`.
+
+1. Dashboard → Pages project → **Settings → Functions → KV namespace bindings**
+2. Binding name: **`FEEDBACK_KV`** (create namespace e.g. `meteor-feedback`)
+3. Optional secret **`FEEDBACK_EXPORT_TOKEN`** for `GET /api/feedback/export?token=…` (AI digest)
+4. Optional KV key `feedback_enabled=false` to kill-switch the form
+
+Without KV, every request returns `mode: "mailto"` — safe, no paid usage.
 
 ## Local development
 

@@ -11,3 +11,5 @@
 /howto/smb.html      /howto/smb/       301
 /howto/webdav.html   /howto/webdav/    301
 /howto/remote-webdav.html /howto/remote-webdav/ 301
+/feedback/*          /feedback/index.html  200
+/feedback.html       /feedback/            301
