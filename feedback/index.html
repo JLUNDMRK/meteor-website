@@ -140,8 +140,7 @@
         <textarea id="details" name="details" maxlength="4000" placeholder="Steps to reproduce, what you expected, etc."></textarea>
 
         <div class="feedback-actions">
-          <button type="submit" id="submitBtn">Send report</button>
-          <a id="mailtoAlt" class="btn btn-secondary" href="mailto:feedback_meteor@jlundmark.org">Email instead</a>
+          <button type="submit" id="submitBtn">Open email to send</button>
         </div>
         <p id="formStatus" class="feedback-status"></p>
       </form>
@@ -248,44 +247,25 @@
         var href = "mailto:feedback_meteor@jlundmark.org"
           + "?subject=" + encodeURIComponent("[Meteor " + type + "] " + summary)
           + "&body=" + encodeURIComponent(lines.join("\n"));
-        $("mailtoAlt").href = href;
+        state.pendingMailto = href;
       }
 
       async function boot() {
         fromQuery();
         state.reportId = pathReportId();
-
-        try {
-          var statusRes = await fetch(API + "/status");
-          var status = await statusRes.json();
-          if (status.mode === "mailto") {
-            showMailto(status.mailto);
-            return;
-          }
-        } catch (e) {
-          showMailto("mailto:feedback_meteor@jlundmark.org?subject=" + encodeURIComponent("[Meteor] Feedback"));
-          return;
-        }
-
+        // Mail-first: always show the form (TV QR query meta). Submit opens mailto.
         if (state.reportId) {
           try {
             var r = await fetch(API + "/" + encodeURIComponent(state.reportId));
             if (r.ok) {
               var payload = await r.json();
               var rec = payload.record || {};
-              if (rec.status === "submitted") {
-                $("loading").classList.add("hidden");
-                $("donePanel").classList.remove("hidden");
-                $("doneId").textContent = rec.id || state.reportId;
-                return;
-              }
               ["type", "appVersion", "versionCode", "buildType", "device", "osSdk", "locale", "installId", "diagnostic"].forEach(function (k) {
                 if (rec[k]) state.meta[k] = rec[k];
               });
             }
           } catch (e) { /* keep query meta */ }
         }
-
         showForm();
       }
 
@@ -293,51 +273,21 @@
       $("summary").addEventListener("input", updateMailtoAlt);
       $("details").addEventListener("input", updateMailtoAlt);
 
-      $("formPanel").addEventListener("submit", async function (ev) {
+      $("formPanel").addEventListener("submit", function (ev) {
         ev.preventDefault();
-        var btn = $("submitBtn");
-        var statusEl = $("formStatus");
-        btn.disabled = true;
-        statusEl.textContent = "Sending…";
-        var body = {
-          reportId: state.reportId || undefined,
-          type: $("type").value,
-          summary: $("summary").value.trim(),
-          details: $("details").value.trim(),
-          appVersion: state.meta.appVersion,
-          versionCode: state.meta.versionCode,
-          buildType: state.meta.buildType,
-          device: state.meta.device,
-          osSdk: state.meta.osSdk,
-          locale: state.meta.locale,
-          installId: state.meta.installId,
-          diagnostic: state.meta.diagnostic
-        };
-        try {
-          var res = await fetch(API, {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(body)
-          });
-          var data = await res.json();
-          if (res.status === 503 && data.mode === "mailto") {
-            showMailto(data.mailto);
-            return;
-          }
-          if (!res.ok) {
-            statusEl.textContent = data.error || "Could not send. Try email instead.";
-            btn.disabled = false;
-            updateMailtoAlt();
-            return;
-          }
-          $("formPanel").classList.add("hidden");
-          $("donePanel").classList.remove("hidden");
-          $("doneId").textContent = data.reportId || state.reportId || "ok";
-        } catch (e) {
-          statusEl.textContent = "Network error. Use Email instead.";
-          btn.disabled = false;
-          updateMailtoAlt();
+        var summary = ($("summary").value || "").trim();
+        if (!summary) {
+          $("formStatus").textContent = "Please enter a short summary.";
+          return;
         }
+        updateMailtoAlt();
+        var mailto = state.pendingMailto;
+        if (!mailto) {
+          $("formStatus").textContent = "Could not build email link.";
+          return;
+        }
+        $("formStatus").textContent = "Opening email…";
+        window.location.href = mailto;
       });
 
       boot();
