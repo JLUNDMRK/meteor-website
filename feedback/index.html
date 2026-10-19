@@ -231,9 +231,11 @@
         var summary = ($("summary").value || "Feedback").trim().slice(0, 80);
         var details = ($("details").value || "").trim();
         var lines = [
-          details || summary,
+          "==== Insert your comment below ====",
           "",
-          "---",
+          details || "",
+          "",
+          "==== Do not change below text ====",
           "type: " + type,
           "reportId: " + (state.reportId || ""),
           "appVersion: " + (state.meta.appVersion || ""),
