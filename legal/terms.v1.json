@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "updated": "2026-10-20",
+  "defaultLocale": "en",
+  "locales": {
+    "en": {
+      "title": "Meteor terms",
+      "sections": [
+        {
+          "heading": "About Meteor",
+          "paragraphs": [
+            "Meteor Media Portal indexes your movie collection on your device. The app does not provide films, posters, or metadata by itself.",
+            "By accepting, you agree to use the metadata providers enabled in the app configuration and to follow each provider’s terms."
+          ]
+        },
+        {
+          "heading": "Metadata providers",
+          "paragraphs": [
+            "Depending on configuration, Meteor may use TMDb, OMDbAPI, and/or Wikimedia / Wikidata for titles, artwork, and related information.",
+            "You are responsible for API keys you enter yourself (BYOK) and for complying with those services’ terms of use."
+          ]
+        },
+        {
+          "heading": "Playback",
+          "paragraphs": [
+            "Playback uses the device’s media stack (for example ExoPlayer on Android). Some files may not play if the device cannot decode them natively. Meteor may offer to open VLC when needed."
+          ]
+        },
+        {
+          "heading": "Pricing",
+          "paragraphs": [
+            "Meteor is completely free during public beta. No account, payment details, or subscription is required.",
+            "To help cover operating costs and support continued development, Meteor may introduce an optional paid subscription in the future. A free version with core features is planned to remain available. If a paid supporter version is introduced, the goal is to keep it very affordable — ideally under $1/month.",
+            "Any changes will be communicated clearly in advance. See https://meteor.jlundmark.org/terms/ for the full terms."
+          ]
+        },
+        {
+          "heading": "Website",
+          "paragraphs": [
+            "Product information and the latest terms summary: https://meteor.jlundmark.org/terms/"
+          ]
+        }
+      ]
+    },
+    "sv": {
+      "title": "Meteor-villkor",
+      "sections": [
+        {
+          "heading": "Om Meteor",
+          "paragraphs": [
+            "Meteor Media Portal indexerar din filmsamling på enheten. Appen tillhandahåller inte filmer, affischer eller metadata själv.",
+            "Genom att acceptera godkänner du att använda de metadataleverantörer som aktiveras via appkonfigurationen och att följa respektive leverantörs villkor."
+          ]
+        },
+        {
+          "heading": "Metadataleverantörer",
+          "paragraphs": [
+            "Beroende på konfiguration kan Meteor använda TMDb, OMDbAPI och/eller Wikimedia / Wikidata för titlar, bilder och relaterad information.",
+            "Du ansvarar för API-nycklar du själv anger (BYOK) och för att följa respektive tjänsts användarvillkor."
+          ]
+        },
+        {
+          "heading": "Uppspelning",
+          "paragraphs": [
+            "Uppspelning använder enhetens mediastack (t.ex. ExoPlayer på Android). Vissa filer spelas inte om enheten inte kan avkoda dem. Meteor kan erbjuda att öppna VLC vid behov."
+          ]
+        },
+        {
+          "heading": "Prissättning",
+          "paragraphs": [
+            "Meteor är helt gratis under den publika betan. Inget konto, betalningsuppgifter eller prenumeration krävs.",
+            "För att täcka driftkostnader och stödja fortsatt utveckling kan Meteor i framtiden introducera en valfri betald prenumeration. En gratisversion med basfunktioner planeras finnas kvar. Om en betald supporter-version införs är målet att hålla den mycket överkomlig — helst under $1/månad.",
+            "Eventuella förändringar kommuniceras tydligt i förväg. Se https://meteor.jlundmark.org/terms/ för fullständiga villkor."
+          ]
+        },
+        {
+          "heading": "Webbplats",
+          "paragraphs": [
+            "Produktinformation och senaste villkorssammanfattning: https://meteor.jlundmark.org/terms/"
+          ]
+        }
+      ]
+    }
+  }
+}

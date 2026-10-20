@@ -11,17 +11,16 @@ window.METEOR_SITE = {
   websiteVersion: "0.3",
   websiteUpdated: "August 2026",
   packageId: "com.meteor.mediaplayer",
-  // TODO: replace when the Play listing is live
   appStoreUrl: "https://play.google.com/store/apps/details?id=com.meteor.mediaplayer",
   supportEmail: "meteor@jlundmark.org",
   privacyEmail: "meteor@jlundmark.org",
-  // App source is private â€” do not link a private issues URL from the public site.
+  // App source is private — do not link a private issues URL from the public site.
   githubUrl: null,
   githubIssuesUrl: null,
   social: {
     // TODO: add when available
   },
-  appStatus: "coming_soon", // "coming_soon" | "live"
+  appStatus: "public_beta", // "coming_soon" | "public_beta" | "live"
   // Site is unlisted until launch: robots.txt Disallow + meta noindex,nofollow on all pages
   crawlable: false,
   policyEffectiveDate: "2026-08-15",

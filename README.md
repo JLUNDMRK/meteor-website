@@ -155,12 +155,12 @@ Site version shown in every footer (`Website v0.3 · Updated August 2026`) comes
 - [x] Align Metadata page with resolver sources (TMDB or OMDb API + Wikimedia)
 - [ ] Add real screenshots (optional)
 - [ ] Replace `og-share.png`
-- [ ] Swap “Coming soon” for Play badge / working store link
+- [x] Swap “Coming soon” for Play store link (Free Public Beta)
 - [ ] Before full public launch: set `Allow: /` in `robots.txt`, add Sitemap line, remove `noindex, nofollow` from remaining pages, set `crawlable: true` in `site.config.js`
 
 ## Statements that still depend on app confirmation
 
-Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, FREE_DURING_DEVELOPMENT — no trial lock / no purchase flow, TMDB or OMDb + Wikimedia metadata via remote policy, Drive sync disabled for v1).
+Privacy and Terms for Play are written against the current Android product (Firebase Analytics + Crashlytics, Free Public Beta / FREE_DURING_DEVELOPMENT — no trial lock / no purchase flow, optional future supporter goal ideally under $1/month, TMDB or OMDb + Wikimedia metadata via remote policy, Drive sync disabled for v1).
 
 **Metadata**
 
